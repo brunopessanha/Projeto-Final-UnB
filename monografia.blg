@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: monografia.aux
+The style file: plain.bst
+Database file #1: bibliografia.bib
+Warning--entry type for "weiser1993" isn't style-file defined
+--line 59 of file bibliografia.bib
+Warning--empty publisher in passarinho2008
+Warning--empty publisher in paranhos2009
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            529 strings with 4860 characters,
+and the built_in function-call counts, 1324 in all, are:
+= -- 126
+> -- 42
+< -- 0
++ -- 20
+- -- 12
+* -- 70
+:= -- 243
+add.period$ -- 17
+call.type$ -- 6
+change.case$ -- 22
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 58
+empty$ -- 118
+format.name$ -- 12
+if$ -- 266
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 5
+newline$ -- 32
+num.names$ -- 12
+pop$ -- 33
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 39
+stack$ -- 0
+substring$ -- 48
+swap$ -- 4
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 2
+while$ -- 14
+width$ -- 7
+write$ -- 63
+(There were 3 warnings)
