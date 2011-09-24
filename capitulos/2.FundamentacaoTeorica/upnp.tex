@@ -1,1 +1,32 @@
 \subsection{UPnP}
+O \emph{Universal Plug and Play Protocol}(UPnP) é uma arquitetura para conectividade entre aplicações inteligentes, como computadores e dispositivos \emph{wireless}. Ela foi definida para facilitar a conectividade entre dispositivos em diferentes ambientes, como casas, pequenas empresas ou espaços públicos~\cite{upnpArch}. A arquitetura foi desenvolvida de forma a não necessitar de configurações e fornecer uma rede invisível e descoberta automática de dispositivos para várias categorias de dispositivos de diferentes fabricantes. Dessa maneira, quando um novo dispositivo entra nessa rede, ele recebe um IP automaticamente, publica seus serviços e conhece os serviços dos dispositivos do ambiente. Basicamente o que se espera de uma arquitetura para \emph{smart spaces}. 
+
+O UPnP utiliza do nome "Universal", pois não é necessária a utilização de ~\emph{drivers} para cada dispositivo. Para atingir esse objetivo, essa arquitetura faz uso de diversos e bem conhecidos protocolos de internet como IP, TCP, UDP, HTTP e XML, para facilitar a interoperabilidade entre dispositivos diversos. Da mesma forma que os protocolos de internet, os contratos dos serviços dos dispositivos são escritos em XML e enviados por HTTP.
+
+Após a entrada do dispositivo em uma rede, ele recebe um IP via DHCP ou gera um IP para si, no caso de redes não gerenciadas. A \emph{UPnP Device Architecture}(UDA) divide os dispositivos em duas categorias principais: dispositivos controlados ou simplesmente "dispositivos" e pontos de controle~\cite{upnpArch} formando uma espécie de arquitetura cliente(pontos de controle)-servidor(dispositivos). 
+
+Quando um dispositivo entra na rede UPnP, ele comunica seus serviços para os pontos de controle ou, caso seja um ponto de controle, o protocolo de descoberta do UPnP permite que esse ponto de controle procure dispositivos de seu interesse. O segundo passo é o envio da descrição detalhada do dispositivo para os pontos de controle, que de posse dessa descrição pode enviar mensagens de controle para o dispositivo(passo 3). Os pontos de controle podem também assinar um contrato para envio de notificações de evento utilizando algum dos serviços que o dispositivo provê(passo 4). O último passo é de apresentação, caso o dispositivo possua uma URL de apresentação é possível abrir uma página \emph{web} no \emph{browser} e um usuário pode controlar o dispositivo por meio dessa página~\cite{upnpArch}.
+
+Nosso foco neste trabalho se encontra no segundo passo do processo: a descrição dos dispositivos. Após a descoberta do dispositivo, os pontos de controle ainda não tem muita informação sobre ele, então os pontos de controle interessados solicitam a descrição do dispositivo via uma URL que este dispositivo disponibilizou na primeira etapa.
+
+A descrição de um dispositivo definida no UPnP é feita em um arquivo XML e inclui informações sobre o fabricante, lista de dispositivos embarcados ou serviços e para cada serviço URLs para controle, eventos e apresentação. A descrição de serviços inclui ainda uma lista de comandos ou ações que o dispositivo irá responder e para cada ação existem parâmetros ou argumentos. O estado do serviço é representado por uma lista de variáveis.
+
+O UPnP define uma série de dispositivos padrões que os fabricantes podem utilizar na classificação de seus dispositivos. São elas:
+
+\begin{itemize}
+\item Áudio/Vídeo
+\item Básico
+\item Gerenciador de Dispositivo
+\item Automação Residencial
+\item Rede
+\item Impressora
+\item Acesso Remoto
+\item Interface Remota
+\item \emph{Scanner}
+\item Telefonia
+\end{itemize}
+
+Os fabricantes podem, a partir de uma definição padrão, estender determinada definição adicionando novos serviços, por exemplo, o que sugere uma espécie de hierarquia de dispositivos por meio de arquivos XML.
+
+
+
