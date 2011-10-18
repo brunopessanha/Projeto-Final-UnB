@@ -10,25 +10,32 @@ O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicaçao que adici
 
 Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (mbs) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução. Esses dispositivos são divididos em várias classes e/ou subclasses diferentes (veja em~\ref{tab:dispositivos_usb}), cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares~\cite{hid}. A partir dessas classificações será possível estabelecer uma hierarquia, a qual poderá ser usada no processo de classificação dos dispositivos presentes no smartspace.
 
-\subsubsection{SuperSpeed}
-\subsubsection{Wireless}
-\subsubsection{Hi-Speed}
-\subsubsection{On-The-Go and Embedded Host}
-
 \begin{table}
 	\begin{center}
 		\begin{tabular}{cccc}
 		\hline
-		\textbf{Classes de Dispositivos} \\
+		\textbf{Classes de Dispositivos}																		\\
 		\hline
-		Audio & Comunicação & Dispositivo Interface Humana & Físico \\
-		Imagem & Impressora & Disco Rígido & Hub \\
+		Audio					&	Comunicação				&	Interface Humana	&	Físico 					\\
+		\hline
+		Imagem					&	Impressora				&	Disco Rígido		&	Hub 					\\
+		\hline
+		\emph{Smart Card}		&	Segurança de Conteúdo	&	Vídeo				&	Saúde Pessoal 			\\
+		\hline
+		Diagnóstico				& Controlador Wireless		&	Diversos			&	Aplicação Específica	\\
+		\hline
+		Fabricante Específico	&							&						&							\\
 		\hline
 		\end{tabular}
 	\end{center}
 	\caption{Exemplos de classes de dispositivos USB.}
 	\label{tab:dispositivos_usb}
 \end{table}
+
+\subsubsection{SuperSpeed}
+\subsubsection{Wireless}
+\subsubsection{Hi-Speed}
+\subsubsection{On-The-Go and Embedded Host}
 
 Dentre as diversas classes existentes para o protocolo USB, será utilizada a \emph{Human Interface Device} (HID). Tal decisão baseou-se na característica principal desse tipo de classe que, de forma geral, destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais~\cite{hid}. Mais específicamente, possui as seguintes particularidades:
 
