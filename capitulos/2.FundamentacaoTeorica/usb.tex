@@ -1,16 +1,65 @@
 \subsection{USB}
-O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicaçao que adiciona a um computador pessoal (PC) a capacidade de se interconectar a uma variedade de dispositivos. Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (mbs) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução. Esses dispositivos são divididos em várias classes diferentes, cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares.~\cite{USB}
 
-Tabela com exemplos de classes de dispositivos USB.
-
-Dentre as diversas classes existentes para o protocolo USB, será utilizada a \emph{Human Interface Device} (HID). Tal decisão baseou-se na característica principal desse tipo de classe que, de forma geral, destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais.~\cite{USB}. Mais específicamente, possui as seguintes particularidades:
+O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicaçao que adiciona a um computador pessoal (PC) a capacidade de se interconectar a uma variedade de dispositivos. Surgiu com o intuito de sanar três das principais dificuldades enfrentadas à época de sua criação~\cite{usbspec}:
 
 \begin{itemize}
-\item Deve ser tão compacto quanto possível para evitar desperdício de espaço no dispositivo;
-\item Permitir a aplicação de software para evitar informação desconhecida;
-\item Ser extensível e robusto;
-\item Suportar hierarquias e coleções;
-\item Ser autodescritivo para permitir aplicações de software genéricos.
+	\item Integrar as plataformas das industrias da informática e comunicação. Para tal, a troca de informações entre esses dispositivos deveria acontecer de forma ubíqua e barata;
+	\item Facilitar a reconfiguração de dispositivos de um computador, tais como teclados, mouses e joysticks;
+	\item Integrar todas as interfaces existentes à época em um única que pudesse ser utilizada pela maior quantidade possível de dispositivos: telefone, fax, modem, adaptadores, secretárias eletrônicas, \emph{scanners}, PDA's, teclados, \emph{mouses}, etc.
 \end{itemize}
 
-Tabela com exemplos de dispositivos HID.
+Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (mbs) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução. Esses dispositivos são divididos em várias classes e/ou subclasses diferentes (veja em~\ref{tab:dispositivos_usb}), cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares~\cite{hid}. A partir dessas classificações será possível estabelecer uma hierarquia, a qual poderá ser usada no processo de classificação dos dispositivos presentes no smartspace.
+
+\subsubsection{SuperSpeed}
+\subsubsection{Wireless}
+\subsubsection{Hi-Speed}
+\subsubsection{On-The-Go and Embedded Host}
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{cccc}
+		\hline
+		\textbf{Classes de Dispositivos} \\
+		\hline
+		Audio & Comunicação & Dispositivo Interface Humana & Físico \\
+		Imagem & Impressora & Disco Rígido & Hub \\
+		\hline
+		\end{tabular}
+	\end{center}
+	\caption{Exemplos de classes de dispositivos USB.}
+	\label{tab:dispositivos_usb}
+\end{table}
+
+Dentre as diversas classes existentes para o protocolo USB, será utilizada a \emph{Human Interface Device} (HID). Tal decisão baseou-se na característica principal desse tipo de classe que, de forma geral, destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais~\cite{hid}. Mais específicamente, possui as seguintes particularidades:
+
+\begin{itemize}
+	\item Deve ser tão compacto quanto possível para evitar desperdício de espaço no dispositivo;
+	\item Permitir a aplicação de software para evitar informação desconhecida;
+	\item Ser extensível e robusto;
+	\item Suportar hierarquias e coleções;
+	\item Ser autodescritivo para permitir aplicações de software genéricos.
+\end{itemize}
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{lr}
+		\hline
+		\textbf{Dispositivo} & \textbf{Exemplo Descritivo} \\
+		\hline
+		Teclados e dispositivos apontadores & Mouses, trackballs e joysticks \\
+		Painéis de controle & Maçanetas, Interruptores, botões e alavancas \\
+		Controles que podem ser encontrados \\
+		em dispositivos como telefones,\\
+		controles remotos, jogos ou dispositivos \\
+		de simulação & Luvas virtuais, câmbios, \\
+		volantes e pedais \\
+		Dispositivos que não necessitam de \\
+		interação humana mas que fornecem dados \\
+		de forma similar aos dipositivos da \\
+		classe HID & Leitores de códigos de barra, \\termômetros ou voltímetros. \\
+		\hline
+		\end{tabular}
+	\end{center}
+	\caption{Exemplos de classes de dispositivos USB.}
+	\label{tab:dispositivos_USB}
+\end{table}
