@@ -1,6 +1,6 @@
 \subsection{USB}
 
-O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicaçao que adiciona a um computador pessoal (PC) a capacidade de se interconectar a uma variedade de dispositivos. Surgiu com o intuito de sanar três das principais dificuldades enfrentadas à época de sua criação~\cite{usbspec}:
+O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicaçao que adiciona a uma máquina hospedeira a capacidade de se interconectar a uma variedade de dispositivos. Surgiu com o intuito de sanar três das principais dificuldades enfrentadas à época de sua criação~\cite{usbspec}:
 
 \begin{itemize}
 	\item Integrar as plataformas das industrias da informática e comunicação. Para tal, a troca de informações entre esses dispositivos deveria acontecer de forma ubíqua e barata;
@@ -8,7 +8,19 @@ O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicaçao que adici
 	\item Integrar todas as interfaces existentes à época em um única que pudesse ser utilizada pela maior quantidade possível de dispositivos: telefone, fax, modem, adaptadores, secretárias eletrônicas, \emph{scanners}, PDA's, teclados, \emph{mouses}, etc.
 \end{itemize}
 
-Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (mbs) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução. Esses dispositivos são divididos em várias classes e/ou subclasses diferentes (veja em~\ref{tab:dispositivos_usb}), cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares~\cite{hid}. A partir dessas classificações será possível estabelecer uma hierarquia, a qual poderá ser usada no processo de classificação dos dispositivos presentes no smartspace.
+De acordo com sua especificação, suas máquinas hospedeiras devem:
+
+\begin{itemize}
+	\item Fornecer energia aos seus periféricos;
+	\item Suportar todas as velocidades definidas (SuperSpeed, Low Speed, Full Speed e High SuperSpeed);
+	\item Suportar todos os tipos de fluxo de dados definidos (controle, massa, interrupção e síncrono).
+\end{itemize}
+
+Entende-se por máquina hospedeira qualquer dispositivo possuidor dos recursos necessários para realizar esta função. Por exemplo, conectar uma câmera à uma impressora faz sentido, enquanto que conectar um GPS à mesma impressora, não. Assim sendo, cada máquina hospedeira não necessita se comportar exatamente como um computador, mas apenas servir como hospedeiro a certos dispositivos convenientes~\cite{usb3spec}.
+
+Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (mbs) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução~\cite{hid}, deixando toda parte pesada desse processo a cargo do hospedeiro~\cite{usb3spec}. Tais dispositivos são divididos em várias classes e/ou subclasses diferentes (veja em~\ref{tab:dispositivos_usb}), cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares~\cite{hid}.
+
+Um mesmo dispositivo USB pode pertencer a uma ou múltiplas classes. Por exemplo, um celular pode utilizar atributos da classe HID, Audio e Comunicação. A partir dessas divisões será possível estabelecer uma hierarquia, a qual poderá ser usada no processo de classificação dos dispositivos presentes no smartspace.
 
 \begin{table}
 	\begin{center}
@@ -16,28 +28,40 @@ Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por se
 		\hline
 		\textbf{Classes de Dispositivos}																		\\
 		\hline
-		Audio					&	Comunicação				&	Interface Humana	&	Físico 					\\
+		Audio					&	Comunicação				&	Interface Humana (HID)	&	Físico 				\\
 		\hline
-		Imagem					&	Impressora				&	Disco Rígido		&	Hub 					\\
+		Imagem					&	Impressora				&	Disco Rígido			&	Hub 				\\
 		\hline
-		\emph{Smart Card}		&	Segurança de Conteúdo	&	Vídeo				&	Saúde Pessoal 			\\
+		\emph{Smart Card}		&	Segurança de Conteúdo	&	Vídeo					&	Saúde Pessoal 		\\
 		\hline
-		Diagnóstico				&	Controlador Wireless	&	Diversos			&	Aplicação Específica	\\
+		Diagnóstico				&	Controlador Wireless	&	Diversos				&	Aplicação Específica\\
 		\hline
-		Fabricante Específico	&							&						&							\\
+		Fabricante Específico	&							&							&						\\
 		\hline
 		\end{tabular}
 	\end{center}
-	\caption{Exemplos de classes de dispositivos USB.}
+	\caption{Exemplos de classes de dispositivos USB.~\cite{usbclasscodes}}
 	\label{tab:dispositivos_usb}
 \end{table}
 
-\subsubsection{SuperSpeed}
+\begin{comment}
+Com o sucesso do protocolo, novas categorias surgiram gradualmente como alternativas às novas tecnologias e/ou aos novos dispositivos. Seguem:
+
+\subsubsection{\emph{SuperSpeed}}
+
+Como efeito do avanço tecnológico, o desenvolvimento dos novos tipos de dispositivos, dos formatos de mídia e dos armazenamentos de baixo custo está convergindo. Para tal, requer largura de banda significativamente maior para manter uma experiência do usuário aceitável. E o USB 3.0 atende essa necessidade adicionando uma taxa de transferência ainda maior para suprir essa demanda. Traz melhorias significativas de desempenho ao consagrado USB padrão, mantendo-se compatível com os diversos outros dispositivos USB espalhados pelo mercado. Além de melhorar a eficiência de energia, sua taxa de transferência será até dez vezes maior que a taxa de transferência do USB \emph{Hi-Speed}~\cite{usbsuperspeed}.
+
 \subsubsection{Wireless}
+
+
+
 \subsubsection{Hi-Speed}
+
+
+
 \subsubsection{On-The-Go and Embedded Host}
 
-Dentre as diversas classes existentes para o protocolo USB, será utilizada a \emph{Human Interface Device} (HID). Tal decisão baseou-se na característica principal desse tipo de classe que, de forma geral, destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais~\cite{hid}. Mais específicamente, possui as seguintes particularidades:
+Dentre as diversas classes existentes, uma em especial chama a atenção: \emph{Human Interface Device} (HID). Esse tipo de classe, de forma geral, destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais~\cite{hid}. Mais específicamente, possui as seguintes particularidades:
 
 \begin{itemize}
 	\item Deve ser tão compacto quanto possível para evitar desperdício de espaço no dispositivo;
@@ -70,3 +94,5 @@ Dentre as diversas classes existentes para o protocolo USB, será utilizada a \e
 	\caption{Exemplos de classes de dispositivos USB.}
 	\label{tab:dispositivos_USB}
 \end{table}
+
+\end{comment}
