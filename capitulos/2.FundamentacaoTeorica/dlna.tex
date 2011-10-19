@@ -1,1 +1,52 @@
 \subsection{DLNA}
+
+A \emph{Digital Living Network Alliance} (DLNA) é uma organização composta pelas principais empresas de eletrônicos de consumo, computação e dispositivos móveis. Foi fundada em 2003 e tem como objetivo fornecer orientações para permitir a interoperabilidade entre dispositivos para completar a convergência da indústria digital, levando, dessa forma, inovação, simplicidade e valor para os consumidores~\cite{dlnaoverview}. Tem como visão facilitar a criação, o gerenciamento e o compartilhamento de conteúdo digital (fotos, músicas e vídeos) entre os dispositivos pertencentes à mesma rede~\cite{dlnahdvideostreaming}. Deve permitir, por exemplo~\cite{dlnaoverview}:
+
+\begin{itemize}
+	\item Facilmente adquirir, armazenar e acessar música digital a partir de praticamente qualquer lugar da casa;
+	\item Facilmente gerenciar, visualizar, imprimir e compartilhar fotos digitais;
+	\item Transportar seu conteúdo favorito de qualquer lugar, mesmo em movimento;
+	\item Aproveitar a gravação e reprodução de conteúdo distribuído e multi-usuário.
+\end{itemize}
+
+Suas diretrizes destacam casos de uso cuidadosamente construídos para redes domésticas (veja a tabela~\ref{tab:casosdeuso_dlna}), funções adicionais que aumentam a experiência do compartilhamento de conteúdo e doze classes de dispositivos espalhados na categoria "Rede Doméstica e Dispositivos Móveis". A classificação de um dispositivo é feita de tal forma que um único aparelho multifuncional pode possuir diversas categorias diferentes~\cite{dlnahdvideostreaming}.
+
+Em suma, o DLNA pode ser visto como uma coleção de padrões abertos que definem como uma rede residencial interage em todos os seus níveis, ou seja, além de definir como os diferentes padrões irão interoperar e como os dados serão tratados em cada nível, ele também reduz o número de padrões que um dispositivo deve suportar.
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{cc}
+		\hline
+		\textbf{Casos de Uso} & \textbf{Exemplo}																\\
+		\hline
+		Enviar & Tranferir vídeos ou imagens capturadas em uma câmera digital ou celular para um computador.	\\
+		\hline
+		Empurrar & Exibir vídeos ou imagens capturadas em uma câmera digital ou celular diretamente em uma TV sem intermédio de um computador. \\
+		\hline
+		Localizar e Reproduzir ou "Reproduzir em..."" & Utiliza um celular para localizar uma música ou vídeo armazenados em um computador, unidade de disco externa ou um dispositivo \emph{Network-Attached Storage} (NAS) e transferi-lo, via \emph{stream} ou não, para reprodução. \\
+		\hline
+		Puxar e imprimir ou "Imprimir em..." & Vizualizar na TV uma foto armazenada em um servidor de mídia e imprimi-la utilizando uma impressora em rede. \\
+		\hline
+		\end{tabular}
+	\end{center}
+	\caption{Exemplos de casos de uso~\cite{dlnahdvideostreaming}.}
+	\label{tab:casosdeuso_dlna}
+\end{table}
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{cccc}
+		\hline
+		\textbf{Camada} & \textbf{Função definida} & \textbf{Função definida} & \textbf{Padrões}				\\
+		\hline
+		Transmissão Protegida & Como um conteúdo comercial está protegido em uma rede doméstica. & DTCP/IP \\
+		\hline
+		Formatos de Mídia & Como um conteúdo de mídia está codificado e identificado para interoperabilidade. & MPEG2, MPEG4, AVC/H.264, LPCM, MP3, AAC LC, JPEG, XHTML-Print- \\
+		\hline
+		Transporte de Mídia & Como um conteúdo de mídia é transferido. & HTTP, Quality of Service \\
+		\hline
+		\end{tabular}
+	\end{center}
+	\caption{Camadas padrões DLNA~\cite{dlnahdvideostreaming}.}
+	\label{tab:camadaspadroes_dlna}
+\end{table}
