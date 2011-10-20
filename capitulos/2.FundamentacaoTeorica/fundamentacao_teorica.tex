@@ -1,28 +1,29 @@
-\chapter{Fundamentação Teórica}
-
-\section{Classificação de Recursos}
+\chapter{Classificação de Recursos}
 
 Num ambiente em que dispositivos podem se movimentar livremente e cujos serviços devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais, independente de quais tecnologias, padrões ou protocolos tenham sido adotados. É fundamental que essa comunicação seja feita de forma tão rápida e confiável quanto possível, pois toda atividade do middleware com seus clientes depende dela, inclusive o processo de classificação dos recursos disponíveis no smartspace, idéia central deste documento.
 
-\begin{comment}
-É importante, também, que a classificação dos recursos disponibilizados por cada aparelho presente na rede. Dessa forma, torna-se de grande valia o conhecimento prévio de quais padrões e protocolos estão sendo atualmente adotados pelas principais fabricantes de produtos eletrônicos.
-\end{comment}
+Uma propriedade de uma classificação é a hierarquia, ou seja, uma representação em que as categorias da classificação podem ser especializadas formando novas categorias mais específicas, com diferentes atributos. Existem diferentes maneiras conhecidas de se representar uma hierarquia de forma a relacionar categorias que tenham atributos em comum: arquivos no formato XML, hierarquia de classes, ontologia ou simplesmente não utilizar uma hierarquia onde as categorias não tem relações entre si.
 
-A seguir, discutir-se-á quatro dos principais protocolos e padrões pesquisados: uPnP, IEEE 1451, DLNA e USB.
+O XML (\emph{Extensible Markup Language}), como seu próprio nome sugere, pode ser estendido e dessa forma, é possível montar uma hierarquia de arquivos XML. O seu uso para descrever um tipo de dispositivo tem a vantagem de ser independente de plataformas de hardware ou software e, devido sua formatação, possui uma boa legibilidade, não necessitando de um pré-processamento por parte de um computador para seu conteúdo se tornar compreensível. Esse formato possui, contudo, a desvantagem de repetir uma grande quantidade de informação o que pode prejudicar a velocidade de comunicação entre dispositivos que o utilizem. Outro fator que deve ser levado em consideração é que o conjunto de protocolos \emph{uP} (\emph{Ubiquitous Protocols}) do middleware \emph{uOS} utiliza o formato JSON para troca de mensagens, um mecanismo mais leve, e ainda assim estruturado, para representar informação.
 
-\begin{comment}
-Existem diferentes formas de fazer uma classificação para dispositivos ou recursos.
-Nesta seção falaremos sobre algumas tecnologias que fazem uso de uma classificação de dispositivos para auxiliar a comunicação entre eles e o desenvolvimento de aplicações para estes dispositivos.
-\end{comment}
+A Hierarquia de Classes é amplamente utilizada em Programação Orientada à Objetos. Uma classe possui atributos ou propriedades e uma outra classe pode herdar esses atributos e criar uma especialização dessa classe raís, à esse relacionamento dá-se o nome de Herança. Dependendo da linguagem orientada utilizada, uma Classe pode herdar métodos e atributos de várias outras Classes, formando uma herança múltipla de classes, ou então poderá cada Subclasse poderá herdar de apenas uma outra Classe, não podendo, entretanto, ocorrer uma herança circular, onde uma Classe A herda de uma Classe B, que por sua vez herda atributos de uma Classe C que especializa a Classe A. Uma Hierarquia de Classes forma, portanto, uma espécie de árvore de classes.
+
+Uma Ontologia é uma descrição formal de conceitos (classes) em um determinado domínio. Esses conceitos possuem propriedades, que descrevem atributos, características e restrições. De forma semelhante à orientação à objetos, conceitos podem possuir subclasses que especializam a classe superior. A Ontologia já permite uma herança múltipla de classes, e novos conceitos podem ser construídos por meio do relacionamento entre classes. Para construir uma Ontologia deve-se definir as classes do domínio, distribuir as classes de forma hierárquica, definir valores e restrições para suas propriedades e utilizar esses valores nas instâncias das classes da Ontologia. Dessa forma, temos uma base de conhecimento. As Ontologias se tornaram popular na Web por dividir produtos em categorias e características em sites de venda e atualmente são utilizadas para compartilhar informação entre pessoas e agentes inteligentes. Uma antologia provê reutilização de conhecimento e torna explícitas as hipóteses sobre um domínio e análise do domínio.
+
+\section{Padrões Diversos}
+
+Nesta seção, discutir-se-á quatro dos principais protocolos e padrões pesquisados que fazem uso de uma classificação de recursos e utilizam as estratégias supracitadas para representar sua hierarquia de recursos: UPnP, IEEE 1451, DLNA e USB. 
 
 \input{capitulos/2.FundamentacaoTeorica/upnp}
 \input{capitulos/2.FundamentacaoTeorica/ieee1451}
 \input{capitulos/2.FundamentacaoTeorica/dlna}
 \input{capitulos/2.FundamentacaoTeorica/usb}
 
+\begin{comment}
 \section{Hierarquia de Recursos}
 Na seção anterior mostramos o estado da arte na classificação de dispositivos e recursos. Vimos que é comum a representação dessa classificação de forma hierárquica. Nesta seção mostraremos as formas conhecidas de representar uma hierarquia de recursos.
 
 \input{capitulos/2.FundamentacaoTeorica/xml}
 \input{capitulos/2.FundamentacaoTeorica/classes}
 \input{capitulos/2.FundamentacaoTeorica/ontologia}
+\end{comment}
