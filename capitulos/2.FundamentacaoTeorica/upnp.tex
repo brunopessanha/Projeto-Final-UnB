@@ -1,28 +1,28 @@
 \subsection{UPnP}
 O \emph{Universal Plug and Play Protocol}(UPnP) é uma arquitetura para conectividade entre aplicações inteligentes, em execução em computadores e dispositivos \emph{wireless} em geral. Ela foi definida para facilitar a conectividade entre dispositivos em diferentes ambientes, como casas, pequenas empresas ou espaços públicos~\cite{upnpArch}. A arquitetura foi desenvolvida de forma a não necessitar de configurações e fornecer uma rede invisível com descoberta automática de dispositivos de diferentes fabricantes e diversas categorias. Dessa maneira, quando um novo dispositivo entra nessa rede, ele é identificado por um IP, publica seus serviços e conhece os serviços de outros dispositivos do ambiente. 
 
-O UPnP utiliza o nome "Universal", pois não é necessária a utilização de ~\emph{drivers} para cada dispositivo. Para atingir esse objetivo, essa arquitetura faz uso de protocolos de internet bem conhecidos como IP, TCP, UDP, HTTP além do formato XML, para facilitar a interoperabilidade entre dispositivos diversos. Da mesma forma que os protocolos de internet, os contratos dos serviços dos dispositivos são escritos em XML e enviados por HTTP.
+O UPnP utiliza o nome "Universal", pois não é necessária a utilização de ~\emph{drivers} para cada dispositivo. Para atingir esse objetivo, essa arquitetura faz uso de protocolos de internet bem conhecidos como IP, TCP, UDP, HTTP, além do formato XML, para facilitar a interoperabilidade entre dispositivos diversos. Da mesma forma que os protocolos de internet, os contratos dos serviços dos dispositivos são escritos em XML e enviados por HTTP.
 
 Após a entrada do dispositivo em uma rede, ele recebe um IP via DHCP ou gera um IP para si, no caso de redes não gerenciadas. A \emph{UPnP Device Architecture}(UDA) divide os dispositivos em duas categorias principais: dispositivos controlados ou simplesmente "dispositivos" e pontos de controle~\cite{upnpArch} formando uma espécie de arquitetura cliente(pontos de controle)-servidor(dispositivos). 
 
 \begin{comment}	
-Quando um dispositivo entra na rede UPnP, ele comunica seus serviços para os pontos de controle ou, caso seja um ponto de controle, o protocolo de descoberta do UPnP permite que esse ponto de controle procure dispositivos de seu interesse. O segundo passo é o envio da descrição detalhada do dispositivo para os pontos de controle, que de posse dessa descrição pode enviar mensagens de controle para o dispositivo(passo 3). Os pontos de controle podem também assinar um contrato para envio de notificações de evento utilizando algum dos serviços que o dispositivo provê(passo 4). O último passo é de apresentação, caso o dispositivo possua uma URL de apresentação é possível abrir uma página \emph{web} no \emph{browser} e um usuário pode controlar o dispositivo por meio dessa página~\cite{upnpArch}.
+Quando um dispositivo entra na rede UPnP, ele comunica seus serviços para os pontos de controle ou, caso seja um ponto de controle, o protocolo de descoberta do UPnP permite que ele procure dispositivos de seu interesse. O segundo passo é o envio da descrição detalhada do dispositivo para os pontos de controle, que de posse dessa descrição podem enviar mensagens de controle para o dispositivo(passo 3). Os pontos de controle podem também assinar um contrato para envio de notificações de evento utilizando algum dos serviços que o dispositivo provê(passo 4). O último passo é de apresentação. Caso o dispositivo possua uma URL de apresentação é possível abrir uma página \emph{web} no \emph{browser} e um usuário pode controlar o dispositivo por meio dessa página~\cite{upnpArch}.
 \end{comment}
 
 
-Nosso foco neste trabalho se encontra no segundo passo do processo: a descrição dos dispositivos. Após sua descoberta, os pontos de controle ainda não tem muita informação sobre o dispositivo, então os pontos de controle interessados solicitam a descrição do dispositivo via uma URL que este dispositivo disponibilizou durante primeira etapa.
+Nosso foco neste trabalho se encontra no segundo passo do processo: a descrição dos dispositivos. Após sua descoberta, os pontos de controle ainda não têm muita informação sobre o dispositivo, então os pontos de controle interessados solicitam a descrição do dispositivo via uma URL que este dispositivo disponibilizou durante primeira etapa.
 
-A descrição de um dispositivo definida no UPnP é feita por meio de um arquivo XML e inclui informações sobre o fabricante, lista de dispositivos embarcados ou serviços e para cada serviço URLs para controle, eventos e apresentação. A descrição de serviços inclui ainda uma lista de comandos ou ações que o dispositivo irá responder e para cada ação existem parâmetros ou argumentos. O estado do serviço é representado por uma lista de variáveis.
+A descrição de um dispositivo definida no UPnP é feita por meio de um arquivo XML que inclui informações sobre o fabricante, lista de dispositivos embarcados ou serviços e para cada serviço, URLs para controle, eventos e apresentação. A descrição de serviços inclui ainda uma lista de comandos ou ações que o dispositivo deverá responder e para cada ação existem parâmetros ou argumentos. O estado do serviço é representado por uma lista de variáveis.
 
 O UPnP define uma série de classificações pré-determinadas que os fabricantes podem utilizar na definição de seus dispositivos. Um característica encontrada nessas classificações é a sua leveza de serem implementadas por dispositivos com pouca capacidade de computação, embora também possam ser utilizadas por dispositivos mais robustos como computadores. São elas:
 
 \begin{itemize}
 \item Áudio/Vídeo:
-	Essa categoria possui duas principais sub-classificações que foram sendo atualizadas com o desenvolvimento de novas teconologias: 
+	Essa categoria possui duas principais sub-classificações que foram sendo atualizadas com o desenvolvimento de novas tecnologias: 
 	\begin{itemize}
 		\item \emph{Media Server}:
 
-			Define um dispositivo genérico que provê conteúdo de áudio e/ou vídeo, como CD e DVD \emph{players}, cameras, rádios, televisões e \emph{set-top boxes}. Embora, seja utilizado por dispositivos com diferentes capacidades de processamento e conteúdos, o Media Server expõe conteúdo de forma consistente.
+			Define um dispositivo genérico que provê conteúdo de áudio e/ou vídeo, como CD e DVD \emph{players}, cameras, rádios, televisões e \emph{set-top boxes}. Embora, seja utilizado por dispositivos com diferentes capacidades de processamento e conteúdos, o \emph{Media Server} expõe conteúdo de forma consistente.
 
 		\item \emph{Media Renderer}:
 
@@ -33,16 +33,16 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 
 \item Automação Residencial:
 	\begin{itemize}
-		\item \emph {Cortina de Proteção Solar}:
+		\item Cortina de Proteção Solar:
 
 			Provê uma sombra por meio de uma cortina. Seu controle pode ser manual, automático ou desabilitado. Sua especificação não contempla configurações a respeito da automação da cortina ou proteções.
-		\item \emph {Camera Digital de Segurança}:
+		\item Câmera Digital de Segurança:
 
 			Provê controle básico sobre a configuração da câmera, contendo serviços de fotos e vídeos.
-		\item \emph {Aquecimento, Ventilação e Ar Condicionado}:
+		\item Aquecimento, Ventilação e Ar Condicionado:
 			
 			Esse dispositivo conta com auxílio de sensores de temperatura e possui a capacidade de saber ou controlar a temperatura do ambiente por meio de ventiladores e ar-condicionados.
-		\item \emph {Controles de Luz}:
+		\item Controles de Luz:
 			
 			São divididos em Luz binária, que representa uma lâmpada ou qualquer dispositivo emissor de luz que possa somente estar apagado ou aceso, e em Luz cuja intensidade pode ser alterada, 
 	\end{itemize}
@@ -63,13 +63,13 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 	\end{itemize}
 
 \item Impressora:
-	Define um dispositivo com capacidade de impressão. Essa especificação não abrange dispositivos que possuem funções de FAX ou Scanner, que possui uma especificação própria.
+	Define um dispositivo com capacidade de impressão. Essa especificação não abrange dispositivos que possuem funções de FAX ou \emph{Scanner}, que possui uma especificação própria.
 
 \item Acesso Remoto:
 	Essa categoria é dividida entre dois dispositivos:
 	\begin{itemize}
 		\item Agente de Descoberta de Acesso Remoto:
-			Possui a função de prover a capacidade de sincronizar a informaçào sobre a descoberta UPnP entre duas redes remotas.
+			Possui a função de prover a capacidade de sincronizar a informação sobre a descoberta UPnP entre duas redes remotas.
 		
 		\item Servidor de Acesso Remoto:
 			Permite que pontos de controle configurem Servidores de Acesso Remoto.
@@ -86,16 +86,16 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 	\begin{itemize}
 		\item Servidor de Telefonia:
 
-			Permite que pontos de controle gerenciem chamadas telefônicas, messagens e presença por meio de outros dispositivos UPnP. 
+			Permite que pontos de controle gerenciem chamadas telefônicas, mensagens e presença por meio de outros dispositivos UPnP. 
 
 		\item Cliente de Telefonia:
 		
-			Permite que pontos de controle possam gerênciar mídias por meio de um de um servidor de telefonia.
+			Permite que pontos de controle possam gerenciar mídias por meio de um de um servidor de telefonia.
 				
 	\end{itemize}
 
 \item Básico:
-	A definição de dispositivos básicos provêm um mecanismo para produtos que não se enquadram em uma classificação adequada do UPnP, possam utilizá-lo. Por esse motivo, essa especificação não possui nenhum serviço definido, mas pode ser utilizada como dispositivo raíz para outras categorias já definidas.
+	A definição de dispositivos básicos provêm um mecanismo para produtos que não se enquadram em uma classificação adequada do UPnP, possam utilizá-lo. Por esse motivo, essa especificação não possui nenhum serviço definido, mas pode ser utilizada como dispositivo raiz para outras categorias já definidas.
 \end{itemize}
 
-Os fabricantes podem, a partir de uma classificação padrão, estender e especializar determinada definição adicionando novos serviços, por exemplo, o que sugere uma hierarquia de dispositivos por meio de arquivos XML. Um fator interessante nas classificações de dispositivos UPnP é que sua especificação já traz consigo a especificação de serviços que esses dispositivos provêem. 
+Os fabricantes podem, a partir de uma classificação padrão, estender e especializar determinada definição adicionando novos serviços, por exemplo, o que sugere uma hierarquia de dispositivos por meio de arquivos XML. Um fator interessante nas classificações de dispositivos UPnP é que sua especificação já traz consigo a especificação de serviços que esses dispositivos provêm. 
