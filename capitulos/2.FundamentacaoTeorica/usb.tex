@@ -22,6 +22,9 @@ Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por se
 
 Um mesmo dispositivo USB pode pertencer a uma ou múltiplas classes. Por exemplo, um celular pode utilizar atributos da classe HID, Audio e Comunicação. A partir dessas divisões será possível estabelecer uma hierarquia, a qual poderá ser usada no processo de classificação dos dispositivos presentes no smartspace.
 
+Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbclasscodes}.
+
+\begin{comment}
 \begin{table}
 	\begin{center}
 		\begin{tabular}{cccc}
@@ -43,6 +46,34 @@ Um mesmo dispositivo USB pode pertencer a uma ou múltiplas classes. Por exemplo
 	\caption{Exemplos de classes de dispositivos USB.~\cite{usbclasscodes}}
 	\label{tab:dispositivos_usb}
 \end{table}
+\end{comment}
+
+\begin{itemize}
+	\item Audio
+	\item Comunicação
+	\item Interface Humana (HID): destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais~\cite{hid}. Mais específicamente, possui as seguintes particularidades:
+	\begin{itemize}
+		\item Deve ser tão compacto quanto possível para evitar desperdício de espaço no dispositivo;
+		\item Permitir a aplicação de software para evitar informação desconhecida;
+		\item Ser extensível e robusto;
+		\item Suportar hierarquias e coleções;
+		\item Ser autodescritivo para permitir aplicações de software genéricos.
+	\end{itemize}
+	\item Físico
+	\item Imagem
+	\item Impressora
+	\item Disco Rígido
+	\item Hub
+	\item \emph{Smart Card}
+	\item Segurançà de Conteúdo
+	\item Vídeo
+	\item Saúde Pessoal
+	\item Diagnóstico
+	\item Controlador Wireless
+	\item Diversos
+	\item Aplicação Específica
+	\item Fabricante Específico
+\end{itemize}
 
 \begin{comment}
 Com o sucesso do protocolo, novas categorias surgiram gradualmente como alternativas às novas tecnologias e/ou aos novos dispositivos. Seguem:
