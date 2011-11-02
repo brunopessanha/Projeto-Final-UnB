@@ -9,43 +9,50 @@ A \emph{Digital Living Network Alliance} (DLNA) é uma organização composta pe
 	\item Aproveitar a gravação e reprodução de conteúdo distribuído e multi-usuário.
 \end{itemize}
 
-Suas diretrizes destacam casos de uso cuidadosamente construídos para redes domésticas (veja a tabela~\ref{tab:casosdeuso_dlna}), funções adicionais que aumentam a experiência do compartilhamento de conteúdo e doze classes de dispositivos espalhados na categoria "Rede Doméstica e Dispositivos Móveis". A classificação de um dispositivo é feita de tal forma que um único aparelho multifuncional pode possuir diversas categorias diferentes~\cite{dlnahdvideostreaming}.
+Suas diretrizes destacam casos de uso cuidadosamente construídos para redes domésticas (veja a tabela~\ref{tab:casosdeuso_dlna}), funções adicionais que aumentam a experiência do compartilhamento de conteúdo e doze classes de dispositivos espalhados na categoria "Rede Doméstica e Dispositivos Móveis". A classificação de um dispositivo é feita de tal forma que um único aparelho multifuncional pode possuir diversas categorias diferentes~\cite{dlnahdvideostreaming, dlnaclasses}:
 
+\begin{itemize}
+	\item Home Network Devices
+	\begin{itemize}
+		\item Digital Media Server (DMS): These devices store content and make it available to networked digital media players (DMP) and digital media renderers (DMR). Some digital media servers can also help protect your content once stored. Exemplo: PCs and network attached storage (NAS) devices;
+		\item Digital Media Player (DMP): These devices find content on digital media servers (DMS) and provide playback and rendering capabilities. Exemplos: TVs, stereos and home theaters, wireless monitors and game consoles;
+		\item Digital Media Renderer (DMR): These devices play content received from a digital media controller (DMC), which will find content from a digital media server (DMS). Exemplo: TVs, audio/video receivers, video displays and remote speakers for music;
+		\item Digital Media Controller (DMC): These devices find content on digital media servers (DMS) and play it on digital media renderers (DMR). Exemplo: Internet tablets, Wi-Fi enabled digital cameras and personal digital assistants (PDA);
+		\item Digital Media Printer (DMPr): These devices provide printing services to the DLNA home network. Generally, digital media players (DMP) and digital media controllers (DMC) with print capability can print to DMPr. Exemplo: networked photo printers and networked all-in-one printers.
+	\end{itemize}
+	\item Mobile Handheld Devices
+	\begin{itemize}
+		\item Mobile Digital Media Server (M-DMS): These wireless devices store content and make it available to wired/wireless networked mobile digital media players (M-DMP), digital media renderers (DMR) and digital media printers (DMPr). Exemplo: mobile phones and portable music players;
+		\item Mobile Digital Media Player (M-DMP): These wireless devices find and play content on a digital media server (DMS) or mobile digital media server (M-DMS). Exemplo: mobile phones and mobile media tablets designed for viewing multimedia content;
+		\item Mobile Digital Media Uploader (M-DMU): These wireless devices send (upload) content to a digital media server (DMS) or mobile digital media server (M-DMS). Exemplo: digital cameras and mobile phones;
+		\item Mobile Digital Media Downloader (M-DMD): These wireless devices find and store (download) content from a digital media server (DMS) or mobile digital media server (M-DMS). Exemplo: portable music players and mobile phones;
+		\item Mobile Digital Media Controller (M-DMC): These wireless devices find content on a digital media server (DMS) or mobile digital media server (M-DMS) and send it to digital media renderers (DMR). Exemplo: personal digital assistants (PDAs) and mobile phones.
+	\end{itemize}
+	\item Home Infrastructure Devices
+	\begin{itemize}
+		\item Mobile Network Connectivity Function (M-NCF): These devices provide a bridge between mobile handheld device network connectivity and home network connectivity;
+		\item Media Interoperability Unit (MIU): These devices provide content transformation between required media formats for home network and mobile handheld devices.
+	\end{itemize}
+\end{itemize}
+
+\begin{comment}
 \begin{table}
 	\begin{center}
 		\begin{tabular}{llll}
 		\hline
 		\textbf{Classe} & \textbf{Categoria} & \textbf{Descrição} & \textbf{Exemplo}						\\
 		\hline
-		Digital Media Server (DMS) & \multirow{5}{*}{Home Network Devices} & These devices store content and make it available to networked digital media players (DMP) and digital media renderers (DMR). Some digital media servers can also help protect your content once stored. & PCs and network attached storage (NAS) devices.	\\
 		\hline
-		Digital Media Player (DMP) & & These devices find content on digital media servers (DMS) and provide playback and rendering capabilities. & TVs, stereos and home theaters, wireless monitors and game consoles. \\
+		Mobile Network Connectivity Function (M-NCF) & \multirow{2}{*}{Home Infrastructure Devices} &  & \\
 		\hline
-		Digital Media Renderer (DMR) & & These devices play content received from a digital media controller (DMC), which will find content from a digital media server (DMS). & TVs, audio/video receivers, video displays and remote speakers for music. \\
-		\hline
-		Digital Media Controller (DMC) & & These devices find content on digital media servers (DMS) and play it on digital media renderers (DMR). & Internet tablets, Wi-Fi® enabled digital cameras and personal digital assistants (PDA).\\
-		\hline
-		Digital Media Printer (DMPr) & & These devices provide printing services to the DLNA home network. Generally, digital media players (DMP) and digital media controllers (DMC) with print capability can print to DMPr. & networked photo printers and networked all-in-one printers.\\
-		\hline
-		Mobile Digital Media Server (M-DMS) & \multirow{5}{*}{Mobile Handheld Devices} & These wireless devices store content and make it available to wired/wireless networked mobile digital media players (M-DMP), digital media renderers (DMR) and digital media printers (DMPr). & mobile phones and portable music players.\\
-		\hline
-		Mobile Digital Media Player (M-DMP) & & These wireless devices find and play content on a digital media server (DMS) or mobile digital media server (M-DMS). & mobile phones and mobile media tablets designed for viewing multimedia content.\\
-		\hline
-		Mobile Digital Media Uploader (M-DMU) & & These wireless devices send (upload) content to a digital media server (DMS) or mobile digital media server (M-DMS). & digital cameras and mobile phones.\\
-		\hline
-		Mobile Digital Media Downloader (M-DMD) & & These wireless devices find and store (download) content from a digital media server (DMS) or mobile digital media server (M-DMS). & portable music players and mobile phones.\\
-		\hline
-		Mobile Digital Media Controller (M-DMC) & & These wireless devices find content on a digital media server (DMS) or mobile digital media server (M-DMS) and send it to digital media renderers (DMR). & personal digital assistants (PDAs) and mobile phones.\\
-		\hline
-		Mobile Network Connectivity Function (M-NCF) & \multirow{2}{*}{Home Infrastructure Devices} & These devices provide a bridge between mobile handheld device network connectivity and home network connectivity. & \\
-		\hline
-		Media Interoperability Unit (MIU) & & These devices provide content transformation between required media formats for home network and mobile handheld devices. & \\
+		Media Interoperability Unit (MIU) & &  & \\
 		\hline
 		\end{tabular}
 	\end{center}
-	\caption{Classes DLNA~\cite{dlnaclasses}.}
+	\caption{Classes DLNA~\cite{}.}
 	\label{tab:classes_dlna}
 \end{table}
+\end{comment}
 
 Imagine, por exemplo, uma situação hipotética em que uma pessoa deseja compartilhar um pequeno vídeo com seus amigos a partir de seu celular. A fim de exibir esse vídeo em sua TV widescreen na sua sala de estar, ela necessita, primeiramente, envia-lo para seu próprio email. Em seguida, deve ligar seu PC, fazer o download do vídeo e salvá-lo em um \emph{pendrive} ou cartão de memória. Posteriormente, deve ligá-lo na TV ou em um receptor digital e, então, utilizar a interface do dispositivo para localizar o vídeo e exibi-lo~\cite{dlnahdvideostreaming}.
 
