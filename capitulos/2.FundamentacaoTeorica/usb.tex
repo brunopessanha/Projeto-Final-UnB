@@ -43,16 +43,22 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 		\hline
 		\end{tabular}
 	\end{center}
-	\caption{Exemplos de classes de dispositivos USB.~\cite{usbclasscodes}}
+	\caption{Exemplos de classes de dispositivos USB~\cite{usbclasscodes}.}
 	\label{tab:dispositivos_usb}
 \end{table}
 \end{comment}
 
 \begin{itemize}
-	\item \emph{Audio}: Destina-se a todos os dispositivos ou funções embutidos em aparelhos que são usados para manipular áudio, voz e quaisquer funcionalidades relacionadas. Isso inclui tanto dados de áudio (analógico e digital) quanto a capacidade de diretamente controlar tal ambiente por meio de controles de volume e tom. Não inclui a funcionalidade para operar mecanismos de transporte que estão relacionados com a reprodução de dados de áudio, tais como mecanismos de transporte de fita ou controles de unidade de CD-ROM.
+	\item \emph{Audio}: destina-se a todos os dispositivos ou funções embutidos em aparelhos que são usados para manipular áudio, voz e quaisquer funcionalidades relacionadas. Isso inclui tanto dados de áudio (analógico e digital) quanto a capacidade de diretamente controlar tal ambiente por meio de controles de volume e tom. Não inclui a funcionalidade para operar mecanismos de transporte que estão relacionados com a reprodução de dados de áudio, tais como mecanismos de transporte de fita ou controles de unidade de CD-ROM~\cite{usbaudioclass}.
 
-	Exemplos de tais dispositivos incluem \emph{headsets}, \emph{headphones} and \emph{microphones}.
-	\item \emph{Communications and CDC Control}
+	Exemplos de tais dispositivos incluem \emph{headsets}, \emph{headphones} and \emph{microphones}~\cite{usbbasicaudioclass}.
+	\item \emph{Communications and CDC Control}: há três classes que compõem a definição de dispositivos de comunicação: a Classe de Comunicação do Dispositivo, a Classe de Interface de Comunicação e a Classe de Interface de Dados. A primeira é uma definição de nível do dispositivo e é utilizada pelo hospedeiro para identificar corretamente um dispositivo de comunicação que pode apresentar diferentes tipos de interfaces. A segunda define um mecanismo de propósito geral que pode ser utilizado para habilitar todos os tipos de serviços de comunicação sobre o Universal Serial Bus (USB). A última define um mecanismo de propósito geral para permitir a transferência em massa quando os dados não atendem aos requisitos para qualquer outra classe~\cite{usbcommunicationclass}.
+
+	Exemplos de tais dispositivos incluem:
+	\begin{itemize}
+		\item Telecomunicações: modens analógicos, adaptadores de terminais ISDN, telefones digitais e telefones analógicos;
+		\item Dispositivos de rede: modens ADSL, modens à cabo, adaptadores/hubs \emph{Ethernet} 10BASE-T e \emph{Ethernet} cross-over cabos.
+	\end{itemize}
 	\item HID (\emph{Human Interface Device}): destina-se primordialmente aos dispositivos que são usados por humanos para controlar e operacionalizar quaisquer tipos de sistemas computacionais~\cite{hid}. Mais específicamente, possui as seguintes particularidades:
 	\begin{itemize}
 		\item Deve ser tão compacto quanto possível para evitar desperdício de espaço no dispositivo;
@@ -61,21 +67,25 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 		\item Suportar hierarquias e coleções;
 		\item Ser autodescritivo para permitir aplicações de software genéricos.
 	\end{itemize}
-	\item \emph{Physical}
-	\item \emph{Image}
-	\item \emph{Printer}
-	\item \emph{Mass Storage}
-	\item \emph{Hub}
-	\item \emph{CDC-Data}
-	\item \emph{Smart Card}
-	\item \emph{Content Security}
-	\item \emph{Video}
-	\item \emph{Personal Healthcare}
-	\item \emph{Diagnostic Device}
-	\item \emph{Wireless Controller}
-	\item \emph{Miscellaneous}
-	\item \emph{Application Specific}
-	\item \emph{Vendor Specific}
+
+	Exemplos de tais dispositivos incluem: teclados e dispositivos apontadores, painéis de controle, controles que podem ser encontrados em dispositivos como telefones, controles remotos, jogos ou dispositivos de simulação e aparelhos que não necessitam de interação humana mas que fornecem dados de forma similar aos dipositivos da classe HID~\cite{hid}.
+	\item \emph{Physical}: é vista como uma extensão da classe HID para dispostivos que requerem resposta física em "tempo real". Seu foco principal está em dispositivos táteis e na implementação de sistemas com resposta à força. Contúdo, não há exigência de que os membros desta classe gerem esse tipo de efeito~\cite{usbphysicalclass}.
+
+	Exemplos de tais dispositivos incluem: \emph{joysticks} e plataformas de movimento.
+	\item \emph{Image}: 
+	\item \emph{Printer}: 
+	\item \emph{Mass Storage}: 
+	\item \emph{Hub}: 
+	\item \emph{CDC-Data}: 
+	\item \emph{Smart Card}: 
+	\item \emph{Content Security}: 
+	\item \emph{Video}: 
+	\item \emph{Personal Healthcare}: 
+	\item \emph{Diagnostic Device}: 
+	\item \emph{Wireless Controller}: 
+	\item \emph{Miscellaneous}: 
+	\item \emph{Application Specific}: 
+	\item \emph{Vendor Specific}: 
 \end{itemize}
 
 \begin{comment}
