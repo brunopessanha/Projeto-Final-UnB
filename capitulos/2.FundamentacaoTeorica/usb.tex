@@ -72,9 +72,22 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 	\item \emph{Physical}: é vista como uma extensão da classe HID para dispostivos que requerem resposta física em "tempo real". Seu foco principal está em dispositivos táteis e na implementação de sistemas com resposta à força. Contúdo, não há exigência de que os membros desta classe gerem esse tipo de efeito~\cite{usbphysicalclass}.
 
 	Exemplos de tais dispositivos incluem: \emph{joysticks} e plataformas de movimento.
-	\item \emph{Image}: 
-	\item \emph{Printer}: 
-	\item \emph{Mass Storage}: 
+	\item \emph{Image}: Destina-se aos dispositivos de captura de imagem, como câmeras digitais ou quaisquer outros aparelhhos similares~\cite{usbimageclass}.
+	\item \emph{Printer}: Destina-se aos dispositivos de impressão. Estes, anteriormente, eram interfaceados por meio das seguintes tecnologias~\cite{usbprintclass}:
+	\begin{itemize}
+		\item Porta paralela unidirecional;
+		\item Porta paralela bi-direcional;
+		\item Porta serial;
+		\item Porta SCSI;
+		\item \emph{Ethernet} / LAN.
+	\end{itemize}
+
+	Atualmente existem outras interfaces mais sofisticadas, mas essas são as mais comuns.
+
+	O USB oferece uma capacidade de processamento muito maior que a porta serial e é comparável em velocidade à porta paralela~\cite{usbprintclass}.
+	\item \emph{Mass Storage}: Destina-se aos dispositivos de armazenamento em massa, ou seja, todo aparelho que possa ler ou gravar dados digitais em algum sistema de armazenamento.
+
+	Exemplos de tais dispositivos incluem: pendrives, discos de estado sólido com memória flash não volátil e HD's.
 	\item \emph{Hub}: 
 	\item \emph{CDC-Data}: 
 	\item \emph{Smart Card}: 
