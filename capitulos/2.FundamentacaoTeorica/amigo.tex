@@ -1,5 +1,5 @@
 \subsection{Amigo}
-O projeto Amigo (\emph{Ambient Intelligence for the Networked home environment}) desenvolveu um \emph{middleware} com arquitetura baseada em SOA que integra dinamicamente sistemas heterogêneos para alcançar a interoperabilidade entre serviços e dispositivos. O middleware provê a semântica para comunicação e descoberta de dispositivos e serviços disponíveis no ambiente, incluindo dispositivos que utlizam padrões para descoberta como o UPnP integrando dispositivos móveis, computadores pessoais, eletrodomésticos e dispositivos de automação residencial~\cite{amigoArch}.
+O projeto Amigo (\emph{Ambient Intelligence for the Networked home environment}) desenvolveu um \emph{middleware} com arquitetura baseada em SOA que integra dinamicamente sistemas heterogêneos para alcançar a interoperabilidade entre serviços e dispositivos. O \emph{middleware} provê a semântica para comunicação e descoberta de dispositivos e serviços disponíveis no ambiente, incluindo dispositivos que utilizam padrões para descoberta como o UPnP integrando dispositivos móveis, computadores pessoais, eletrodomésticos e dispositivos de automação residencial~\cite{amigoArch}.
 
 \begin{figure}[ht]
 \center
@@ -10,7 +10,7 @@ O projeto Amigo (\emph{Ambient Intelligence for the Networked home environment})
 
 Além de utilizar o UPnP para a descoberta de dispositivos, o Amigo é compatível com as classificações de dispositivos do UPnP. Quando um dispositivo UPnP é encontrado, é criada uma instância de um \emph{UPnPDevice} e o \emph{driver AmigoUPnP} é notificado e executa o método \emph{getServices} do \emph{UPnPDevice} e cria para cada serviço uma instância do \emph{UPnPAmigoService}. A figura~\ref{fig:amigoInterfaces} mostra o relacionamento entre as interfaces UPnP com a implementação de uma interface de um Serviço do Amigo.
 
-Os serviços do Amigo são modelados em uma Ontologia que é utilizada para comparar serviços e decidir se eles são equivalentes. A classe central da Ontologia é o Componente que representa o dispositivo provê o serviço. Para representar o que o dispositivo requer e provê, foi introduzido o conceito da Capacidade, dividida em Capacidade Requuerida e Capacidade Provida. Uma Capacidade possui parâmetros de entrada e saída que também são modelados em classes. As capacidades são então associdas à Conversas suportadas pelo Componente e relacionadas à mensagens que são empregadas na Conversa associada como mostra a figura ~\ref{fig:amigoServiceOntology}.
+Os serviços do Amigo são modelados em uma Ontologia que é utilizada para comparar serviços e decidir se eles são equivalentes. A classe central da Ontologia é o Componente que representa o dispositivo provê o serviço. Para representar o que o dispositivo requer e provê, foi introduzido o conceito da Capacidade, dividida em Capacidade Requerida e Capacidade Provida. Uma Capacidade possui parâmetros de entrada e saída que também são modelados em classes. As capacidades são então associadas à Conversas suportadas pelo Componente e relacionadas à mensagens que são empregadas na Conversa associada como mostra a figura ~\ref{fig:amigoServiceOntology}.
 
 \begin{figure}[ht]
 \center
