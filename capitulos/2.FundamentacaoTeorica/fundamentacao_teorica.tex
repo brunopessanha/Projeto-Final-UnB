@@ -39,6 +39,7 @@ Nesta seção, discutir-se-á cinco dos principais protocolos e/ou padrões pesq
 \input{capitulos/2.FundamentacaoTeorica/dlna}
 \input{capitulos/2.FundamentacaoTeorica/usb}
 \input{capitulos/2.FundamentacaoTeorica/bluetooth}
+\input{capitulos/2.FundamentacaoTeorica/ddl}
 
 \section{Estado da Arte}
 Nesta seção, apresentaremos alguns projetos de computação ubíqua e mostraremos como esses projetos tratam a classificação de recursos.
@@ -49,3 +50,33 @@ Nesta seção, apresentaremos alguns projetos de computação ubíqua e mostrare
 
 \section{Comparativo}
 %Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
+Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. 
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{cllllll}
+		\hline
+						& \textbf{IEEE 1451} & \textbf{Bluetooth} & \textbf{USB} & \textbf{UPnP} & \textbf{DLNA} & \textbf{DDL}\\
+		\hline
+		\hline
+		%Propósito 		& Permitir comunicação entre transdutores & Substituir os cabos de conexão mantendo altos níveis de segurança & Integrar interfaces existentes em uma única & Facilitar conectividade entre dispositivos & Partilha de conteúdo digital & Diminuir a complexidade na definição de um dispositivo \\
+		\hline
+		Classificação 	& Relacionada & Fixa & Relacionada & Relacionada & Relacionada & Fixa \\
+		\hline
+		Representação 	& IDL & & "Descritor de Dispositivo?" & XML & XML & XML \\ 
+		\hline
+		Extensível 		& Não & Não & Sim & Sim & "Não parece" & Não \\
+		\hline
+		Permite Múltiplas Classes & Sim & & Sim & Não & Sim & Não \\
+		\hline
+		Vantagem 		& & & & & & \\
+		\hline
+		%Desvantagem 	& & & & Necessária Homologação de novos dispositivos & & Por utilizar poucas categorias, dificulta a especialização de dispositivos\\
+		\hline
+		\end{tabular}
+	\end{center}
+	\caption{Comparativo dos Padrões.}
+	\label{tab:comparativo}
+\end{table}
+ 
+%Como pôde ser observado, os padrões existentes para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não foi utilizada uma forma dinâmica como uma Ontologia para representar essa classificação.
