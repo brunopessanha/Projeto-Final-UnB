@@ -50,22 +50,22 @@ Nesta seção, apresentaremos alguns projetos de computação ubíqua e mostrare
 
 \section{Comparativo}
 %Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
-Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. A tabela~\ref{tab:comparativo} mostra uma comparação dos padrões quanto a: propósito do padrão, forma de classificação de recursos, como a classificação é representada, se a classificação pode ser extendida, se um dispositivo pode fazer parte de mais de uma classe, vantagens e desvantagens.
+Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. A tabela~\ref{tab:comparativo} mostra uma comparação dos padrões quanto a: forma de classificação de recursos, como a classificação é representada, se a classificação pode ser extendida e se um dispositivo pode fazer parte de mais de uma classe.
 
 \begin{table}
 	\begin{center}
 		\begin{tabular}{cllllll}
 		\hline
-									& \textbf{IEEE 1451}	& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} & \textbf{DDL}\\
+							& \textbf{IEEE 1451}	& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} & \textbf{DDL}\\
 		\hline
 		\hline
-		Classificação 				& Relacionada 			& Fixa 					& Relacionada 	& Relacionada 	& Relacionada 	& Fixa \\
+		Classificação 		& Relacionada 			& Fixa 					& Relacionada 	& Relacionada 	& Relacionada 	& Fixa \\
 		\hline
-		Representação 				& IDL 					&						& Descritor		& XML			& XML & XML \\ 
+		Representação 		& IDL 					&						& Descritor		& XML			& XML & XML \\ 
 		\hline
-		Extensível 					& Não 					& Não 					& Sim 			& Sim 			& "Não" & Não \\
+		Extensível 			& Não 					& Não 					& Sim 			& Sim 			& "Não" & Não \\
 		\hline
-		Permite Múltiplas Classes 	& Sim 					&						& Sim 			& Não 			& Sim & Não \\
+		Múltiplas Classes 	& Sim 					&						& Sim 			& Não 			& Sim & Não \\
 		\hline
 		\end{tabular}
 	\end{center}
@@ -82,20 +82,32 @@ A tabela mostra ainda uma limitação da DDL (\emph{Device Description Language}
 	\begin{center}
 		\begin{tabular}{ccccc}
 		\hline
-							& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} \\
+									& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} \\
 		\hline
 		\hline
-		Servidor de mídia			&						&				& x 			& x				\\
+		Áudio						&						&	x			&	x 			&	x			\\
 		\hline
-		Tocador de mídia			&						&				&				&				\\
+		Vídeo						&						&	x			&	x			&	x			\\
 		\hline
-		Impressora 					&						&				&				&				\\
+		Servidor de mídia			&						&				&	x 			&	x			\\
 		\hline
-		Scanner						&						&				&				&				\\
+		Tocador de mídia			&						&				&	x			&	x			\\
 		\hline
-		Armazamento					&						&				&				&				\\
+		Impressora 					&						&	x			&	x			&	x			\\
 		\hline
-		Específico do fabricante 	&						&				&				&				\\
+		Scanner						&						&	x			&	x			&				\\
+		\hline
+		Armazenamento				&						&	x			&				&				\\
+		\hline
+		Câmera Digital				&						&	?			&	x			&	x			\\
+		\hline
+		Telefone/PDAs				&						&	?			&	x			&	x			\\
+		\hline
+		Teclado						&						&	x			&				&				\\
+		\hline
+		Apontadores					&						&	x			&				&				\\
+		\hline
+		Específico do fabricante 	&						&	x			&	x			&				\\
 		\hline								
 		\end{tabular}
 	\end{center}
