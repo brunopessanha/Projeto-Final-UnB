@@ -50,33 +50,71 @@ Nesta seção, apresentaremos alguns projetos de computação ubíqua e mostrare
 
 \section{Comparativo}
 %Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
-Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. 
+Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. A tabela~\ref{tab:comparativo} mostra uma comparação dos padrões quanto a: forma de classificação de recursos, como a classificação é representada, se a classificação pode ser extendida e se um dispositivo pode fazer parte de mais de uma classe.
 
 \begin{table}
 	\begin{center}
-		\begin{tabular}{cllllll}
+	\resizebox{16cm}{!} {
+		\begin{tabular}{ccccccc}
 		\hline
-						& \textbf{IEEE 1451} & \textbf{Bluetooth} & \textbf{USB} & \textbf{UPnP} & \textbf{DLNA} & \textbf{DDL}\\
+							& \textbf{IEEE 1451}	& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} & \textbf{DDL}\\
 		\hline
 		\hline
-		%Propósito 		& Permitir comunicação entre transdutores & Substituir os cabos de conexão mantendo altos níveis de segurança & Integrar interfaces existentes em uma única & Facilitar conectividade entre dispositivos & Partilha de conteúdo digital & Diminuir a complexidade na definição de um dispositivo \\
+		Classificação 		& Relacionada 			& Fixa 					& Relacionada 	& Relacionada 	& Relacionada 	& Fixa \\
 		\hline
-		Classificação 	& Relacionada & Fixa & Relacionada & Relacionada & Relacionada & Fixa \\
+		Representação 		& IDL 					&						& Descritor		& XML			& XML 			& XML \\ 
 		\hline
-		Representação 	& IDL & & "Descritor de Dispositivo?" & XML & XML & XML \\ 
+		Extensível 			& Não 					& Não 					& Sim 			& Sim 			& "Não" 		& Não \\
 		\hline
-		Extensível 		& Não & Não & Sim & Sim & "Não parece" & Não \\
-		\hline
-		Permite Múltiplas Classes & Sim & & Sim & Não & Sim & Não \\
-		\hline
-		Vantagem 		& & & & & & \\
-		\hline
-		%Desvantagem 	& & & & Necessária Homologação de novos dispositivos & & Por utilizar poucas categorias, dificulta a especialização de dispositivos\\
+		Múltiplas Classes 	& Sim 					&						& Sim 			& Não 			& Sim 			& Não \\
 		\hline
 		\end{tabular}
+	}
 	\end{center}
 	\caption{Comparativo dos Padrões.}
 	\label{tab:comparativo}
 \end{table}
  
-%Como pôde ser observado, os padrões existentes para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não foi utilizada uma forma dinâmica como uma Ontologia para representar essa classificação.
+Como pode ser observado, os padrões existentes para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não foi utilizada uma forma dinâmica como uma Ontologia para representar essa classificação. A tabela~\ref{tab:comparativo} mostra que a maioria dos padrões faz uso de uma classificação Relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Embora a classificação de alguns padrões possua a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes do dispositivos passe por uma homologação. Caso do UPnP. O USB, embora possua subclasses derivadas na sua especificação, não permite novas definições fora do padrão. Em geral, são pouco flexivéis. 
+
+A tabela mostra ainda uma limitação da DDL (\emph{Device Description Language}), criada para reduzir a complexidade na definição de dispositivos via classes Java, pois, para cada dispositivo que não seja sensor ou atuador, se faz necessária a criação de uma nova classe para esse dispositivo complexo não relacionada com outras que já tenham sido criadas. Outro fator que impede o uso de subclasses é o fato de na definição do dispositivo, estarem definidos também seus serviços, modelados como operações. Se um dispositivo possuir apenas uma operação que receba parâmetros diferentes, a classe anteriormente definida não poderá ser reutilizada. 
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{ccccc}
+		\hline
+									& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} \\
+		\hline
+		\hline
+		Áudio						&						&	x			&	x 			&	x			\\
+		\hline
+		Vídeo						&						&	x			&	x			&	x			\\
+		\hline
+		Servidor de mídia			&						&				&	x 			&	x			\\
+		\hline
+		Tocador de mídia			&						&				&	x			&	x			\\
+		\hline
+		Impressora 					&						&	x			&	x			&	x			\\
+		\hline
+		Scanner						&						&	x			&	x			&				\\
+		\hline
+		Armazenamento				&						&	x			&				&				\\
+		\hline
+		Câmera Digital				&						&	?			&	x			&	x			\\
+		\hline
+		Telefone/PDAs				&						&	?			&	x			&	x			\\
+		\hline
+		Teclado						&						&	x			&				&				\\
+		\hline
+		Apontadores					&						&	x			&				&				\\
+		\hline
+		Específico do fabricante 	&						&	x			&	x			&				\\
+		\hline								
+		\end{tabular}
+	\end{center}
+	\caption{Classes presentes nos padrões.}
+	\label{tab:comparativoClasses}
+\end{table}
+
+A tabela~\ref{tab:comparativoClasses} mostra os principais dispositivos que possuem alguma classe associada nos padrões estudados. O padrão DDL não foi considerado no comparativo de classes devido sua classificação possuir apenas três categorias: sensores, atuadores e dispositivos complexos. Portanto, todos os dispositivos considerados neste comparativo poderiam se encaixar na última categoria. O padrão IEEE 1451 também não foi utilizado no comparativo, pois foi criado para facilitar a comunicação de transdutores, e suas classes não abrangem os dispositivos da tabela.
+
