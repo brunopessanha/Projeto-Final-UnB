@@ -1,6 +1,8 @@
 \chapter{Classificação de dispositivos}
 
-Num ambiente em que dispositivos podem se movimentar livremente e cujos serviços devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais, independente de quais tecnologias, padrões ou protocolos tenham sido adotados. É fundamental que essa comunicação seja feita de forma tão rápida e confiável quanto possível, pois toda atividade do \emph{middleware} com seus clientes depende dela, inclusive o processo de classificação dos recursos disponíveis no \emph{smart space}, ideia central deste documento.
+Num ambiente em que dispositivos podem se movimentar livremente e cujos serviços devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais, independente de quais tecnologias, padrões ou protocolos tenham sido adotados. É fundamental que essa comunicação seja feita de forma tão rápida e confiável quanto possível, pois toda atividade do \emph{middleware} com seus clientes depende dela, inclusive o processo de classificação dos recursos disponíveis no \emph{smart space}, idéia central deste documento. 
+
+Definir uma classificação de recursos ou de dispositivos irá facilitar o desenvolvimento de aplicações para o \emph{uOS}, além de facilitar a escolha de recursos disponíveis no ambiente. Por exemplo, um usuário necessita de um recurso de câmera. Vamos supor que para o usuário seja indiferente se a câmera possua ou não \emph{flash}. Atualmente o \emph{uOS} trata uma câmera e uma câmera com \emph{flash} como recursos independentes, o que dificulta a escolha de determinado recurso. Se uma aplicação requisitar um serviço de câmera sem \emph{flash} e no ambiente só existirem câmeras com \emph{flash}, o \emph{middleware} não conseguirá prover esse tipo de seviço, pois para ele são recursos (\emph{drivers}) diferentes.
 
 \section{Formas de classificação}
 
@@ -62,11 +64,11 @@ Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a
 		\hline
 		Classificação 		& Relacionada 			& Fixa 					& Relacionada 	& Relacionada 	& Relacionada 	& Fixa \\
 		\hline
-		Representação 		& IDL 					&						& Descritor		& XML			& XML 			& XML \\ 
+		Representação 		& IDL 					& Descritor				& Descritor		& XML			& XML 			& XML \\ 
 		\hline
-		Extensível 			& Não 					& Não 					& Sim 			& Sim 			& "Não" 		& Não \\
+		Extensível 			& Não 					& Não 					& Sim 			& Sim 			& Sim 			& Não \\
 		\hline
-		Múltiplas Classes 	& Sim 					&						& Sim 			& Não 			& Sim 			& Não \\
+		Múltiplas Classes 	& Sim 					& Não					& Sim 			& Não 			& Sim 			& Não \\
 		\hline
 		\end{tabular}
 	}
@@ -75,9 +77,9 @@ Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a
 	\label{tab:comparativo}
 \end{table}
  
-Como pode ser observado, os padrões existentes para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não foi utilizada uma forma dinâmica como uma Ontologia para representar essa classificação. A tabela~\ref{tab:comparativo} mostra que a maioria dos padrões faz uso de uma classificação Relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Embora a classificação de alguns padrões possua a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes do dispositivos passe por uma homologação. Caso do UPnP. O USB, embora possua subclasses derivadas na sua especificação, não permite novas definições fora do padrão. Em geral, são pouco flexivéis. 
+Como pode ser observado, os padrões existentes para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não foi utilizada uma forma dinâmica como uma Ontologia para representar essa classificação. A tabela~\ref{tab:comparativo} mostra que a maioria dos padrões faz uso de uma classificação Relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Embora a classificação de alguns padrões possua a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação. Caso do UPnP. O USB, possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
 
-A tabela mostra ainda uma limitação da DDL (\emph{Device Description Language}), criada para reduzir a complexidade na definição de dispositivos via classes Java, pois, para cada dispositivo que não seja sensor ou atuador, se faz necessária a criação de uma nova classe para esse dispositivo complexo não relacionada com outras que já tenham sido criadas. Outro fator que impede o uso de subclasses é o fato de na definição do dispositivo, estarem definidos também seus serviços, modelados como operações. Se um dispositivo possuir apenas uma operação que receba parâmetros diferentes, a classe anteriormente definida não poderá ser reutilizada. 
+A tabela mostra ainda uma limitação da DDL (\emph{Device Description Language}), criada para reduzir a complexidade na definição de dispositivos via classes Java, pois, para cada dispositivo que não seja sensor ou atuador, se faz necessária a criação de uma nova classe para esse dispositivo complexo não relacionada com outras que já tenham sido criadas. Outro fator que impede o uso de subclasses é o fato de na definição do dispositivo, estarem definidos também seus serviços, modelados como operações. Se um dispositivo possuir apenas uma operação que receba parâmetros diferentes, por exemplo, a classe anteriormente definida não poderá ser reutilizada. 
 
 \begin{table}
 	\begin{center}
