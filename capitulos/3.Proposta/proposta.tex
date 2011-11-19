@@ -1,3 +1,22 @@
 \chapter{Classificação Proposta}
 
-Neste capítulo falaremos sobre a Classificação de Dispositivos proposta.
+Neste capítulo falaremos sobre a Classificação de Dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
+
+
+\section{A Classificação}
+Levando em consideração os fatores acima apresentados e analisando a tabela~\ref{tab:comparativoClasses}, escolhemos as classes que se fazem presente em todos os padrões estudados para definir quais classes serão utilizadas na classificação de dispositivos para a o \emph{uOS}. São elas:
+
+\begin{itemize}
+	\item Áudio:
+		Abrange qualquer tipo de dispositivos que contenham um recurso de som. Exemplo: TVs, celulares, aparelhos de som.
+	\item Vídeo:
+		Abrange qualquer tipo de dispositivos que possuam a capacidade de prover um recurso de vídeo. Exemplo: TVs, celulares, projetores.
+	\item Imagem:
+		Abrange qualquer tipo de dispositivos que possam prover um recurso de imagem. Exemplo: Câmeras digitais, \emph{Scanners}, Impressoras.
+	\item Teclado:
+		Abrange qualquer tipo de dispositivos que possam prover um recurso de teclado. Exemplo: Teclados, \emph{notebooks}, celulares, \emph{tablets}.
+	\item Apontador:
+		Abrange qualquer tipo de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{Mouses}, telas sensíveis ao toque, \emph{joysticks}.W
+	\item Conectividade:
+		Abrange qualquer tipo de dispositivos com recurso de conexão. Exemplo: Modens, Roteadores.
+\end{itemize}
