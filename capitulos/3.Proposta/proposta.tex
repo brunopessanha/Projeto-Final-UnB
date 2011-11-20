@@ -1,7 +1,31 @@
 \chapter{Classificação Proposta}
 
-Neste capítulo falaremos sobre a Classificação de Dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
+Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um dispositivo pertencer à multiplas classes simultaneamente e cuja representação seja via JSON.
 
+
+\begin{comment}
+Neste capítulo falaremos sobre a Classificação de Dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
+\end{comment}
+
+\begin{itemize}
+	\item Classificação
+
+	Decidiu-se pela classificação relacionada, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, as vantagens da programação orientada à objeto, em que cada classe representa exatamente um objeto tão simples quanto possível, mantendo-se a alta coesão e o baixo acoplamento. Em decorrência, ganha-se na facilidade de manutenção, podendo-se adicionar e/ou alterar atributos e/ou comportamentos recorrentes a cada interface previamente existente, evitando, assim, a repetição desnecessária de código.
+
+	Vale ressaltar que tal relacionamento deve ser bem estudado, de forma tal a empregar a melhor técnica sempre que possível, seja herança ou composição, a fim de obter o melhor de cada mundo.
+
+	\item Representação
+
+	Json
+
+	\item Extensível
+
+	Sim
+
+	\item Múltiplas classes
+
+	Sim
+\end{itemize}
 
 \section{A Classificação}
 Levando em consideração os fatores acima apresentados e analisando a tabela~\ref{tab:comparativoClasses}, escolhemos as classes que se fazem presente em todos os padrões estudados para definir quais classes serão utilizadas na classificação de dispositivos para o \emph{uOS}. São elas:
