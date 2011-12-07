@@ -1,6 +1,6 @@
 \chapter{Proposta de Classificação}
 
-Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um dispositivo pertencer à multiplas classes simultaneamente e cuja representação seja via JSON.
+Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um dispositivo pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
 
 
 \begin{comment}
@@ -16,7 +16,7 @@ Neste capítulo falaremos sobre a Classificação de Dispositivos proposta. Essa
 
 	\item Representação
 
-	Json
+	O \emph{uOS} atualmente já utiliza JSON em suas trocas de mensagens e trocá-lo seria inviável. Tal formato apresenta um baixo custo computacional~\cite{comparativojson}, além de ser auto-descritivo, estruturado e independente de plataforma (pois utiliza UTF-8 como codificação~\cite{utf8}).
 
 	\item Extensível
 
@@ -28,7 +28,7 @@ Neste capítulo falaremos sobre a Classificação de Dispositivos proposta. Essa
 \end{itemize}
 
 \section{A Classificação}
-Levando em consideração os fatores acima apresentados e analisando a tabela~\ref{tab:comparativoClasses}, escolhemos as classes que se fazem presente em todos os padrões estudados para definir quais classes serão utilizadas na classificação de dispositivos para o \emph{uOS}. São elas:
+Levando-se em consideração os fatores acima apresentados e analisando-se a tabela~\ref{tab:comparativoClasses}, escolheu-se as classes que se fazem presente em todos os padrões estudados para definir quais serão utilizadas na classificação de dispositivos para o \emph{uOS}:
 
 \begin{itemize}
 	\item Áudio:
@@ -47,5 +47,7 @@ Levando em consideração os fatores acima apresentados e analisando a tabela~\r
 
 Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar dos serviços providos de um recurso de Imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
 
+\begin{comment}
 \input{capitulos/3.Proposta/equivalencia}
 \input{capitulos/3.Proposta/impacto}
+\end{comment}
