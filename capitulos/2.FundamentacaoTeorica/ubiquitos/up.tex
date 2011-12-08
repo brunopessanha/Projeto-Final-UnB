@@ -1,1 +1,52 @@
 \subsection{\emph{uP - Ubiquitous Protocols}}
+
+É um conjunto de protocolos criados para estabelecer um meio de interação entre serviços levando em consideração a arquitetura DSOA. Esses protocolos definem o canal de comunicação e a forma de interação entre entidades do ambiente. As mensagens são transmitidas no formato JSON (\emph{JavaScript Object Notation}), escolhido por ser um formato estruturado, leve e independente de plataforma. O JSON foi utilizado ante o XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de uma rede para tratamento dessas mensagens.
+
+Cada um dos conceitos apresentados na DSOA possuem uma representação no \emph{uP} com seus respectivos atributos:
+
+\begin{itemize}
+	\item Dispositivo(\emph{UpDevice}): Por meio dos seguintes atributos, é possível identificar unicamente o dispositivo no ambiente, e quais são as interfaces rede que o dispositivo possui para realizar alguma comunicação:
+		\begin{itemize}
+			\item \emph{``name''}: Identificador do dispositivo;
+			\item \emph{``networks''}: Lista de interfaces de rede do dispositivo. Cada interface é composta pelo tipo de rede e endereço do dispositivo.
+		\end{itemize}
+	\item \emph{Driver}(\emph{UpDriver}): Representa o conceito do Recurso definido na DSOA. Como um dispositivo pode ter várias instâncias de um recurso, cada instância é identificada unicamente dentro do dispositivo que contém este recurso. O \emph{driver} é composto por:
+		\begin{itemize}
+			\item \emph{``name''}: Identificador do recurso no ambiente;
+			\item \emph{``services''}: Lista de serviços síncronos do recurso;
+			\item \emph{``events''}: Lista de serviços assíncronos do recurso.
+		\end{itemize}
+	\item Serviço(\emph{UpService}): Representa o conceito de mesmo nome definido na DSOA. Sua interface é composta pelos seguintes atributos:
+		\begin{itemize}
+			\item \emph{"name"}: Identificador do serviço disponível no recurso;
+			\item \emph{"parameters"}: Lista de parâmetros necessários para que o serviço seja executado. Esses parâmetros podem ser de dois tipos:
+				\begin{enumerate}
+					\item Opcional (\emph{OPTIONAL});
+					\item Obrigatório (\emph{MANDATORY}).
+				\end{enumerate}
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Tipo de mensagens}
+
+Para que possa haver interação entre as entidades no ambiente, o \emph{uP} especifica quatro tipos de mensagens e, caso exista necessidade,  podem ser personalizadas:
+
+\begin{itemize}
+	\item \emph{Service Call}: Mensagem síncrona do \emph{uP}. Seus parâmetros são definidos por meio de suas propriedades, podendo ser obrigatórias ou opcionais:
+		\begin{itemize}
+			\item Obrigatórias:
+				\begin{itemize}
+					\item \emph{\bf{type}}: Representa o tipo da mensagem. No caso desta mensagem, seu valor será \emph{``SERVICE\underline{ }CALL\underline{ }REQUEST''};
+					\item \emph{\bf{driver}}: Recurso do serviço requisitado;
+					\item \emph{\bf{service}}: Nome do serviço requisitado;
+					\item \emph{\bf{parameters}}: Contém os parâmetros do serviço.
+				\end{itemize}
+			\item Opcionais:
+				\begin{itemize}
+					\item \emph{\bf{instanceId}}: Representa o identificador único da instância do \emph{driver} do serviço requisitado;
+					\item \emph{\bf{serviceType}}: Representa a forma de transmissão de dados;
+					\item \emph{\bf{channelIDs}}: Representa os identificadores dos canais criados para a comunicação;
+					\item \emph{\bf{channelType}}: Representa o tipo da rede utilizada na comunicação.
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
