@@ -10,7 +10,30 @@ Na DSOA destacam-se cinco conceitos básicos:
 	\item Dispositivo:
 		É um aparelho que possua capacidade de comunicação e que abrigar aplicações ou disponibilizar seus recursos do ambiente inteligente para que outras aplicações possam utilizar de seus serviços.
 	\item Recurso:
-		
-	\item Serviço
-	\item Aplicação
+		É um grupo de funcionalidades relacionadas que podem ser acessadas por meio de interfaces pré-definidas.
+		\begin{itemize}
+			\item Interface do Recurso:
+				O recurso é a entidade básica de interação entre dispositivos, visto que é por meio dele que as funcionalidades presentes no ambiente poderão ser acessadas. Para que isso possa é acontecer, é necessário que seja definida uma interface de comunicação que seja conhecida pelas entidades presentes no \emph{smart space}. Essa interface é constituída por dois elementos:
+				\begin{itemize}
+					\item Identificador:
+						Responsável por identificar unicamente um recurso entre diversos recursos presentes no ambiente.
+					\item Conjunto de serviços:
+						Conjunto de serviços que constituem o recurso e são disponibilizados por ele.
+				\end{itemize}
+		\end{itemize}
+	\item Serviço:
+		É a implementação de uma funcionalidade disponibilizada para o ambiente pelo reucurso e uma interface conhecida.
+		\begin{itemize}
+			\item Interface do Serviço:
+			\begin{itemize}
+				\item Recurso:
+					Recurso do qual o serviço faz parte. Os serviços são encontrados a partir dos recursos.
+				\item Identificador:
+					Responsável por identificar unicamente um serviço dentro do recurso.
+				\item Parâmetros:
+					Parâmetros que serão passados para o serviços realizar a funcionalidade requisitada.
+			\end{itemize}
+		\end{itemize}
+	\item Aplicações:
+		São as responsáveis pela implementação da inteligência do ambiente. As aplicações executam nos dispositivos presentes no ambiente e, a partir de informações providas pelos recursos do amibente, podem realizar ações. Elas interagem com o usuário intermediando suas ações junto ao ambiente. Elas funcionam se relacionando com recursos para notificar o usuário da alteração de algum estado, ou aguardam a execução de algum comando por parte do usuário.
 \end{itemize}

@@ -1,6 +1,15 @@
 \section{UbiquitOS}
 
-O projeto UbiquitOS da Universidade de Brasília foi construído com foco na adaptabilidade de serviços~\cite{gomes2007} e possui o objetivo de prover serviços para o usuário de maneira transparente para usuário, ou seja, sem que usuário perceba a influência de computação. Nesse projeto foi desenvolvido um middleware que permite que os dispositivos possuam \emph{drivers} para seus recursos. Esses drivers são registrados e seus serviços podem ser acessados por diversas aplicações que necessitem destes serviços.
+O projeto UbiquitOS da Universidade de Brasília foi desenvolvido com foco na adaptabilidade de serviços~\cite{gomes2007} e possui o objetivo de prover serviços para o usuário de maneira transparente, ou seja, sem que usuário perceba a influência de computação. Nesse projeto foi desenvolvido um \emph{middleware} cuja arquitetura é baseada na DSOA, que permite que os dispositivos possuam \emph{drivers} para seus recursos. Esses drivers são registrados e seus serviços podem ser acessados por diversas aplicações que necessitem destes serviços.
+
+A figura~\ref{fig:ubiquitos} mostra uma visão do ecossistema do UbiquitOS em que uOS representa o \emph{middleware} coordenando as aplicações e provendo serviços por meio dos recursos(representados pelos \emph{drivers}) dos dispositivos presentes no ambiente. Os plugins de rede representam o meio de comunicação do \emph{uOS} com os dispositivos.
 
 \input{capitulos/2.FundamentacaoTeorica/ubiquitos/dsoa}
 \input{capitulos/2.FundamentacaoTeorica/ubiquitos/up}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.3]{imagens/ecossistemaUbiquitos}
+	\caption{Ecossistema do \emph{middleware} UbiquitOS.}
+	\label{fig:ubiquitos}
+\end{figure}
