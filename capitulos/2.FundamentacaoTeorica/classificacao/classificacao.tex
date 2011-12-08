@@ -1,39 +1,50 @@
 \section{Classificação de Recursos}
 
-Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Desta forma, faz-se necessária uma maneira de classificar tais recursos imersos nos mais variados dispositivos presentes no \emph{smart space} e regidos pelo \emph{middleware}. Essa classificação facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
+Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Este, por sua vez, possui um identificador (ou nome), que o representa unicamente entre os demais. Esta abordagem, apesar de funcional, é deficiente, pois cada \emph{driver} é visto de maneira isolada dos outros.
 
-Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam dois que possuam o recurso requisitado:
+Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam três que possuam o serviço desejado:
 
 <PENSAR NUMA REPRESENTAÇÃO MELHOR>
 \begin{itemize}
 	\item D1
+	\\Recurso: Camera
 	\\Serviços:
 	\begin{itemize}
 		\item \emph{snapshot}
-		\item \emph{recorder}
 	\end{itemize}
 	\item D2
+	\\Recurso: CameraVideo
 	\\Serviços:
 	\begin{itemize}
 		\item \emph{snapshot}
 		\item \emph{streaming} de vídeo
 	\end{itemize}
+	\item D3
+	\\Recurso: Imagem
+	\\Serviços:
+	\begin{itemize}
+		\item \emph{snapshot}
+	\end{itemize}
 \end{itemize}
 
-De posse dessas informações, cabe ao \emph{uOS} determinar qual o melhor recurso a ser oferecido ao aplicativo solicitante. Caso a primeira opção esteja indisponível por qualquer motivo, deve-se então buscar por outras alternativas que não a inicial. Dessa forma, torna-se necessário a seleção de um recurso que seja equivalente ao da primeira escolha. Entende-se por equivalente todo recurso que:
+Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplicação requisitante. Entretanto, considere que o recurso escolhido (D1) esteja indisponível. Neste caso, o sistema deverá repassar um outro recurso que seja equivalente ao primeiro. Entende-se por equivalente todo recurso que:
 
 \begin{itemize}
-	\item Pertença à mesma classe;
+	\item Possua o mesmo identificador;
 	\item Possua serviços equivalentes. Neste caso, tais serviços devem possuir o mesmo retorno e a mesma assinatura, ou seja, mesmos nome, quantidade, tipo e ordem de parâmetros.
 \end{itemize}
 
------------------------------------------ REVER -----------------------------------------
+Repare que D2 e D3 também possuem o serviço de \emph{snapshot}, mas enquanto D3, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 poderia sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1 e D2 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
 
-<Ver se cabe falar isso no JSON>
+
+----------------------------------------- REVER -----------------------------------------
+<COLOCAR ISSO NA PROPOSTA DE CLASSIFICAÇÃO>
+
+Desta forma, faz-se necessária uma maneira de classificar tais recursos imersos nos mais variados dispositivos presentes no \emph{smart space} e regidos pelo \emph{middleware}. Essa classificação facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
+
+<VER SE CABE FALAR ISSO NO JSON>
 
 Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais, independente de quais tecnologias, padrões ou protocolos tenham sido adotados. É fundamental que essa comunicação seja feita de forma tão rápida e confiável quanto possível, pois toda atividade do \emph{middleware} com seus clientes depende dela, inclusive o processo de classificação dos recursos disponíveis no \emph{smart space}, idéia central deste documento.
-
-Definir uma classificação de recursos facilitará o desenvolvimento de aplicações para o \emph{uOS}, além de facilitar a escolha de recursos disponíveis no ambiente. Por exemplo, um usuário necessita de um recurso de câmera. Vamos supor que para o usuário seja indiferente se a câmera possua ou não \emph{flash}. Atualmente o \emph{uOS} trata uma câmera e uma câmera com \emph{flash} como recursos independentes, o que dificulta a escolha de determinado recurso. Se uma aplicação requisitar um serviço de câmera sem \emph{flash} e no ambiente só existirem câmeras com \emph{flash}, o \emph{middleware} não conseguirá prover esse tipo de seviço, pois para ele são recursos (\emph{drivers}) diferentes.
 
 ----------------------------------------- REVER -----------------------------------------
 
