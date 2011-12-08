@@ -1,8 +1,8 @@
 \section{Classificação de Recursos}
 
-Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Desta forma, faz-se necessária uma maneira de classificar tais recursos imersos nos mais variados dispositivos presentes no \emph{smart space} e regidos pelo \emph{middleware}. Essa classificação facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja ocupado.
+Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Desta forma, faz-se necessária uma maneira de classificar tais recursos imersos nos mais variados dispositivos presentes no \emph{smart space} e regidos pelo \emph{middleware}. Essa classificação facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
-Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam dois que possuem o recurso requisitado:
+Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam dois que possuam o recurso requisitado:
 
 <PENSAR NUMA REPRESENTAÇÃO MELHOR>
 \begin{itemize}
@@ -18,6 +18,13 @@ Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de 
 		\item \emph{snapshot}
 		\item \emph{streaming} de vídeo
 	\end{itemize}
+\end{itemize}
+
+De posse dessas informações, cabe ao \emph{uOS} determinar qual o melhor recurso a ser oferecido ao aplicativo solicitante. Caso a primeira opção esteja indisponível por qualquer motivo, deve-se então buscar por outras alternativas que não a inicial. Dessa forma, torna-se necessário a seleção de um recurso que seja equivalente ao da primeira escolha. Entende-se por equivalente todo recurso que:
+
+\begin{itemize}
+	\item Pertença à mesma classe;
+	\item Possua serviços equivalentes. Neste caso, tais serviços devem possuir o mesmo retorno e a mesma assinatura, ou seja, mesmos nome, quantidade, tipo e ordem de parâmetros.
 \end{itemize}
 
 ----------------------------------------- REVER -----------------------------------------
