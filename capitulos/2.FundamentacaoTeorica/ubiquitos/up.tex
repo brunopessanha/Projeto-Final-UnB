@@ -49,4 +49,55 @@ Para que possa haver interação entre as entidades no ambiente, o \emph{uP} esp
 					\item \emph{\bf{channelType}}: Representa o tipo da rede utilizada na comunicação.
 				\end{itemize}
 		\end{itemize}
+	\item \emph{Service Response}: Mensagem que carrega dados da resposta dada pela execução de um serviço chamado pelo \emph{Service Call}. Essa mensagem possui as seguintes propriedades:
+		\begin{itemize}
+			\item \emph{\bf{type}}: Representa o tipo da mensagem. No caso desta mensagem, seu valor será \emph{``SERVICE\underline{ }CALL\underline{ }RESPONSE''};
+			\item \emph{\bf{responseData}}: Parâmetro opcional que contem os dados da resposta da execução do serviço.
+		\end{itemize}
+	\item \emph{Notify}: Similar ao \emph{Service Response}, porém carrega dados de notificações de eventos, ou seja, respostas de uma requisição assíncrona de um serviço. Suas propriedades são:
+		\begin{itemize}
+			\item \emph{\bf{type}}: Representa o tipo da mensagem. No caso desta mensagem, seu valor será \emph{``NOTIFY''};
+			\item \emph{\bf{driver}}: Recurso do serviço requisitado;
+			\item \emph{\bf{instanceId}}: Representa o identificador da instância onde ocorreu evento;
+			\item \emph{\bf{parameters}}: Parâmetro opcional com informações sobre o evento.
+		\end{itemize}
+	\item \emph{Encapsulated Message}: Utilizada para permitir mensagens codificadas. Esse tipo de mensagem possui as seguintes propriedades:
+		\begin{itemize}
+			\item \emph{\bf{type}}: Representa o tipo da mensagem. No caso desta mensagem, seu valor será \emph{``ENCAPSULATED\underline{ }MESSAGE''};
+			\item \emph{\bf{securityType}}: Identificador do tipo de codificação utilizada;
+			\item \emph{\bf{innerMessage}}: Mensagem codificada.
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Protocolos}
+
+Com o objetivo de disponibilizar as características de visibilidade, interação e efeito, foram criados mecanismos de acesso aos recursos. O \emph{uP} é dividido em protocolos básicos, que são utilizados para invocar serviços e protocolos complementares que completam suas  funcionalidas.
+
+\begin{itemize}
+	\item Protocolos Básicos: São divididos em SCP (\emph{Service Call Protocol}) e EVP(\emph{Event Protocol}). O primeiro possui arquitetura provedor-consumidor, ou seja, o consumidor requisita um serviço e o provedor retorna esse serviço para ele de forma síncrona. No último, o consumidor se registra em um evento no provedor, que response informando que o registro foi realizado com sucesso, e na ocorrência do evento, o consumidor é notificado pelo provedor, demonstrando uma forma assíncrona de comunicação.
+	\item Protocolos Complementares: Além da interação entre os serviços provida pelos protocolos básicos, o \emph{uP} tem mecanismos que permitem que as aplicações obtenham informações sobre quais são os serviços disponíveis no ambiente e informações a respeito deles. Os protocolos são divididos em um grupo de protocolos com informações sobre o dispositivo e um grupo de protocolos com informações sobre o ambiente. Esses grupos são mapeados em um \emph{driver} que definem sua interface de comunicação. São protocolos complementares:
+	\begin{itemize}
+		\item \emph{Device Driver}: Responsável por disponibilizar informações a respeito do dispositivo. Possui os seguintes serviços:
+			\begin{itemize}
+				\item \emph{ListDrivers}: Provê uma lista de instâncias dos drivers disponíveis do dispositivo. Possui dois parâmetros opcionais:
+					\begin{itemize}
+						\item \emph{\bf{serviceName}}: Nome do serviço;
+						\item \emph{\bf{driverName}}: Identificador do recurso.
+					\end{itemize}
+				\item \emph{Handshake}: Neste protocolo, dois dispositivos trocam informações entre-si. O dispositivo que invoca esse serviço passa como parâmetro um objeto do tipo \emph{device} e recebe como retorno informações sobre o dispositivo que recebeu a chamada;
+				\item \emph{Goodbye}: Responsável por retirar o dispositivo da lista de dispositivos presentes no ambiente;
+				\item \emph{Authenticate}: Estabelece um contexto de segurança entre dois dispositivos por meio de um prévio compartilhamento de chaves.
+			\end{itemize}
+		\item \emph{Register Driver}: Responsável por disponibilizar informações que um dispositivo possui sobre o ambiente.
+			\begin{itemize}
+				\item \emph{ListDrivers}: Provê uma lista de instâncias dos drivers disponíveis no ambiente, geralmente de dispositivos vizinhos. Possui três parâmetros opcionais:
+					\begin{itemize}
+						\item \emph{\bf{serviceName}}: Nome do serviço;
+						\item \emph{\bf{driverName}}: Identificador do recurso;
+						\item \emph{\bf{device}}: Nome do dispositivo que contém o recurso.
+					\end{itemize}
+				\item \emph{Publish}: Responsável pela publicação de uma instância de um driver a ser disponibilizada no ambiente.
+				\item \emph{UnPublish}: Responsável por retirar as informações sobre uma instância de um driver.
+			\end{itemize}
+	\end{itemize}
 \end{itemize}
