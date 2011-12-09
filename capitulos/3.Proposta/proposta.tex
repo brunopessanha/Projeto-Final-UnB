@@ -1,30 +1,30 @@
 \chapter{Proposta de Classificação}
 
-Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um dispositivo pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
-
+Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
 
 \begin{comment}
 Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
 \end{comment}
 
 \begin{itemize}
-	\item Classificação
+	\item Forma de classificação
 
-	Decidiu-se pela classificação relacionada, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, as vantagens da programação orientada à objetos, em que cada classe representa exatamente um objeto tão simples quanto possível, mantendo-se a alta coesão e o baixo acoplamento. Em decorrência, ganha-se na facilidade de manutenção, podendo-se adicionar e/ou alterar atributos e/ou comportamentos recorrentes a cada interface previamente existente, evitando, assim, a repetição desnecessária de código.
-
-	Vale ressaltar que tal relacionamento deve ser bem estudado, de forma tal a empregar a melhor técnica sempre que possível, seja herança ou composição, a fim de obter o melhor de cada mundo.
+	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança ou composição. A primeira traz a possibilidade de extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente um objeto tão simples quanto possível, almejando-se obter uma alta coesão em detrimento de um alto acoplamento. A segunda permite que uma classe contenha, em sua definição, zero ou mais classes. Dessa forma, torna-se possível a delegação de responsabilidades para serviços existentes em outras classes outrora estabelecidas, evitando tanto a repetição de código como um alto acoplamento.
 
 	\item Representação
 
-	O \emph{uOS} atualmente já utiliza JSON em suas trocas de mensagens e trocá-lo seria inviável. Tal formato apresenta um baixo custo computacional~\cite{comparativojson}, além de ser auto-descritivo, estruturado e independente de plataforma (pois utiliza UTF-8 como codificação~\cite{utf8}).
-
-	\item Extensível
-
-	É permitido que novas classes sejam criadas a partir das classificações padrões propostas.
+	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens e trocá-lo seria inviável. Tal formato apresenta as seguintes características:
+	
+	\begin{itemize}
+	 	\item Baixo custo computacional~\cite{comparativojson};
+	 	\item É auto-descritivo, o que facilita os processos de leitura e escrita por seres-humanos~\cite{json};
+	 	\item É estruturado, o que facilita sua criação e análise por computadores~\cite{json};
+	 	\item É independente de plataforma, pois utiliza UTF-8 como codificação~\cite{utf8}.
+	 \end{itemize}
 
 	\item Múltiplas classes
 
-	Sim
+	Sim <FAZER>
 \end{itemize}
 
 \section{A Classificação}
@@ -45,7 +45,7 @@ Levando-se em consideração os fatores acima apresentados e analisando-se a tab
 		Abrange quaisquer tipos de dispositivos com recurso de conexão. Exemplo: modens, roteadores.
 \end{itemize}
 
-Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar dos serviços providos de um recurso de Imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
+Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar os serviços providos de um recurso de imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
 
 \input{capitulos/3.Proposta/equivalencia}
 \input{capitulos/3.Proposta/impacto}

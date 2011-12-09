@@ -4,7 +4,14 @@ Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serv
 
 Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam três que possuam o serviço desejado:
 
-<PENSAR NUMA REPRESENTAÇÃO MELHOR>
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.8]{imagens/recursos}
+	\caption{Exemplos de recursos presentes no \emph{smart space}.}
+	\label{fig:recursos}
+\end{figure}
+
+\begin{comment}
 \begin{itemize}
 	\item D1
 	\\Recurso: Camera
@@ -26,7 +33,7 @@ Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de 
 		\item \emph{snapshot}
 	\end{itemize}
 \end{itemize}
-
+\end{comment}
 Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplicação requisitante. Entretanto, considere que o recurso escolhido (D1) esteja indisponível. Neste caso, o sistema deverá repassar um outro recurso que seja equivalente ao primeiro. Entende-se por equivalente todo recurso que:
 
 \begin{itemize}
@@ -35,18 +42,6 @@ Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplic
 \end{itemize}
 
 Repare que D2 e D3 também possuem o serviço de \emph{snapshot}, mas enquanto D3, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 poderia sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1 e D2 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
-
-
------------------------------------------ REVER -----------------------------------------
-<COLOCAR ISSO NA PROPOSTA DE CLASSIFICAÇÃO>
-
-Desta forma, faz-se necessária uma maneira de classificar tais recursos imersos nos mais variados dispositivos presentes no \emph{smart space} e regidos pelo \emph{middleware}. Essa classificação facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
-
-<VER SE CABE FALAR ISSO NO JSON>
-
-Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais, independente de quais tecnologias, padrões ou protocolos tenham sido adotados. É fundamental que essa comunicação seja feita de forma tão rápida e confiável quanto possível, pois toda atividade do \emph{middleware} com seus clientes depende dela, inclusive o processo de classificação dos recursos disponíveis no \emph{smart space}, idéia central deste documento.
-
------------------------------------------ REVER -----------------------------------------
 
 \subsection{Formas de classificação}
 
@@ -103,11 +98,9 @@ Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a
 		\hline
 							& \textbf{IEEE 1451}	& \textbf{Bluetooth} 	& \textbf{USB}	& \textbf{UPnP} & \textbf{DLNA} & \textbf{DDL}\\
 		\hline
-		Classificação 		& Relacionada 			& Fixa 					& Relacionada 	& Relacionada 	& Relacionada 	& Fixa \\
+		Forma de classificação 		& Relacionada 			& Fixa 					& Relacionada 	& Relacionada 	& Relacionada 	& Fixa \\
 		\hline
 		Representação 		& IDL 					& Descritor				& Descritor		& XML			& XML 			& XML \\ 
-		\hline
-		Extensível 			& Não 					& Não 					& Sim 			& Sim 			& Sim 			& Não \\
 		\hline
 		Múltiplas Classes 	& Sim 					& Não					& Sim 			& Não 			& Sim 			& Não \\
 		\hline
