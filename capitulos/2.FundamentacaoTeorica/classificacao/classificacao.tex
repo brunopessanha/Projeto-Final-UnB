@@ -2,7 +2,7 @@
 
 Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Este, por sua vez, possui um identificador (ou nome), que o representa unicamente entre os demais. Esta abordagem, apesar de funcional, é deficiente, pois cada \emph{driver} é visto de maneira isolada dos outros.
 
-Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam três que possuam o serviço desejado:
+Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam quatro que possuam o serviço desejado:
 
 \begin{figure}[ht]
 	\center
@@ -34,14 +34,14 @@ Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de 
 	\end{itemize}
 \end{itemize}
 \end{comment}
-Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplicação requisitante. Entretanto, considere que o recurso escolhido (D1) esteja indisponível. Neste caso, o sistema deverá repassar um outro recurso que seja equivalente ao primeiro. Entende-se por equivalente todo recurso que:
+Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplicação requisitante. Entretanto, considere que o recurso preferencial (D1) esteja indisponível. Neste caso, o sistema deverá repassar um outro recurso que seja equivalente ao primeiro. Entende-se por equivalente todo recurso que:
 
 \begin{itemize}
 	\item Possua o mesmo identificador;
 	\item Possua serviços equivalentes. Neste caso, tais serviços devem possuir o mesmo retorno e a mesma assinatura, ou seja, mesmos nome, quantidade, tipo e ordem de parâmetros.
 \end{itemize}
 
-Repare que D2 e D3 também possuem o serviço de \emph{snapshot}, mas enquanto D3, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 poderia sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1 e D2 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
+Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquanto D4, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 e D3 poderiam sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1, D2 e D3 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
 
 \subsection{Formas de classificação}
 
