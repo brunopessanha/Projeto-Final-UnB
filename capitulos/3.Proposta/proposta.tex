@@ -1,4 +1,5 @@
 \chapter{Proposta de Classificação}
+A classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
 Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
 
@@ -24,24 +25,30 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 
 	\item Múltiplas classes
 
-	Sim <FAZER>
+	Com o passar dos anos, os dispositivos têm acumulado diversas funcionalidades possuindo cada vez mais recursos. Por exemplo, é comum que um celular possua recursos de imagem, vídeo e áudio. Dessa forma, em vez de definir um \emph{driver} para cada um desses recursos, podemos desenvolver apenas um \emph{driver} cujos serviços sejam compostos dos serviços de todos os recursos que o aparelho possua.
 \end{itemize}
 
 \section{A Classificação}
-Levando-se em consideração os fatores acima apresentados e analisando-se a tabela~\ref{tab:comparativoClasses}, escolheu-se as classes que se fazem presente em todos os padrões estudados para definir quais serão utilizadas na classificação de dispositivos para o \emph{uOS}:
+Levando-se em consideração os fatores apresentados anteriormente e analisando-se a tabela~\ref{tab:comparativoClasses}, escolheu-se as classes que se fazem presente em todos os padrões estudados para definir quais serão utilizadas na classificação de dispositivos para o \emph{uOS}:
 
 \begin{itemize}
-	\item Áudio:
+	\item Áudio
+		
 		Abrange quaisquer tipos de dispositivos que contenham um recurso de som. Exemplo: TVs, celulares, aparelhos de som;
-	\item Vídeo:
+	\item Vídeo
+		
 		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de vídeo. Exemplo: TVs, celulares, projetores;
-	\item Imagem:
+	\item Imagem
+		
 		Abrange quaisquer tipos de dispositivos que possam prover um recurso de imagem. Exemplo: câmeras digitais, \emph{scanners}, impressoras;
-	\item Teclado:
+	\item Teclado
+		
 		Abrange quaisquer tipos de dispositivos que possam prover um recurso de teclado. Exemplo: teclados, \emph{notebooks}, celulares, \emph{tablets};
-	\item Apontador:
+	\item Apontador
+		
 		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
-	\item Conectividade:
+	\item Conectividade
+		
 		Abrange quaisquer tipos de dispositivos com recurso de conexão. Exemplo: modens, roteadores.
 \end{itemize}
 
