@@ -3,14 +3,48 @@ O IEEE 1451 se divide em uma família de padrões que foram criados com os objet
 
 Um dos padrões da família, o IEEE 1451.1, define um modelo de informação para \emph{Network Capable Application Processors} (NCAP) que foi estabelecido para especificar um modelo de objetos comum e interfaces de componentes da rede de transdutores. Dessa forma, foi desenvolvido um \emph{framework} orientado a objetos que pode ser estendido para facilitar o desenvolvimento de aplicações. Este modelo foi definido da seguinte forma: Um modelo de dados que especifica a forma e o tipo de comunicação, tanto local quanto remota, por meio das interfaces de objetos 1451.1, um modelo de objetos que especifica tipos de componentes de software usados para definir e implementar sistemas e, por fim, modelos de comunicação que definem a sintaxe e semântica das interfaces de software entre redes de comunicação e objetos de aplicação~\cite{ieeeOO1451}~\cite{ieee1451monitoring}.
 
-\begin{figure}[ht]
-\center
-\includegraphics[scale=0.5]{imagens/ieee1451-classHierarchy}
-\caption{Hierarquia de Classes do Padrão IEEE 1451.1}
-\label{fig:classHierarchy}
-\end{figure}
 
-O padrão ~\cite{ieee1451standard} especifica cada classe no modelo definindo as interfaces da classe(por meio de assinaturas e operações) e o comportamento da classe (via texto ou máquinas de estado). A figura~\ref{fig:classHierarchy} mostra a hierarquia de classes definida pelo padrão em que as classes em itálico representam classes abstratas. Nesta figura é possível observar 3 tipos principais de objetos IEEE 1451.1:
+O padrão ~\cite{ieee1451standard} especifica cada classe no modelo definindo as interfaces da classe(por meio de assinaturas e operações) e o comportamento da classe (via texto ou máquinas de estado). Abaixo temos a hierarquia de classes definida pelo padrão em que as classes em itálico representam classes abstratas:
+
+\begin{tabbing}
+\textit{Root} \= \\
+\> \textit{Entity} \= \\
+\> \> \textit{Block} \= \\
+\> \> \> NCAP BLOCK \\
+\> \> \> \textit{Function Block} \\
+\> \> \> \textit{Base Transducer Block} \\
+\> \> \> \textit{Transducer} \= \textit{Block} \\
+\> \> \> \> Dot2 Transducer Block \\
+\> \> \> \> Dot3 Transducer Block \\
+\> \> \> \> Dot4 \= Transducer Block \\
+\> \> \textit{Component} \\
+\> \> \> Parameter \\
+\> \> \> \> Parameter With Update \\
+\> \> \> \> \> \= \textit{Physical Parameter} \\
+\> \> \> \> \> \> Scalar \= Parameter \\
+\> \> \> \> \> \> \> Scalar Series Parameter \\
+\> \> \> \> \> \> Vector Parameter \\
+\> \> \> \> \> \> \> Vector Series Parameter \\
+\> \> \> \> Time Parameter \\
+\> \> \> Action \\
+\> \> \> File \\
+\> \> \> \> Partitioned File \\
+\> \> \> Component Group \\
+\> \> \textit{Service} \\
+\> \> \> \textit{Base Port} \\
+\> \> \> \> \textit{Base Client Port} \\
+\> \> \> \> \> Client Port \\
+\> \> \> \> \> Asynchronous Client Port \\
+\> \> \> \> \textit{Base Publisher Port} \\
+\> \> \> \> \> Publisher Port \\
+\> \> \> \> \> Self Identifying Publisher Port \\
+\> \> \> \> \> \> \> Event Generator Publisher Port \\
+\> \> \> Subscriber Port \\
+\> \> \> Mutex Service \\
+\> \> \> Condition Variable Service \\
+\end{tabbing}
+
+É possível observar 3 tipos principais de objetos IEEE 1451.1:
 
 \begin{itemize}
 	\item\emph{Block}:
@@ -18,10 +52,13 @@ O padrão ~\cite{ieee1451standard} especifica cada classe no modelo definindo as
 	Especializada em três classes:
 		\begin{itemize}
 			\item\emph{NCAPBlock}:
+
 				Provê interfaces para comunicações de rede e configurações do sistema. Cada NCAP é modelado para possuir ao menos um processo de software. Cada processo de processo de software possuirá exatamente um \emph{NCAPBlock}.
 			\item\emph{BaseTransducerBlock}:
+
 				Provê interfaces entre transdutores e funções.
 			\item\emph{FunctionBlock}:
+
 				Provê encapsulamento de funções específicas.
 		\end{itemize}
 	
