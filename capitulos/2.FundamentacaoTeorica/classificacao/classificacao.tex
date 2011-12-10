@@ -1,4 +1,5 @@
 \section{Classificação de Recursos}
+\label{cap:classificacaoDeRecursos}
 
 Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Este, por sua vez, possui um identificador (ou nome), que o representa unicamente entre os demais. Esta abordagem, apesar de funcional, é deficiente, pois cada \emph{driver} é visto de maneira isolada dos outros.
 
@@ -11,29 +12,6 @@ Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de 
 	\label{fig:recursos}
 \end{figure}
 
-\begin{comment}
-\begin{itemize}
-	\item D1
-	\\Recurso: Camera
-	\\Serviços:
-	\begin{itemize}
-		\item \emph{snapshot}
-	\end{itemize}
-	\item D2
-	\\Recurso: CameraVideo
-	\\Serviços:
-	\begin{itemize}
-		\item \emph{snapshot}
-		\item \emph{streaming} de vídeo
-	\end{itemize}
-	\item D3
-	\\Recurso: Imagem
-	\\Serviços:
-	\begin{itemize}
-		\item \emph{snapshot}
-	\end{itemize}
-\end{itemize}
-\end{comment}
 Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplicação requisitante. Entretanto, considere que o recurso preferencial (D1) esteja indisponível. Neste caso, o sistema deverá repassar um outro recurso que seja equivalente ao primeiro. Entende-se por equivalente todo recurso que:
 
 \begin{itemize}

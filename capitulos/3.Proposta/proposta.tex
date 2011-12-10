@@ -52,7 +52,20 @@ Levando-se em consideração os fatores apresentados anteriormente e analisando-
 		Abrange quaisquer tipos de dispositivos com recurso de conexão. Exemplo: modens, roteadores.
 \end{itemize}
 
+De volta à situação exemplificada na seção~\ref{cap:classificacaoDeRecursos}, suponha agora uma representação de recursos modelada conforme a figura~\ref{fig:recursos}. 
+
+Diferentemente do exemplo anterior, nesta nova representação cada recurso pode interagir com os demais aproveitando-se da hierarquia proposta. Esta traz as vantagens da herança, aproveitando-se da valência de tipos, ou seja, uma CameraRecord é uma Camera, que por sua vez, é um recurso de imagem. Dessa maneira, torna-se possível ao \emph{uOs} buscar por outros recursos que sejam equivalentes e que possam ser oferecidos à aplicação solicitante.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.8]{imagens/diagramaRecursosProposta}
+	\caption{Exemplos de caso particular da proposta de classificação de recursos.}
+	\label{fig:diagramaRecursosProposta}
+\end{figure}
+
+\begin{comment}
 Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar os serviços providos de um recurso de imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
+\end{comment}
 
 \input{capitulos/3.Proposta/equivalencia}
 \input{capitulos/3.Proposta/impacto}
