@@ -1,1 +1,44 @@
 \subsection{\emph{uP - Ubiquitous Protocols}}
+
+O impacto sofrido na DSOA reflete diretamente no \emph{uP}. A visão do dispositivo no \emph{uOS} (\emph{UpDevice}) não sofrerá alterações, mas para que a equivalência de serviços possa ser garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deverá informar o recurso a que este é equivalente. Além disso, o identificador do recurso representará a classe deste. O \emph{UpDriver} ficará, portanto, com os seguintes campos:
+
+\begin{itemize}
+	\item \emph{``name''}:
+		
+		Representa a classe do recurso.
+
+	\item \emph{``equivalentTo''}:
+	
+		Classe do recurso de que este é equivalente.
+	\item \emph{``services''}:
+
+		Lista dos serviços síncronos do recurso.
+
+	\item \emph{``events''}:
+
+		Lista dos serviços assíncronos do recurso;
+\end{itemize}
+
+O campo \emph{``equivalentTo''} irá carregar a informação da equivalência do um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer este recurso. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste recurso desconhecido e sua equivalência de maneira recursiva, até que o \emph{middleware} conheça um dos recursos da cadeia de equivalência. Para isso, deverá ser acrescentado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
+
+\begin{itemize}
+	\item \emph{ListDrivers};
+	\item \emph{Handshake};
+	\item \emph{Goodbye};
+	\item \emph{Authenticate};
+	\item \emph{TellEquivalentDriver}:
+
+		Responsável por informar a interface do recurso desconhecido equivalente. Será composto pelos seguintes campos:
+
+		\begin{itemize}
+			\item \emph{``interface''}:
+
+			Representa a interface do recurso desconhecido.
+
+			\item \emph{``equivalentTo''}:
+
+			Classe do recurso a que o recurso desconhecido é equivalente.
+		\end{itemize}
+\end{itemize}
+
+São afetados, ainda, dois protocolos básicos, o \emph{Service Call} e o \emph{Notify}, e o serviço \emph{ListDrivers} dos protocolos \emph{Device Driver}  e \emph{Register Driver}. Todos esses serviços contém o parâmetro \emph{driver} que passará a representar uma classe dentre as classes de recursos definidads anteriormente e não mais o nome do recurso simplesmente.
