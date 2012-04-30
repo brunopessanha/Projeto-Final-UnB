@@ -16,12 +16,12 @@ Neste sentido, destaca-se a importância de uma classificação de recursos que 
 
 A fim de ilustrar a vantagem em se empregar a classificação de recursos em técnicas de descoberta de recursos, considere o seguinte exemplo:
 
-Um usuário presente em um \emph{smart space} precise de uma tela para projetar a apresentação do seu trabalho de graduação que está armazenada em seu celular. Existem três recursos de tela disponíveis: \emph{Wide40InchesScreen}, \emph{Nice27InchesScreen} e \emph{Small14InchesScreen}. Sem a classificação de recursos, o usuário teria que buscar por cada um dos recursos disponíveis, pois não existe uma relação entre eles. Com a introdução da classificação de recursos, o usuário poderia buscar pelo recurso tela e então ele receberia todas as opções de tela disponíveis para ele, seja qual for seu tamanho ou tipo de conexão que utiliza para se comunicar. A imagem~\ref{fig:arvoreDeEquivalencia} mostra um exemplo de como ficaria a estrutura dessa classificação, onde \emph{WideScreen} e \emph{LetterBoxScreen} seriam uma especialização de \emph{Screen}.
+Um usuário presente em um \emph{smart space} que não possui uma classificação de recursos necessita de uma tela para projetar a apresentação do seu trabalho de graduação que está armazenada em seu celular. Existem três recursos de tela disponíveis: \emph{Wide40InchesScreen}, \emph{Nice27InchesScreen} e \emph{Small14InchesScreen}. Como fazer para selecionar uma das telas? Caberia ao usuário buscar por cada um dos recursos disponíveis, pois para o ambiente tais telas não possuem relação. Outro problema ocorreria com a saída do ambiente de um dos recursos que estivessem sendo utilizados pelo usuário. O que fazer para supri-lo? A única alternativa seria entregar outro recurso idêntico ao anterior, de forma a garantir a existência dos serviços necessários para a sua correta execução. Com a implementação da classificação de recursos, todos estes problemas seriam facilmente sanados, com tudo ocorrendo de forma transparente ao usuário. Ao se necessitar de uma tela, realizaria-se uma única busca por \emph{Screen}, obtendo como resultado todas as telas disponíveis. Se um recurso tornar-se indisponível, não só recursos idênticos poderiam substituir o anterior, mas também todos aqueles que possuírem os serviços necessários para a correta execução da tarefa em andamento. A imagem~\ref{fig:arvoreDeEquivalencia} apresenta um exemplo da estrutura dessa classificação, em que \emph{WideScreen} e \emph{LetterBoxScreen} são uma especialização de \emph{Screen}.
 
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.8]{imagens/screenTree}
-	\caption{Árvore de equivalência.}
+	\caption{Classificação de recursos.}
 	\label{fig:arvoreDeEquivalencia}
 \end{figure}
 
@@ -49,32 +49,32 @@ Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquan
 
 \section{Formas de classificação}
 
-Existem duas formas principais de se realizar uma classificação de recursos:
+Definiu-se duas formas principais de se realizar uma classificação de recursos:
+
+\begin{enumerate}
+	\item Fixa: conjunto fixo de classificações não-relacionadas e, portanto, mais simples de serem definidas.
+
+	\item Relacionada: conjunto de classificações básicas relacionadas com suas especializações. Passível de organização hierárquica, de forma que cada especialização possua automaticamente em sua definição todos os serviços presentes em sua classe superior e, obrigatoriamente, pelo menos um serviço adicional.
+\end{enumerate}
+
+\subsection{Formas de representação}
+
+Atualmente, existem diversas maneiras de se realizar uma representação hierárquica:
 
 \begin{itemize}
-	\item Fixa: conjunto fixo de classificações não-relacionadas;
-	\item Relacionada: estabelece relações entre os tipos básicos pré-definidos e suas especializações.
+	\item XML (\emph{Extensible Markup Language})~\cite{xml}: linguagem de marcação auto-descritiva independente de plataforma desenvolvida para estruturar, armazenar e transportar dados. Utiliza \emph{tags} (que devem ser previamente definidas pelo usuário) para realizar suas marcações e pode ser estendida de forma a criar uma estrutura em árvore. Não necessita de pré-processamento computacional para se tornar compreensível. Como desvantagem, apresenta o fato de repetir grande quantidade de informação, o que pode ser prejudicial à velocidade de comunicação entre dois sistemas;
+
+	\item Hierarquia de classes: amplamente utilizada na programação orientada à objetos por meio da herança, seja ela simples ou circular;
+
+	\item Ontologia: descrição formal, em um determinado domínio, de conceitos que descrevem atributos, características, restrições e possuem propriedades. Assim como na hierarquia de classes, também permite herança simples ou circular.
+
+	\item JSON~\cite{json}: linguagem de marcação auto-descritiva independente de plataforma e de baixo custo computacional. É estruturada e pode formar uma estrutura em árvore. Não necessita de pré-processamento para se tornar compreensível~\cite{comparativojson}. Utiliza UTF-8 como codificação~\cite{utf8}.
 \end{itemize}
-
-As classificações de forma relacionada possuem a vantagem de reutilizar atributos definidos em outras classes e de poder adicionar novos atributos especializando os tipos relacionados, o que evita redundância na definição das classes. Enquanto as classificações de forma Fixa possuem a vantagem de serem mais simples de serem definidas.
-
-Uma importante propriedade de uma classificação é a hierarquia, ou seja, uma representação em que as categorias da classificação podem ser especializadas formando novas categorias mais específicas, com diferentes atributos. Existem diferentes maneiras conhecidas de se representar uma hierarquia de forma a relacionar categorias que tenham atributos em comum: arquivos no formato XML, hierarquia de classes, ontologia ou simplesmente não utilizar uma hierarquia onde as categorias não tem relações entre si, caso da forma fixa de classificação.
-
-O XML (\emph{Extensible Markup Language}), como seu próprio nome sugere, pode ser estendido e dessa forma, é possível montar uma hierarquia de arquivos XML. O seu uso para descrever um tipo de dispositivo tem a vantagem de ser independente de plataformas de hardware ou software e, devido sua formatação, possui uma boa legibilidade, não necessitando de um pré-processamento por parte de um computador para seu conteúdo se tornar compreensível. Esse formato possui, contudo, a desvantagem de repetir uma grande quantidade de informação o que pode prejudicar a velocidade de comunicação entre dispositivos que o utilizem. Outro fator que deve ser levado em consideração é que o conjunto de protocolos \emph{uP} (\emph{Ubiquitous Protocols}) do \emph{middleware} \emph{uOS} utiliza o formato JSON para troca de mensagens, um mecanismo mais leve, e ainda assim estruturado, para representar informação.
-
-A hierarquia de classes é amplamente utilizada na programação orientada à objetos. Uma classe possui atributos ou propriedades e uma outra classe pode herdar esses atributos e criar uma especialização dessa classe raiz, à esse relacionamento dá-se o nome de herança. Dependendo da linguagem utilizada, uma classe pode herdar métodos e atributos de várias outras classes, formando uma herança múltipla de classes, ou então poderá cada subclasse poderá herdar de apenas uma outra classe, não podendo, entretanto, ocorrer uma herança circular, onde uma classe A herda de uma classe B, que por sua vez herda atributos de uma classe C que especializa a classe A. Uma hierarquia de classes forma, portanto, uma espécie de árvore de classes.
-
-Ontologia é uma descrição formal de conceitos (classes) em um determinado domínio. Esses conceitos possuem propriedades, que descrevem atributos, características e restrições. De forma semelhante à orientação à objetos, conceitos podem possuir subclasses que especializam a classe superior. A Ontologia já permite uma herança múltipla de classes, e novos conceitos podem ser construídos por meio do relacionamento entre classes. Para construir uma Ontologia deve-se definir as classes do domínio, distribuir as classes de forma hierárquica, definir valores e restrições para suas propriedades e utilizar esses valores nas instâncias das classes da Ontologia. 
-
-\begin{comment}
-Dessa forma, temos uma base de conhecimento. As Ontologias se tornaram populares na Web por dividir produtos em categorias e em características em sites de venda, e atualmente são utilizadas para compartilhar informação entre pessoas e agentes inteligentes. Uma antologia provê reutilização de conhecimento e torna explícitas as hipóteses sobre um domínio e análise do domínio.
-\end{comment}
-
 
 \section{Padrões}
 %Apresentar os padrões. Focar nas classificações feitas por eles, pontos fortes e fracos.
 
-Nesta seção, discutir-se-á cinco dos principais protocolos e/ou padrões pesquisados que fazem uso de uma classificação de recursos e utilizam as estratégias supracitadas para representar sua hierarquia de recursos: UPnP, IEEE 1451, DLNA, USB, \emph{Bluetooth} e DDL.
+A seguir, seguem cinco dos principais protocolos e/ou padrões pesquisados que fazem uso de uma classificação de recursos e utilizam as estratégias supracitadas para representar sua hierarquia de recursos: UPnP, IEEE 1451, DLNA, USB, \emph{Bluetooth} e DDL.
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/upnp}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/ieee1451}
@@ -84,7 +84,7 @@ Nesta seção, discutir-se-á cinco dos principais protocolos e/ou padrões pesq
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/ddl}
 
 \section{Trabalhos Correlatos}
-Nesta seção, apresentaremos alguns projetos de computação ubíqua e mostraremos como esses projetos tratam a classificação de recursos.
+Apresenta-se a seguir alguns projetos de computação ubíqua e como a classificação de recursos é tratada por eles.
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/gaia}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/amigo}
