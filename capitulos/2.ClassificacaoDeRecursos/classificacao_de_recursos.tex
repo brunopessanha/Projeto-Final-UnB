@@ -1,5 +1,9 @@
-\section{Classificação de Recursos}
-\label{cap:classificacaoDeRecursos}
+\chapter{Classificação de Recursos}
+
+
+\begin{comment}
+	\input{capitulos/2.FundamentacaoTeorica/ubiquitos/ubiquitos}
+\end{comment}
 
 Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Este, por sua vez, possui um identificador (ou nome), que o representa unicamente entre os demais. Esta abordagem, apesar de funcional, é deficiente, pois cada \emph{driver} é visto de maneira isolada dos outros.
 
@@ -21,7 +25,7 @@ Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplic
 
 Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquanto D4, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 e D3 poderiam sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1, D2 e D3 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
 
-\subsection{Formas de classificação}
+\section{Formas de classificação}
 
 Existem duas formas principais de se realizar uma classificação de recursos:
 
@@ -45,26 +49,27 @@ Dessa forma, temos uma base de conhecimento. As Ontologias se tornaram populares
 \end{comment}
 
 
-\subsection{Padrões}
+\section{Padrões}
 %Apresentar os padrões. Focar nas classificações feitas por eles, pontos fortes e fracos.
 
 Nesta seção, discutir-se-á cinco dos principais protocolos e/ou padrões pesquisados que fazem uso de uma classificação de recursos e utilizam as estratégias supracitadas para representar sua hierarquia de recursos: UPnP, IEEE 1451, DLNA, USB, \emph{Bluetooth} e DDL.
 
-\input{capitulos/2.FundamentacaoTeorica/classificacao/upnp}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/ieee1451}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/dlna}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/usb}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/bluetooth}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/ddl}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/upnp}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/ieee1451}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/dlna}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/usb}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/bluetooth}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/ddl}
 
-\subsection{Estado da Arte}
+\section{Trabalhos Correlatos}
 Nesta seção, apresentaremos alguns projetos de computação ubíqua e mostraremos como esses projetos tratam a classificação de recursos.
 
-\input{capitulos/2.FundamentacaoTeorica/classificacao/gaia}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/amigo}
-\input{capitulos/2.FundamentacaoTeorica/classificacao/gator}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/gaia}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/amigo}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/gator}
+\input{capitulos/2.ClassificacaoDeRecursos/classificacao/uos}
 
-\subsection{Comparativo}
+\section{Comparativo}
 %Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
 Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. A tabela~\ref{tab:comparativo} mostra uma comparação dos padrões quanto: à forma de classificação de recursos, à representação e extensibilidade dessa classificação e se um dispositivo pode fazer parte de mais de uma classe.
 
@@ -129,4 +134,5 @@ A tabela mostra ainda uma limitação da DDL (\emph{Device Description Language}
 \end{table}
 
 A tabela~\ref{tab:comparativoClasses} mostra os principais dispositivos que possuem alguma classe associada nos padrões estudados. O padrão DDL não foi considerado no comparativo de classes devido sua classificação possuir apenas três categorias: sensores, atuadores e dispositivos complexos. Portanto, todos os dispositivos considerados neste comparativo poderiam se encaixar na última categoria. O padrão IEEE 1451 também não foi utilizado no comparativo, pois foi criado para facilitar a comunicação de transdutores, e suas classes não abrangem os dispositivos da tabela.
+
 
