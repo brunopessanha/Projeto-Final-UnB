@@ -1,10 +1,31 @@
 \chapter{Classificação de Recursos}
 
-
 \begin{comment}
 	\input{capitulos/2.FundamentacaoTeorica/ubiquitos/ubiquitos}
 \end{comment}
 
+Ambientes de computação ubíqua são compostos por recursos de rede que proveem diversas funcionalidades usualmente abstraídas por protocolos de comunicação intedependentes de plataformas. Um importante desafio para tais ambientes é o desenvolvimento de técnicas de descoberta de recursos que permitam que aplicativos clientes localizem serviços e dispositivos. Tais técnicas devem atingir três objetivos principais~\cite{balazinska2002ins/twine}:
+
+\begin{enumerate}
+	\item Lidar com descrições de recursos sofisticados e padrões de consulta;
+	\item Lidar com o dinamismo no ambiente operacional, incluindo mudanças no estado dos recursos e conexões;
+	\item Ser escalável para um grande número de recursos.
+\end{enumerate}
+
+Neste sentido, destaca-se a importância de uma classificação de recursos que possibilite uma melhor gerência dos diversos recursos presentes no \emph{smart space}. Tal classificação livrará o usuário de tarefas e configurações tediosas e redundantes, evitando quaisquer custos administrativos de forma a facilitar a interação entre diferentes aparelhos, contribuindo para a adaptabilidade de serviços.
+
+A fim de ilustrar a vantagem em se empregar a classificação de recursos em técnicas de descoberta de recursos, considere o seguinte exemplo:
+
+Um usuário presente em um \emph{smart space} precise de uma tela para projetar a apresentação do seu trabalho de graduação que está armazenada em seu celular. Existem três recursos de tela disponíveis: \emph{Wide40InchesScreen}, \emph{Nice27InchesScreen} e \emph{Small14InchesScreen}. Sem a classificação de recursos, o usuário teria que buscar por cada um dos recursos disponíveis, pois não existe uma relação entre eles. Com a introdução da classificação de recursos, o usuário poderia buscar pelo recurso tela e então ele receberia todas as opções de tela disponíveis para ele, seja qual for seu tamanho ou tipo de conexão que utiliza para se comunicar. A imagem~\ref{fig:arvoreDeEquivalencia} mostra um exemplo de como ficaria a estrutura dessa classificação, onde \emph{WideScreen} e \emph{LetterBoxScreen} seriam uma especialização de \emph{Screen}.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.8]{imagens/screenTree}
+	\caption{Árvore de equivalência.}
+	\label{fig:arvoreDeEquivalencia}
+\end{figure}
+
+\begin{comment}
 Como descrito anteriormente, o \emph{uOS} tem como foco a adaptabilidade de serviços, em que cada serviço pertence a um determinado recurso. Este, por sua vez, possui um identificador (ou nome), que o representa unicamente entre os demais. Esta abordagem, apesar de funcional, é deficiente, pois cada \emph{driver} é visto de maneira isolada dos outros.
 
 Imagine, por exemplo, o caso em que uma aplicação necessita de um serviço de \emph{snapshot} presente em um recurso de câmera. Suponha também que, dentre os diversos dispositivos registrados na base do \emph{middleware}, existam quatro que possuam o serviço desejado:
@@ -24,6 +45,7 @@ Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplic
 \end{itemize}
 
 Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquanto D4, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 e D3 poderiam sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1, D2 e D3 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
+\end{comment}
 
 \section{Formas de classificação}
 
