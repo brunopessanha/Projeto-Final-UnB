@@ -59,6 +59,32 @@ Suas diretrizes destacam casos de uso cuidadosamente construídos para redes dom
 	\end{itemize}
 \end{itemize}
 
+\begin{table}
+	\caption{Camadas padrões DLNA~\cite{dlnahdvideostreaming}.}
+	\begin{center}
+		\begin{tabular}{rp{5cm}p{5cm}}
+		\hline
+		\textbf{Camada} & \textbf{Função definida} & \textbf{Padrões}				\\
+		\hline
+		Transmissão Protegida & Como um conteúdo comercial está protegido em uma rede doméstica. & DTCP/IP \\
+		\hline
+		Formatos de Mídia & Como um conteúdo de mídia está codificado e identificado para interoperabilidade. & MPEG2, MPEG4, AVC/H.264, LPCM, MP3, AAC LC, JPEG, XHTML-Print- \\
+		\hline
+		Transporte de Mídia & Como um conteúdo de mídia é transferido. & HTTP, Quality of Service \\
+		\hline
+		Gerência de Mídia & Como um conteúdo de mídia é identificado, gerenciado e distribuído. & UPnP AV 1.0, UPnP Print Enhanced 1.0 \\
+		\hline
+		Descoberta e Controle & Como dispositivos se descobrem e se controlam um ao outro. & UPnP Device Architecture 1.0 \\
+		\hline
+		Redes IP & Como dispositivos com e sem fio fisicamente se conectam e se comunicam. & IPv4 Protocol Suite \\
+		\hline
+		Conectividade & Com qual rede os dispositivos se conectam e se comunicam& Wired: Ethernet 802.3, MoCAWireless: Wi-Fi 802.11, Wi-Fi Protected Setup \\
+		\hline
+		\end{tabular}
+	\end{center}
+	\label{tab:camadaspadroes_dlna}
+\end{table}
+
 \begin{comment}
 \begin{table}
 	\caption{Classes DLNA~\cite{}.}
@@ -137,27 +163,3 @@ Em suma, o DLNA pode ser visto como uma coleção de padrões abertos que define
 \end{table}
 \end{comment}
 
-\begin{table}
-	\caption{Camadas padrões DLNA~\cite{dlnahdvideostreaming}.}
-	\begin{center}
-		\begin{tabular}{rll}
-		\hline
-		\textbf{Camada} & \textbf{Função definida} & \textbf{Padrões}				\\
-		\hline
-		Transmissão Protegida & Como um conteúdo comercial está protegido em uma rede doméstica. & DTCP/IP \\
-		\hline
-		Formatos de Mídia & Como um conteúdo de mídia está codificado e identificado para interoperabilidade. & MPEG2, MPEG4, AVC/H.264, LPCM, MP3, AAC LC, JPEG, XHTML-Print- \\
-		\hline
-		Transporte de Mídia & Como um conteúdo de mídia é transferido. & HTTP, Quality of Service \\
-		\hline
-		Gerência de Mídia & Como um conteúdo de mídia é identificado, gerenciado e distribuído. & UPnP AV 1.0, UPnP Print Enhanced 1.0 \\
-		\hline
-		Descoberta e Controle & Como dispositivos se descobrem e se controlam um ao outro. & UPnP Device Architecture 1.0 \\
-		\hline
-		Redes IP & \multirow{2}{*}{Como dispositivos com e sem fio fisicamente se conectam e se comunicam.} & IPv4 Protocol Suite \\
-		Conectividade & & Wired: Ethernet 802.3, MoCAWireless: Wi-Fi 802.11, Wi-Fi Protected Setup \\
-		\hline
-		\end{tabular}
-	\end{center}
-	\label{tab:camadaspadroes_dlna}
-\end{table}
