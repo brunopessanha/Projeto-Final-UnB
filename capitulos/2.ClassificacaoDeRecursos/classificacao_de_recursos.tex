@@ -59,16 +59,16 @@ Definiu-se duas formas principais de se realizar uma classificação de recursos
 
 \subsection{Formas de representação}
 
-Atualmente, existem diversas maneiras de se realizar uma representação hierárquica:
+Para tornar possível o processo de classificação de recursos, faz-se necessária uma maneira de representar de forma hierárquica todas as possíveis classes existentes no \emph{smart space}. Abaixo, seguem algumas das estratégias mais utilizadas atualmente:
 
 \begin{itemize}
-	\item XML (\emph{Extensible Markup Language})~\cite{xml}: linguagem de marcação auto-descritiva independente de plataforma desenvolvida para estruturar, armazenar e transportar dados. Utiliza \emph{tags} (que devem ser previamente definidas pelo usuário) para realizar suas marcações e pode ser estendida de forma a criar uma estrutura em árvore. Não necessita de pré-processamento computacional para se tornar compreensível. Como desvantagem, apresenta o fato de repetir grande quantidade de informação, o que pode ser prejudicial à velocidade de comunicação entre dois sistemas;
-
 	\item Hierarquia de classes: amplamente utilizada na programação orientada à objetos por meio da herança, seja ela simples ou circular;
 
-	\item Ontologia: descrição formal, em um determinado domínio, de conceitos que descrevem atributos, características, restrições e possuem propriedades. Assim como na hierarquia de classes, também permite herança simples ou circular.
+	\item JSON~\cite{json}: linguagem de marcação auto-descritiva independente de plataforma e de baixo custo computacional. É estruturada e pode formar uma estrutura em árvore. Não necessita de pré-processamento para se tornar compreensível~\cite{comparativojson}. Utiliza UTF-8 como codificação~\cite{utf8};
+	
+	\item Ontologia: descrição formal, em um determinado domínio, de conceitos que descrevem atributos, características, restrições e possuem propriedades. Assim como na hierarquia de classes, também permite herança simples ou circular;
 
-	\item JSON~\cite{json}: linguagem de marcação auto-descritiva independente de plataforma e de baixo custo computacional. É estruturada e pode formar uma estrutura em árvore. Não necessita de pré-processamento para se tornar compreensível~\cite{comparativojson}. Utiliza UTF-8 como codificação~\cite{utf8}.
+	\item XML (\emph{Extensible Markup Language})~\cite{xml}: linguagem de marcação auto-descritiva independente de plataforma desenvolvida para estruturar, armazenar e transportar dados. Utiliza \emph{tags} (que devem ser previamente definidas pelo usuário) para realizar suas marcações e pode ser estendida de forma a criar uma estrutura em árvore. Não necessita de pré-processamento computacional para se tornar compreensível. Como desvantagem, apresenta o fato de repetir grande quantidade de informação, o que pode ser prejudicial à velocidade de comunicação entre dois sistemas.
 \end{itemize}
 
 \section{Padrões}
@@ -93,7 +93,7 @@ Apresenta-se a seguir alguns projetos de computação ubíqua e como a classific
 
 \section{Comparativo}
 %Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
-Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. A tabela~\ref{tab:comparativo} mostra uma comparação dos padrões quanto: à forma de classificação de recursos, à representação e extensibilidade dessa classificação e se um dispositivo pode fazer parte de mais de uma classe.
+A partir da tabela~\ref{tab:comparativo}, pode-se observar que os padrões para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não utilizou-se uma forma dinâmica para representar essa classificação. A maioria dos padrões faz uso de uma classificação relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja um padrão independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Apesar da classificação de alguns padrões possuir a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação. Caso do UPnP. O USB, possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
 
 \begin{table}
 	\caption{Comparativo dos padrões.}
@@ -112,8 +112,6 @@ Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a
 	\end{center}
 	\label{tab:comparativo}
 \end{table}
- 
-Como pode ser observado, os padrões para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não foi utilizada uma forma dinâmica como uma ontologia para representar essa classificação. A tabela~\ref{tab:comparativo} mostra que a maioria dos padrões faz uso de uma classificação relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja um padrão independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Apesar da classificação de alguns padrões possuir a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação. Caso do UPnP. O USB, possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
 
 A tabela mostra ainda uma limitação da DDL (\emph{Device Description Language}), criada para reduzir a complexidade na definição de dispositivos via classes Java, pois, para cada dispositivo que não seja sensor ou atuador, se faz necessária a criação de uma nova classe para esse dispositivo complexo não relacionada com outras que já tenham sido criadas. Outro fator que impede o uso de subclasses é o fato de na definição do dispositivo, estarem definidos também seus serviços, modelados como operações. Se um dispositivo possuir apenas uma operação que receba parâmetros diferentes, por exemplo, a classe anteriormente definida não poderá ser reutilizada. 
 
