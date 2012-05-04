@@ -1,20 +1,20 @@
 \subsection{UPnP}
-O \emph{Universal Plug and Play Protocol}(UPnP) é um protocolo para conectividade entre aplicações inteligentes utilizado em computadores e dispositivos \emph{wireless} em geral. Foi definido para facilitar a conectividade entre dispositivos em diferentes ambientes, como casas, pequenas empresas ou espaços públicos~\cite{upnpArch}. Não necessita de configurações e fornece uma rede invisível com descoberta automática de dispositivos de diferentes fabricantes e diversas categorias.
+O \emph{Universal Plug and Play Protocol}(UPnP) é um protocolo para conectividade entre aplicações inteligentes utilizado em computadores e dispositivos, \emph{wireless} em geral. Foi definido com o objetivo de facilitar a conectividade entre dispositivos em diferentes ambientes, como casas, pequenas empresas ou espaços públicos~\cite{upnpArch}. Não necessita de configurações e fornece uma rede invisível com descoberta automática de dispositivos de diferentes fabricantes e diversas categorias.
 
 Seu nome ``Universal'' advém da não utilização de \emph{drivers} para cada dispositivo. Para tal, utiliza protocolos bem conhecidos como IP, TCP, UDP e HTTP, além do formato XML, utilizado no armazenamento de informações como fabricante, lista de dispositivos embarcados, descrição dos serviços com lista de comandos e ações com parâmetros e argumentos, URL's de controle, eventos e apresentação.
 
-Quando um novo aparelho adentra na rede, ele recebe um IP via DHCP ou gera um IP para si (no caso de redes não-gerenciadas), publica seus serviços e conhece os serviços de outros dispositivos. A \emph{UPnP Device Architecture}(UDA) divide os dispositivos em duas categorias principais: controlados ou ``dispositivos'' e pontos de controle~\cite{upnpArch}, formando uma espécie de arquitetura cliente(pontos de controle)-servidor(dispositivos). Em seguida, os pontos de controle ainda não têm muita informação sobre o dispositivo, então os pontos de controle interessados solicitam a descrição do dispositivo via uma URL que este dispositivo disponibilizou durante primeira etapa.
+Quando um novo aparelho adentra na rede, ele recebe um IP via DHCP ou gera um IP para si (no caso de redes não-gerenciadas), publica seus serviços, disponibiliza uma URL e conhece os serviços de outros dispositivos. A \emph{UPnP Device Architecture}(UDA) divide os dispositivos em duas categorias principais: controlados, também chamados de ``dispositivos'' e pontos de controle~\cite{upnpArch}, estabelecendo uma arquitetura cliente-servidor onde pontos de controle acessam os serviços disponibilizados pelos dispositivos. Após a entrada desse novo aparelho na rede, os pontos de controle ainda não têm muita informação sobre o dispositivo, então os pontos de controle interessados solicitam a descrição do dispositivo por meio da URL disponibilizada anteriormente.
 
-O UPnP define uma série de classificações pré-determinadas que os fabricantes podem utilizar na definição de seus dispositivos. Uma característica encontrada nessas classificações é a sua leveza de serem implementadas por dispositivos com pouca capacidade de computação, embora também possam ser utilizadas por dispositivos mais robustos como computadores. São elas:
+O UPnP estabelece uma classificação composta por um conjunto de tipos pré-determinados. Quando um fabricante deseja produzir um novo dispositivo, este deve se adequar a estes tipos ou estabelecer um novo tipo próprio. Uma característica interessante dessas classificações é que elas podem ser implementadas por dispositivos com pouca capacidade de computação, embora também possam ser utilizadas por dispositivos mais robustos como computadores, ou seja, são independentes de plataforma. Os tipos presentes no UPnP são:
 
 \begin{itemize}
 \item Áudio/Vídeo:
 
-	Essa categoria possui duas principais sub-classificações que foram sendo atualizadas com o desenvolvimento de novas tecnologias: 
+	Essa categoria possui duas principais sub-classificações que foram sendo atualizadas com o surgimento de novas tecnologias: 
 	\begin{itemize}
 		\item \emph{Media Server}:
 
-			Define um dispositivo genérico que provê conteúdo de áudio e/ou vídeo, como CD e DVD \emph{players}, cameras, rádios, televisões e \emph{set-top boxes}. Embora, seja utilizado por dispositivos com diferentes capacidades de processamento e conteúdos, o \emph{Media Server} expõe conteúdo de forma consistente.
+			Define um dispositivo genérico que provê conteúdo de áudio e/ou vídeo, como CD e DVD \emph{players}, cameras, rádios, televisões e \emph{set-top boxes}. Embora, seja utilizado por dispositivos com diferentes capacidades de processamento, diferentes conteúdos e em diferentes formatos, o \emph{Media Server} expõe o conteúdo disponível de forma uniforme e consistente por meio de um Diretório de Conteúdo.
 
 		\item \emph{Media Renderer}:
 
@@ -25,6 +25,8 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 	Essa categoria foi criada para adicionar operações gerenciais à qualquer dispositivo UPnP. Essa gerência inclui funções para configuração de serviços e do próprio dispositivo, diagnóstico e correção de problemas além de gerência do \emph{firmware} e dos \emph{softwares} do dispositivo.
 
 \item Automação Residencial:
+
+	O UPnP define quatro tipos de dispositivos de automação residencial:
 	\begin{itemize}
 		\item Cortina de Proteção Solar:
 
@@ -41,6 +43,8 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 	\end{itemize}
 
 \item Rede:
+
+	Nessa categoria se enquadram dispositivos relacionados com uma rede, seja um \emph{gateway} ou um ponto de acesso local.
 	\begin{itemize}
 		\item \emph{Gateway} de Internet:
 			
@@ -61,7 +65,7 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 
 \item Acesso Remoto:
 
-	Essa categoria é dividida entre dois dispositivos:
+	Essa categoria comporta dispositivos que possam servir tanto comoé dividida entre dois dispositivos:
 	\begin{itemize}
 		\item Agente de Descoberta de Acesso Remoto:
 
@@ -82,6 +86,8 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 	Representa um dispositivo de \emph{Scanner} com \emph{feeder} opcional. Esse dispositivo possui os serviços de digitalização via \emph{feeder} ou \emph{flatbed} e um serviço para configuração com o painel frontal do dispositivo. Essa categoria não contempla funcionalidades de Fax ou cópias.
 
 \item Telefonia:
+	
+	Categoria para aparelhos que se relacionam com algum serviço de telefonia, tanto como consumidor quanto como con provedor.
 	\begin{itemize}
 		\item Servidor de Telefonia:
 
@@ -98,4 +104,4 @@ O UPnP define uma série de classificações pré-determinadas que os fabricante
 	A definição de dispositivos básicos provêem um mecanismo para produtos que não se enquadram em uma classificação adequada do UPnP, possam utilizá-lo. Por esse motivo, essa especificação não possui nenhum serviço definido, mas pode ser utilizada como dispositivo raiz para outras categorias já definidas.
 \end{itemize}
 
-Os fabricantes podem, a partir de uma classificação padrão, estender e especializar determinada definição adicionando novos serviços, por exemplo, o que sugere uma hierarquia de dispositivos por meio de arquivos XML. Um fator interessante nas classificações de dispositivos UPnP é que sua especificação já traz consigo a especificação de serviços que esses dispositivos proveem. 
+A partir de uma classificação padrão, os fabricantes podem, por exemplo, estender e especializar determinada definição adicionando novos serviços, o que sugere a formação de uma hierarquia de dispositivos por meio de arquivos XML. O UPnP, portanto, utiliza uma classificação dispositivos relacionada, o que facilita a criação de novos tipos de dispositivos a partir da classficação base agregando novos serviços. Essa classificação extendida, entretanto, deve passar por um processo de certificação. Um ponto forte nas classificações é o fato de já incluírem a especificação dos serviços que os dispositivos proveem.
