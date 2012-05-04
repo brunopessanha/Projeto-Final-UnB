@@ -12,8 +12,7 @@ Para cada modelo de sensores e atuadores, era necessário ler a especificação 
 \label{fig:ddlspec}
 \end{figure}
 
-Na DDL, um dispositivo é caracterizado como uma entidade com propriedades, mecanismo interno e uma interface, como mostra a figura~\ref{fig:ddlspec}. As propriedades proveem informações a respeito do dispositivo como seu propósito, suas capacidades, seu fabricante e seus requisitos operacionais. Essas informações são críticas para a integração do sistema e para programadores de serviços. O mecanismo interno é responsável pela operação do dispositivo e é desconhecido do mundo externo. A interface do dispositivo é a ponte entre o hiato do mecanismo interno e do mundo externo. Ela especifica a entrada e saída do dispositivo e provê um guia para aplicações e outros serviços interagirem com o aparelho.
-
+Na DDL, um dispositivo é caracterizado como uma entidade com propriedades, mecanismo interno e uma interface, como mostra a figura~\ref{fig:ddlspec}. As propriedades proveem informações a respeito do dispositivo como seu propósito, suas capacidades, seu fabricante e seus requisitos operacionais. Essas informações são críticas para a integração do sistema e para programadores de serviços. O mecanismo interno é responsável pela operação do dispositivo e é desconhecido do mundo externo. A interface do dispositivo é a ponte entre o hiato do mecanismo interno e do mundo externo. Ela especifica a entrada e saída do dispositivo e provê um guia para aplicações e outros serviços interagirem com o aparelho. A classificação possui flexibilidade para ser extendida e a partir de então estabelecer uma relação hierárquica entre os dispositivos.
 
 Os dispositivos estão classificados em três categorias:
 \begin{itemize}
@@ -22,4 +21,4 @@ Os dispositivos estão classificados em três categorias:
 	\item Dispositivo Complexo: provê dados de entrada e aceita dados de saída do usuário externo.
 \end{itemize}
 
-Essa classificação, portanto, se apresenta de forma bastante genérica, pois um dispositivo pode se enquadrar como sensor se limitando a fornecer dados de entrada, como atuador, se limitando a receber dados e tomar ações, ou então será classificado como um dispositivo complexo. Logo a categoria de dispositivo complexo poderá ser utilizada por diferentes tipos de recursos, necessitando conhecer as operações definidas no recurso para, a partir dos seviços providos pelo dispositivo, poder inferir que tipo de recurso é aquele.
+Essa classificação, portanto, se apresenta de forma bastante genérica, pois um dispositivo pode se enquadrar como sensor se limitando a fornecer dados de entrada, como atuador, se limitando a receber dados e tomar ações, ou então será classificado como um dispositivo complexo. Logo a categoria de dispositivo complexo poderá ser utilizada por diferentes tipos de recursos, necessitando conhecer as operações definidas no recurso para, a partir dos seviços providos pelo dispositivo, poder inferir que tipo de recurso é aquele. 
