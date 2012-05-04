@@ -4,7 +4,13 @@
 	\input{capitulos/2.FundamentacaoTeorica/ubiquitos/ubiquitos}
 \end{comment}
 
-Ambientes de computação ubíqua são compostos por recursos de rede que proveem diversas funcionalidades usualmente abstraídas por protocolos de comunicação intedependentes de plataformas. Um importante desafio para tais ambientes é o desenvolvimento de técnicas de descoberta de recursos que permitam que aplicativos clientes localizem serviços e dispositivos. Tais técnicas devem atingir três objetivos principais~\cite{balazinska2002ins/twine}:
+%Ambientes de computação ubíqua são compostos por recursos de rede que proveem
+%diversas funcionalidades usualmente abstraídas por protocolos de comunicação intedepen-
+%dentes de plataformas. Um importante desao para tais ambientes é o desenvolvimento
+%de técnicas de descoberta de recursos que permitam que aplicativos clientes localizem
+%serviços e dispositivos. Tais técnicas devem atingir três objetivos principais [5]:
+
+Ambientes de computação ubíqua são compostos por elementos que proveem capacidades (tirar uma foto, medir a temperatura, etc). Um importante desafio para tais ambientes é o desenvolvimento de técnicas de descoberta desses elementos que permitam que aplicativos clientes localizem essas capacidades e dispositivos. Tais técnicas devem atingir três objetivos principais~\cite{balazinska2002ins/twine}:
 
 \begin{enumerate}
 	\item Lidar com descrições de recursos sofisticados e padrões de consulta;
@@ -49,32 +55,35 @@ Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquan
 
 \section{Formas de classificação}
 
-Definiu-se duas formas principais de se realizar uma classificação de recursos:
+Com base nos estudos realizados, dividiu-se as formas de se classificar os recursos em dois grupos distintos, de acordo com a flexibilidade das relações entre os recursos:
 
 \begin{enumerate}
-	\item Fixa: conjunto fixo de classificações não-relacionadas e, portanto, mais simples de serem definidas.
+	\item Fixa: consistem em classificações nas quais os recursos são definidos de forma rígida. São categorias pre-determinadas em que especializações e relacionamentos entre eles não são permitidos.
 
-	\item Relacionada: conjunto de classificações básicas relacionadas com suas especializações. Passível de organização hierárquica, de forma que cada especialização possua automaticamente em sua definição todos os serviços presentes em sua classe superior e, obrigatoriamente, pelo menos um serviço adicional.
+	\item Relacionada: consistem em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações.
 \end{enumerate}
 
-\subsection{Formas de representação}
+\subsection{Representação}
 
-Para tornar possível o processo de classificação de recursos, faz-se necessária uma maneira de representar de forma hierárquica todas as possíveis classes existentes no \emph{smart space}. Abaixo, seguem algumas das estratégias mais utilizadas atualmente:
+Para que os recursos possam ser acessados sem ambiguidade semântica, deve-se escolher uma maneira de se representar a classificação estabelecida de forma a possibilitar o tráfego dessas informações entre os mais variados dispositivos e plataformas.
 
 \begin{itemize}
-	\item Hierarquia de classes: amplamente utilizada na programação orientada à objetos por meio da herança, seja ela simples ou circular;
+	\begin{comment}
+		\item Hierarquia de classes: amplamente utilizada na programação orientada à objetos por meio da herança, seja ela simples ou circular;
+	\end{comment}
 
-	\item JSON~\cite{json}: linguagem de marcação auto-descritiva independente de plataforma e de baixo custo computacional. É estruturada e pode formar uma estrutura em árvore. Não necessita de pré-processamento para se tornar compreensível~\cite{comparativojson}. Utiliza UTF-8 como codificação~\cite{utf8};
+	\item JSON (\emph{JavaScript Object Notation})~\cite{json}: linguagem de marcação auto-descritiva independente de plataforma e de baixo custo computacional. É estruturada e pode formar uma estrutura em árvore. Não necessita de pré-processamento para se tornar compreensível~\cite{comparativojson}. Utiliza UTF-8 como codificação~\cite{utf8};
 	
-	\item Ontologia: descrição formal, em um determinado domínio, de conceitos que descrevem atributos, características, restrições e possuem propriedades. Assim como na hierarquia de classes, também permite herança simples ou circular;
+	\begin{comment}
+		\item Ontologia: descrição formal, em um determinado domínio, de conceitos que descrevem atributos, características, restrições e possuem propriedades. Assim como na hierarquia de classes, também permite herança simples ou circular;
+	\end{comment}
 
 	\item XML (\emph{Extensible Markup Language})~\cite{xml}: linguagem de marcação auto-descritiva independente de plataforma desenvolvida para estruturar, armazenar e transportar dados. Utiliza \emph{tags} (que devem ser previamente definidas pelo usuário) para realizar suas marcações e pode ser estendida de forma a criar uma estrutura em árvore. Não necessita de pré-processamento computacional para se tornar compreensível. Como desvantagem, apresenta o fato de repetir grande quantidade de informação, o que pode ser prejudicial à velocidade de comunicação entre dois sistemas.
 \end{itemize}
 
 \section{Padrões}
-%Apresentar os padrões. Focar nas classificações feitas por eles, pontos fortes e fracos.
 
-A seguir, seguem cinco dos principais protocolos e/ou padrões pesquisados que fazem uso de uma classificação de recursos e utilizam as estratégias supracitadas para representar sua hierarquia de recursos: UPnP, IEEE 1451, DLNA, USB, \emph{Bluetooth} e DDL.
+A classificação de recursos é uma questão bem estabelecida na academia e no mercado, tendo motivado diversos trabalhos e o estabelecimento de alguns padrões. A seguir, seguem alguns padrões de maior destaque em algumas áreas de atuação, como dispositivos (USB, IEEE 1451, DDL), \emph{media} (UPnP, DLNA) e rede (\emph{Bluetooth}).
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/upnp}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/ieee1451}
@@ -84,7 +93,8 @@ A seguir, seguem cinco dos principais protocolos e/ou padrões pesquisados que f
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/ddl}
 
 \section{Trabalhos Correlatos}
-Apresenta-se a seguir alguns projetos de computação ubíqua e como a classificação de recursos é tratada por eles.
+
+A classificação de recursos está presente em diversos trabalhos de ubicomp, nos quais fica muito clara a sua relação com o foco de cada projeto. A seguir apresentamos como alguns projetos tratam essa classificação dentro de seus escopos.
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/gaia}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/amigo}
