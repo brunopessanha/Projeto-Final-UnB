@@ -1,6 +1,6 @@
 \subsection{USB}
 
-O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicação que adiciona a uma máquina hospedeira a capacidade de se interconectar a uma variedade de dispositivos. Surgiu com o intuito de sanar três das principais dificuldades enfrentadas à época de sua criação~\cite{usbspec}:
+O \emph{Universal Serial Bus} (USB) é uma arquitetura de comunicação que adiciona a uma máquina hospedeira a capacidade de se interconectar a uma variedade de dispositivos. Seu intuito é sanar três das principais dificuldades enfrentadas à época de sua criação~\cite{usbspec}:
 
 \begin{itemize}
 	\item Integrar as plataformas das industrias da informática e comunicação. Para tal, a troca de informações entre esses dispositivos deveria acontecer de forma ubíqua e barata;
@@ -16,13 +16,11 @@ De acordo com sua especificação, suas máquinas hospedeiras devem:
 	\item Suportar todos os tipos de fluxo de dados definidos (controle, massa, interrupção e síncrono).
 \end{itemize}
 
-Entende-se por máquina hospedeira qualquer dispositivo possuidor dos recursos necessários para realizar esta função. Por exemplo, conectar uma câmera à uma impressora faz sentido, enquanto que conectar um GPS à mesma impressora, não. Assim sendo, cada máquina hospedeira não necessita se comportar exatamente como um computador, mas apenas servir como hospedeiro a certos dispositivos convenientes~\cite{usb3spec}.
+Entende-se por máquina hospedeira qualquer dispositivo possuidor dos recursos necessários para realizar esta função. Por exemplo, conectar uma câmera à uma impressora faz sentido, enquanto que conectar um GPS à mesma impressora, não. Assim sendo, cada máquina hospedeira não necessita se comportar exatamente como um computador, mas apenas servir como hospedeiro a certos dispositivos convenientes.
 
-Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (MB/s) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução~\cite{hid}, deixando toda parte pesada desse processo a cargo do hospedeiro~\cite{usb3spec}. Tais dispositivos são divididos em várias classes e/ou subclasses diferentes, cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares~\cite{hid}.
+Atualmente sua velocidade de comunicação varia entre 1.5 ou 12 megabits por segundo (MB/s) e seu protocolo permite configurar dispositivos durante a fase de inicialização ou quando eles são plugados em tempo de execução~\cite{hid}, deixando toda parte onerosa desse processo a cargo do hospedeiro. Tais dispositivos são divididos em várias classes e subclasses diferentes, cada qual definindo um comportamento e protocolos comuns para dispositivos que oferecem funções similares.
 
-Um mesmo dispositivo USB pode pertencer a uma ou múltiplas classes. Por exemplo, um celular pode utilizar atributos da classe HID, Áudio e Comunicação. A partir dessas divisões será possível estabelecer uma hierarquia, a qual poderá ser usada no processo de classificação dos dispositivos presentes no smartspace.
-
-Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbclasscodes}.
+Um mesmo dispositivo USB pode pertencer a uma ou múltiplas classes. Por exemplo, um celular pode utilizar atributos da classe HID, Áudio e Comunicação. A partir dessas divisões será possível estabelecer uma hierarquia, que será usada no processo de classificação dos dispositivos presentes no \emph{smart space}. A seguir seguem as classes definidas por este padrão~\cite{usbclasscodes}:
 
 \begin{itemize}
 	\item \emph{Audio}: 
@@ -38,10 +36,10 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 	\begin{itemize}
 		\item Telecomunicações: 
 
-		Modens analógicos, adaptadores de terminais ISDN, telefones digitais e telefones analógicos;
+		Modems analógicos, adaptadores de terminais ISDN, telefones digitais e telefones analógicos;
 		\item Dispositivos de rede: 
 
-		Modens ADSL, modens à cabo, adaptadores/hubs \emph{Ethernet} 10BASE-T e \emph{Ethernet} cross-over cabos.
+		Modems ADSL, modems à cabo, adaptadores/hubs \emph{Ethernet} 10BASE-T e \emph{Ethernet} cross-over cabos.
 	\end{itemize}
 	\item HID (\emph{Human Interface Device}): 
 
@@ -54,7 +52,7 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 		\item Ser autodescritivo para permitir aplicações de software genéricos.
 	\end{itemize}
 
-	Exemplos de tais dispositivos incluem: teclados e dispositivos apontadores, painéis de controle, controles que podem ser encontrados em dispositivos como telefones, controles remotos, jogos ou dispositivos de simulação e aparelhos que não necessitam de interação humana mas que fornecem dados de forma similar aos dipositivos da classe HID~\cite{hid}.
+	Exemplos de tais dispositivos incluem: teclados e dispositivos apontadores, painéis de controle, controles que podem ser encontrados em dispositivos como telefones, controles remotos, jogos ou dispositivos de simulação e aparelhos que não necessitam de interação humana mas que fornecem dados de forma similar aos dipositivos da classe HID.
 	\item \emph{Physical}: 
 
 	É vista como uma extensão da classe HID para dispostivos que requerem resposta física em ``tempo real''. Seu foco principal está em dispositivos táteis e na implementação de sistemas com resposta à força. Contúdo, não há exigência de que os membros desta classe gerem esse tipo de efeito~\cite{usbphysicalclass}.
@@ -78,7 +76,7 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 
 	Atualmente existem outras interfaces mais sofisticadas, mas essas são as mais comuns.
 
-	O USB oferece uma capacidade de processamento muito maior que a porta serial e é comparável em velocidade à porta paralela~\cite{usbprintclass}.
+	O USB oferece uma capacidade de processamento muito maior que a porta serial e é comparável em velocidade à porta paralela.
 	\item \emph{Mass Storage}: 
 
 	Destina-se aos dispositivos de armazenamento em massa, ou seja, todo aparelho que possa ler ou gravar dados digitais em algum sistema de armazenamento.
@@ -97,27 +95,27 @@ Seguem abaixo as classes existentes juntamente com suas descrições~\cite{usbcl
 
 	Destina-se a todos os dispositivos ou funções que compõem outros aparelhos utilizados para manipular vídeos~\cite{usbvideoclass}.
 
-	Exemplos de tais dispositivos incluem: \emph{webcams}, filmadoras digitais, conversores analógicos de vídeo, sintonizadores de televisão analógica e digital e imagens de câmeras que suportam \emph{streaming} de vídeo~\cite{usbvideoclass}.
+	Exemplos de tais dispositivos incluem: \emph{webcams}, filmadoras digitais, conversores analógicos de vídeo, sintonizadores de televisão analógica e digital e imagens de câmeras que suportam \emph{streaming} de vídeo.
 	\item \emph{Personal Healthcare}: 
 
 	Destina-se em permitir a interoperabilidade entre aparelhos da saúde pessoal e hospedeiros USB, o que permite uma maior variedade de casos de uso para ambos os dispositivos e hospedeiros~\cite{usbhealthcareclass}.
 
-	Exemplos de tais dispositivos incluem: medidores de glicose e oxímetros de pulso~\cite{usbhealthcareclass}.
+	Exemplos de tais dispositivos incluem: medidores de glicose e oxímetros de pulso.
 	\item \emph{Diagnostic Device}:
 
-	Destina-se aos dispositivos que diagnosticam outros dispositivos~\cite{usbclasscodes}.
+	Destina-se aos dispositivos que diagnosticam outros dispositivos.
 	\item \emph{Wireless Controller}: 
 
-	Destina-se aos dispositivos controladores \emph{wireless}~\cite{usbclasscodes}.
+	Destina-se aos dispositivos controladores \emph{wireless}.
 
 	Exemplos de tais dispositivos incluem: aparelhos \emph{bluetooth} e via rádio.
 	\item \emph{Miscellaneous}:
 
-	Destina-se à dispositivos diversos~\cite{usbclasscodes}.
+	Destina-se à dispositivos diversos.
 	\item \emph{Application Specific}:
 
-	Destina-se aos dispositivos que estejam em conformidade com as especificações da várias classes USB. Define um conjunto utilizável de subclasses e protocolos~\cite{usbclasscodes}.
+	Destina-se aos dispositivos que estejam em conformidade com as especificações da várias classes USB. Define um conjunto utilizável de subclasses e protocolos.
 	\item \emph{Vendor Specific}:
 
-	Destina-se à utilização por parte dos fornecedores, que podem usá-la como bem entenderem~\cite{usbclasscodes}.
+	Destina-se à utilização por parte dos fornecedores, que podem usá-la como bem entenderem.
 \end{itemize}

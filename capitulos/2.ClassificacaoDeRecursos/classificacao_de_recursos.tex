@@ -49,17 +49,17 @@ Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquan
 
 \section{Formas de classificação}
 
-Definiu-se duas formas principais de se realizar uma classificação de recursos:
+Com base nos estudos realizados, dividiu-se as formas de se classificar os recursos em dois grupos distintos, de acordo com a flexibilidade das relações entre os recursos:
 
 \begin{enumerate}
-	\item Fixa: conjunto fixo de classificações não-relacionadas e, portanto, mais simples de serem definidas.
+	\item Fixa: consistem em classificações nas quais os recursos são definidos de forma rígida. São categorias pre-determinadas em que especializações e relacionamentos entre eles não são permitidos.
 
-	\item Relacionada: conjunto de classificações básicas relacionadas com suas especializações. Passível de organização hierárquica, de forma que cada especialização possua automaticamente em sua definição todos os serviços presentes em sua classe superior e, obrigatoriamente, pelo menos um serviço adicional.
+	\item Relacionada: consistem em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações.
 \end{enumerate}
 
-\subsection{Formas de representação}
+\subsection{Representação}
 
-Para tornar possível o processo de classificação de recursos, faz-se necessária uma maneira de representar de forma hierárquica todas as possíveis classes existentes no \emph{smart space}. Abaixo, seguem algumas das estratégias mais utilizadas atualmente:
+Para que os recursos possam ser acessados sem ambiguidade semântica, deve-se escolher uma forma de se representar a classificação estabelecida.
 
 \begin{itemize}
 	\item Hierarquia de classes: amplamente utilizada na programação orientada à objetos por meio da herança, seja ela simples ou circular;
@@ -72,9 +72,8 @@ Para tornar possível o processo de classificação de recursos, faz-se necessá
 \end{itemize}
 
 \section{Padrões}
-%Apresentar os padrões. Focar nas classificações feitas por eles, pontos fortes e fracos.
 
-A seguir, seguem cinco dos principais protocolos e/ou padrões pesquisados que fazem uso de uma classificação de recursos e utilizam as estratégias supracitadas para representar sua hierarquia de recursos: UPnP, IEEE 1451, DLNA, USB, \emph{Bluetooth} e DDL.
+A classificação de recursos é uma questão bem estabelecida na academia e no mercado, tendo motivado diversos trabalhos e o estabelecimento de alguns padrões. A seguir, seguem alguns padrões de maior destaque em algumas áreas de atuação, como dispositivos (USB, IEEE 1451, DDL), \emph{media} (UPnP, DLNA) e rede (\emph{Bluetooth}).
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/upnp}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/ieee1451}
