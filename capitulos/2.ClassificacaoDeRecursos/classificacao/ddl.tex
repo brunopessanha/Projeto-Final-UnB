@@ -1,7 +1,9 @@
 \subsection{Device Description Language (DDL)}
 \label{subsec:ddl}
 
-Provê um esquema capaz de descrever a interface dos dispositivos e um processador da linguagem para converter DDL para pacote de serviços OSGi que separa as responsabilidades entre fabricantes de dispositivos, integradores de sistemas e programadores de aplicativos~\cite{gatorTechDDL}.
+Provê um esquema capaz de descrever a interface dos dispositivos e um processador da linguagem para converter DDL para pacote de serviços OSGi que separa as responsabilidades entre fabricantes de dispositivos, integradores de sistemas e programadores de aplicativos~\cite{gatorTechDDL}. Inicialmente esses serviços eram representados em classes Java. Entretanto, a criação desses pacotes não acontecia de forma automática. 
+
+Para cada modelo de sensores e atuadores, era necessário ler a especificação do fabricante, examinar a interface e estudar os protocolos de comunicação. Era necessário ainda, que quem escrevesse o pacote fosse especialista na programação Java e no \emph{framework} OSGi. Com o objetivo de resolver essa complexidade o grupo de pesquisa do Atlas desenvolveu a \emph{Device Description Language}(DDL).
 
 \begin{figure}[ht]
 \center
@@ -11,6 +13,7 @@ Provê um esquema capaz de descrever a interface dos dispositivos e um processad
 \end{figure}
 
 Na DDL, um dispositivo é caracterizado como uma entidade com propriedades, mecanismo interno e uma interface, como mostra a figura~\ref{fig:ddlspec}. As propriedades proveem informações a respeito do dispositivo como seu propósito, suas capacidades, seu fabricante e seus requisitos operacionais. Essas informações são críticas para a integração do sistema e para programadores de serviços. O mecanismo interno é responsável pela operação do dispositivo e é desconhecido do mundo externo. A interface do dispositivo é a ponte entre o hiato do mecanismo interno e do mundo externo. Ela especifica a entrada e saída do dispositivo e provê um guia para aplicações e outros serviços interagirem com o aparelho.
+
 
 Os dispositivos estão classificados em três categorias:
 \begin{itemize}
