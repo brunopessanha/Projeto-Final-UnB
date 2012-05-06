@@ -82,6 +82,11 @@ Para que os recursos possam ser acessados sem ambiguidade semântica, deve-se es
 	\end{comment}
 
 	\item XML (\emph{Extensible Markup Language})~\cite{xml}: linguagem de marcação auto-descritiva independente de plataforma desenvolvida para estruturar, armazenar e transportar dados. Utiliza \emph{tags} (que devem ser previamente definidas pelo usuário) para realizar suas marcações e pode ser estendida de forma a criar uma estrutura em árvore. Não necessita de pré-processamento computacional para se tornar compreensível. Como desvantagem, apresenta o fato de repetir grande quantidade de informação, o que pode ser prejudicial à velocidade de comunicação entre dois sistemas.
+
+	\item IDL(\emph{Interface Description/Definition Language}): linguagem que suporta especificação e descrição de interfaces de um objeto independente da linguagem de programação utilizada.
+
+	\item Arquivo Descritor: arquivo estruturado, geralmente binário, onde cada \emph{byte} ou \emph{bit} representa uma informação. Essa informação pode representar a tipagem do dado, o valor do dado ou um estado, dependendo da sua definição.
+
 \end{itemize}
 
 \section{Padrões}
@@ -110,7 +115,7 @@ A classificação de recursos está presente em diversos trabalhos de ubicomp, n
 \label{sec:comparativo}
 %Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
 
-Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. A tabela~\ref{tab:comparativo} mostra uma comparação dos padrões quanto à forma de classificação de recursos e à representação. 
+Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. Observando os padrões descritos podes-se analisar três características principais: suas formas de classificação, a representação utilizada e os tipos básicos definidos. 
 
 A partir da tabela~\ref{tab:comparativo}, pode-se observar que os padrões para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não utilizou-se uma forma dinâmica para representar essa classificação. A maioria dos padrões faz uso de uma classificação relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja um padrão independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Apesar da classificação de alguns padrões possuir a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação. Caso do UPnP. O USB possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
 
