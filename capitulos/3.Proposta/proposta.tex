@@ -1,7 +1,7 @@
 \chapter{Proposta de Classificação}
-A classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois tornará possivel a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
+A classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
-Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
+Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
 
 \begin{comment}
 Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
@@ -10,18 +10,20 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 \begin{itemize}
 	\item Forma de classificação
 
-	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança ou composição. A primeira traz a possibilidade de extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente um objeto tão simples quanto possível, almejando-se obter uma alta coesão em detrimento de um alto acoplamento. A segunda permite que uma classe contenha, em sua definição, zero ou mais classes. Dessa forma, torna-se possível a delegação de responsabilidades para serviços existentes em outras classes outrora estabelecidas, evitando tanto a repetição de código como um alto acoplamento.
+	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança ou composição. A primeira traz a possibilidade de extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente um objeto tão simples quanto possível, almejando-se obter uma alta coesão e evitando-se um alto acoplamento. A segunda permite que uma classe contenha, em sua definição, zero ou mais classes. Dessa forma, torna-se possível a delegação de responsabilidades para serviços existentes em outras classes outrora estabelecidas, evitando tanto a repetição de código como um alto acoplamento.
 
 	\item Representação
 
-	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens e trocá-lo seria inviável. Tal formato apresenta as seguintes características:
+	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens e substituí-lo seria inviável. Tal formato apresenta as seguintes características:
 	
-	\begin{itemize}
-	 	\item Baixo custo computacional~\cite{comparativojson};
-	 	\item É auto-descritivo, o que facilita os processos de leitura e escrita por seres-humanos~\cite{json};
-	 	\item É estruturado, o que facilita sua criação e análise por computadores~\cite{json};
-	 	\item É independente de plataforma, pois utiliza UTF-8 como codificação~\cite{utf8}.
-	 \end{itemize}
+	\begin{comment}
+		\begin{itemize}
+	 		\item Baixo custo computacional~\cite{comparativojson};
+	 		\item É auto-descritivo, o que facilita os processos de leitura e escrita por seres-humanos~\cite{json};
+	 		\item É estruturado, o que facilita sua criação e análise por computadores~\cite{json};
+	 		\item É independente de plataforma, pois utiliza UTF-8 como codificação~\cite{utf8}.
+	 	\end{itemize}
+	 \end{comment}
 \end{itemize}
 
 \section{A Classificação}
@@ -30,29 +32,28 @@ Levando-se em consideração os fatores apresentados anteriormente e analisando-
 \begin{itemize}
 	\item Cliente de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir o áudio Exemplo: TVs, celulares, aparelhos de som;
+		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio Exemplo: TVs, celulares, aparelhos de som;
 	\item Servidor de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que possam servir como servidor de áudio Exemplo: TVs, celulares, aparelhos de som;
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio Exemplo: TVs, celulares, aparelhos de som;
 	\item Cliente de Vídeo
 		
 		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de renderização de vídeo. Exemplo: TVs, celulares, projetores;
 	\item Servidor de Vídeo
 		
-		Abrange quaisquer tipos de dispositivos que possuam servir como servidor de vídeo. Exemplo: TVs, celulares;
+		Abrange quaisquer tipos de dispositivos que possuam operar como servidor de vídeo. Exemplo: TVs, celulares;
 	\item Display de Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de uma imagem. Exemplo: TVs, celular, impressora;
+		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem. Exemplo: TVs, celular, impressora;
 	\item Servidor Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam servidor de provedor de uma imagem. Exemplo: câmeras digitais, \emph{scanners};
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem. Exemplo: câmeras digitais, \emph{scanners};
 	\item Teclado
 		
 		Abrange quaisquer tipos de dispositivos que possam prover um recurso de teclado. Exemplo: teclados, \emph{notebooks}, celulares, \emph{tablets};
 	\item Apontador
 		
 		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
-
 \end{itemize}
 
 De volta à situação exemplificada na seção~\ref{cap:classificacaoDeRecursos}, suponha agora uma representação de recursos modelada conforme a figura~\ref{fig:recursos}. 
