@@ -7,9 +7,9 @@ O impacto sofrido na DSOA reflete diretamente no \emph{uP}. A visão do disposit
 		
 		Representa a classe do recurso.
 
-	\item \emph{``equivalentTo''}:
+	\item \emph{``equivalentDrivers''}:
 	
-		Classe do recurso de que este é equivalente.
+		Classes a que este recurso é equivalente.
 	\item \emph{``services''}:
 
 		Lista dos serviços síncronos do recurso.
@@ -19,25 +19,25 @@ O impacto sofrido na DSOA reflete diretamente no \emph{uP}. A visão do disposit
 		Lista dos serviços assíncronos do recurso;
 \end{itemize}
 
-O campo \emph{``equivalentTo''} irá carregar a informação da equivalência do um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer este recurso. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste recurso desconhecido e sua equivalência de maneira recursiva, até que o \emph{middleware} conheça um dos recursos da cadeia de equivalência. Para isso, deverá ser acrescentado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
+O campo \emph{``equivalentDrivers''} irá carregar a informação sobre a equivalência de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos equivalentes. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) equivalência(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar registrar este novo driver na árvore de equivalência de recursos. Para isso, deverá ser criado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
 
 \begin{itemize}
 	\item \emph{ListDrivers};
 	\item \emph{Handshake};
 	\item \emph{Goodbye};
 	\item \emph{Authenticate};
-	\item \emph{TellEquivalentDriver}:
+	\item \emph{TellEquivalentDrivers}:
 
-		Responsável por informar a interface do recurso desconhecido equivalente. Será composto pelos seguintes campos:
+		Responsável por informar a interface do(s) recurso(s) desconhecido(s) equivalente(s). Será composto pelos seguintes campos:
 
 		\begin{itemize}
-			\item \emph{``interface''}:
+			\item \emph{``driversName''}:
 
-			Representa a interface do recurso desconhecido.
+			Lista com o(s) nome(s) do(s) recurso(s).
 
-			\item \emph{``equivalentTo''}:
+			\item \emph{``interfaces''}:
 
-			Classe do recurso a que o recurso desconhecido é equivalente.
+			Lista com a(s) interface(s) do(s) recurso(s).
 		\end{itemize}
 \end{itemize}
 
