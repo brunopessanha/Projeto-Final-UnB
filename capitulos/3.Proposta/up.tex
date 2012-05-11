@@ -136,7 +136,7 @@ O \emph{uP} foi criado a partir dos conceitos da DSOA, dessa forma, o impacto so
 		Lista dos serviços assíncronos do recurso;
 \end{itemize}
 
-O campo \emph{``equivalentDrivers''} irá carregar a informação sobre a equivalência de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos equivalentes. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) equivalência(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar e registrar este novo driver na árvore de equivalência de recursos. Para isso, deverá ser criado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
+O campo \emph{``equivalentDrivers''} irá carregar a informação sobre a equivalência de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos equivalentes. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) equivalência(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar e registrar este novo driver na árvore de recursos. Para isso, deverá ser criado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
 
 \begin{itemize}
 	\item \emph{ListDrivers};
