@@ -60,40 +60,6 @@ Levando-se em consideração os fatores apresentados anteriormente e analisando-
 
 Tal definição é importante pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos" e ``Árvore de Equivalência" serão apresentados.
 
-
-***************************************************************************************************
-
-
-
-Cada uma dessas classes servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outras classes agrupadas por funcionalidades. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir da classe padrão \emph{Pointer}. Ela é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com as demais classes padrões. A estrutura em árvore é importante pois permite uma melhor organização lógica das classes relacionadas, além de permitir uma fácil navegabilidade entre elas.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.35]{imagens/hierarquiaDeRecursos}
-	\caption{Exemplo da estrutura de árvores de recursos.}
-	\label{fig:arvoreDeRecursos}
-\end{figure}
-
-Uma vez que tal estrutura esteja construída, torna-se simples descobrir todos os recursos equivalentes a quaisquer classes presentes na árvore. Para tal, basta tomar a subárvore cuja raiz é o elemento ao qual deseja-se obter seus equivalentes. Observe a figura~\ref{fig:tutorialDeEquivalencia} e imagine que seja necessário oferecer todos os recursos equivalentes à classe \emph{Clickable}. Ao se colocar tal classe como raiz de sua subárvore, torna-se fácil perceber que as classes \emph{Joystick}, \emph{Trackball}, \emph{Mouse} e \emph{TouchScreen} são suas equivalentes.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.55]{imagens/tutorialDeEquivalencia}
-	\caption{Exemplo de como se encontrar recursos equivalentes.}
-	\label{fig:tutorialDeEquivalencia}
-\end{figure}
-
-De volta à situação exemplificada na seção~\ref{cap:classificacaoDeRecursos}, suponha agora uma representação de recursos modelada conforme a figura~\ref{fig:recursos}. 
-
-Diferentemente do exemplo anterior, nesta nova representação cada recurso pode interagir com os demais aproveitando-se da hierarquia proposta. Esta traz as vantagens da herança, que se aproveita da valência de tipos, ou seja, uma CameraRecord é uma Camera, que por sua vez, é um recurso de imagem. Dessa maneira, apesar de D1 estar indiponível no momento da solicitação, D2 e D3 poderiam, facilmente, ser repassados à aplicação solicitante, pois seriam considerados equivalentes.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.8]{imagens/diagramaRecursosProposta}
-	\caption{Exemplos de caso particular da proposta de classificação de recursos.}
-	\label{fig:diagramaRecursosProposta}
-\end{figure}
-
 \begin{comment}
 Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar os serviços providos de um recurso de imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
 \end{comment}
