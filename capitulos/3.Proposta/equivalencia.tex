@@ -1,17 +1,30 @@
 \section{Equivalência de Recursos}
 
-	Para que um recurso R1 seja equivalente a um recurso R2, os serviços de R2 deverão estar presentes no conjunto de serviços de R1, mas R1 poderá ter outros serviços que não estão presentes em R2. Seja S(X), o conjunto de serviços do recurso X, então teríamos que $S(R1) \cap S(R2) = S(R2)$. 
-	A figura~\ref{fig:equivalenciaDeRecursos} mostra esse relacionamento.
-	Logo temos uma relação unidirecional de equivalência, visto que R2 não é equivalente a R1, pois não possui o serviço S3. Para dizer que um um recurso R1 é equivalente a um recurso R2, utilizaremos a seguinte notação: $R1 \implies R2$.
-	
-	\begin{figure}[ht]
-		\center
-		\includegraphics[scale=0.6]{imagens/equivalenciaDeRecursos}
-		\caption{Exemplo de recursos equivalentes.}
-		\label{fig:equivalenciaDeRecursos}
-	\end{figure}
+Entende-se por equivalência tudo aquilo que tem o mesmo valor.
 
-	Suponha uma situação em que $A \implies B$, $B \implies C$ e $C \implies A$, logo teríamos que $A \implies C$, o que seria uma relação circular, o que não faz sentido, pois concluiríamos que todos os recursos são iguais e não equivalentes. Devemos, portanto, garantir que não ocorra essa equivalência circular. Caso algum dispositivo queira registrar um novo \emph{driver} que cause essa inconsistência, devemos impedir e alertá-lo da ocorrência dessa inconsistência. 
+\begin{quote}
+	Lucas estava brincando com seu carrinho, quando uma das rodinhas se quebrou. Entristecido, ele procurou por seu pai, que, ao ver a aflição de seu filho, resolveu ajudar. Recolheu uma garrafa PET que estava por perto, desenroscou sua tampinha e a colocou no lugar deixado pela rodinha estragada. Tamanha foi a felicidade de Lucas ao poder voltar a brincar com o seu carrinho.
+\end{quote}
+
+A história acima, apesar de simples, contém informações que podem ser úteis. Observe que os objetos envolvidos, ou seja, a rodinha e a tampinha, diferem na maioria das suas características: material, valor, peso, cor, etc. Entretanto, apesar de tudo, pelo menos uma das características é igual: ambas possuem formatos cilíndricos. Foi essa única semelhança que permitiu o conserto do carrinho e garantiu a felicidade de Lucas! Ou seja, no contexto apresentado, a rodinha e a tampinha puderam ser trocadas sem perda de valor.
+
+É exatamente esse o sentido ao se afirmar que dois recursos são equivalentes. Um não precisa ser igual ao outro, mas apenas possuir uma característica que, em determinado momento, possibilite a intercambialidade.
+
+\subsection{Cálculo de Equivalência}
+
+Para que um recurso R1 seja equivalente a um recurso R2, os serviços de R2 deverão estar presentes no conjunto de serviços de R1, mas R1 poderá ter outros serviços que não estão presentes em R2. Seja S(X), o conjunto de serviços do recurso X, então teríamos que $S(R1) \cap S(R2) = S(R2)$. 
+	
+A figura~\ref{fig:equivalenciaDeRecursos} mostra esse relacionamento.
+Logo temos uma relação unidirecional de equivalência, visto que R2 não é equivalente a R1, pois não possui o serviço S3. Para dizer que um um recurso R1 é equivalente a um recurso R2, utilizaremos a seguinte notação: $R1 \implies R2$.
+	
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.6]{imagens/equivalenciaDeRecursos}
+	\caption{Exemplo de recursos equivalentes.}
+	\label{fig:equivalenciaDeRecursos}
+\end{figure}
+
+Suponha uma situação em que $A \implies B$, $B \implies C$ e $C \implies A$, logo teríamos que $A \implies C$, o que seria uma relação circular, o que não faz sentido, pois concluiríamos que todos os recursos são iguais e não equivalentes. Devemos, portanto, garantir que não ocorra essa equivalência circular. Caso algum dispositivo queira registrar um novo \emph{driver} que cause essa inconsistência, devemos impedir e alertá-lo da ocorrência dessa inconsistência. 
 
 \subsection{Consistência de Interface}
 
