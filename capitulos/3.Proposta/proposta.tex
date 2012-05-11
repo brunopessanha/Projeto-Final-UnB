@@ -1,7 +1,18 @@
 \chapter{Proposta de Classificação}
-A classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
-Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
+A padronização de serviços ou recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica de serviços, pois para que os clientes possam encontrar os serviços que necessitam, os tipos de serviços ou recursos devem estar especificados de uma maneira padronizada. A padronização é mais do que uma simples tarefa de nomear recursos. O cliente deve saber como interagir com o recurso por meio de suas interfaces. Para capturar a essência de cada tipo de recurso, algumas questões devem ser levadas em consideração~\cite{pervasiveComputing}:
+
+\begin{itemize}
+	\item O que os clientes esperam de uma instância de um recurso do tipo X?
+
+	\item Quais serviços são apropriados para os recursos do tipo X?
+
+	\item Quais protocolos uma instância do tipo X utiliza?
+\end{itemize}
+
+Dessa forma, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
+
+Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, foram extraídas as características mais vantajosas dos padrões existentes e a partir delas propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
 
 \begin{comment}
 Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
@@ -28,7 +39,11 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 	 \end{comment}
 \end{itemize}
 
+A seguir, será apresentada a classificação de recursos proposta (seção ~\ref{sec:Aclassficacao}), o conceito de equivalência de recursos (seção ~\ref{sec:equivalenciaRecursos}) e, por fim, o impacto que esta classificação trará para o middleware \emph{uOS} (seção \ref{sec:impactoUOS}).
+
+
 \section{A Classificação}
+\label{sec:Aclassficacao}
 Levando-se em consideração os fatores apresentados anteriormente e analisando-se a tabela~\ref{tab:comparativoClasses}, definiu-se as seguintes classes padrões:
 
 \begin{itemize}
@@ -58,7 +73,7 @@ Levando-se em consideração os fatores apresentados anteriormente e analisando-
 		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
 \end{itemize}
 
-Tal definição é importante pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos" e ``Árvore de Equivalência" serão apresentados.
+Tal definição é importante pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
 \begin{comment}
 Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar os serviços providos de um recurso de imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
