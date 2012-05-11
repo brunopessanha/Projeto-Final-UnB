@@ -10,13 +10,15 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 \begin{itemize}
 	\item Forma de classificação
 
-	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança ou composição. A primeira traz a possibilidade de extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente um objeto tão simples quanto possível, almejando-se obter uma alta coesão e evitando-se um alto acoplamento. A segunda permite que uma classe contenha, em sua definição, zero ou mais classes. Dessa forma, torna-se possível a delegação de responsabilidades para serviços existentes em outras classes outrora estabelecidas, evitando tanto a repetição de código como um alto acoplamento.
+	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança ou composição. A primeira possibilita a extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente um objeto tão simples quanto possível, almejando-se obter uma alta coesão e um baixo acoplamento. A segunda permite que uma classe contenha, em sua definição, zero ou mais classes. Dessa forma, torna-se possível a delegação de responsabilidades para serviços existentes em outras classes outrora estabelecidas, evitando tanto a repetição de código como um alto acoplamento.
 
 	\item Representação
 
-	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens e substituí-lo seria inviável. Tal formato apresenta as seguintes características:
-	
+	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens e substituí-lo seria inviável.
+
 	\begin{comment}
+	Tal formato apresenta as seguintes características:
+	
 		\begin{itemize}
 	 		\item Baixo custo computacional~\cite{comparativojson};
 	 		\item É auto-descritivo, o que facilita os processos de leitura e escrita por seres-humanos~\cite{json};
@@ -27,7 +29,7 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 \end{itemize}
 
 \section{A Classificação}
-Levando-se em consideração os fatores apresentados anteriormente e analisando-se a tabela~\ref{tab:comparativoClasses}, escolheu-se as classes que se fazem presente em todos os padrões estudados para definir quais serão utilizadas na classificação de dispositivos para o \emph{uOS}:
+Levando-se em consideração os fatores apresentados anteriormente e analisando-se a tabela~\ref{tab:comparativoClasses}, definiu-se as seguintes classes padrões:
 
 \begin{itemize}
 	\item Cliente de Áudio
@@ -55,6 +57,31 @@ Levando-se em consideração os fatores apresentados anteriormente e analisando-
 		
 		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
 \end{itemize}
+
+Tal definição é importante pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos" e ``Árvore de Equivalência" serão apresentados.
+
+
+
+
+
+
+Cada uma dessas classes servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outras classes agrupadas por funcionalidades. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir da classe padrão \emph{Pointer}. Ela é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com as demais classes padrões. A estrutura em árvore é importante pois permite uma melhor organização lógica das classes relacionadas, além de permitir uma fácil navegabilidade entre elas.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.35]{imagens/hierarquiaDeRecursos}
+	\caption{Exemplo da estrutura de árvores de recursos.}
+	\label{fig:arvoreDeRecursos}
+\end{figure}
+
+Uma vez que tal estrutura esteja construída, torna-se simples descobrir todos os recursos equivalentes a quaisquer classes presentes na árvore. Para tal, basta tomar a subárvore cuja raiz é o elemento ao qual deseja-se obter seus equivalentes. Observe a figura~\ref{fig:tutorialDeEquivalencia} e imagine que seja necessário oferecer todos os recursos equivalentes à classe \emph{Clickable}. Ao se colocar tal classe como raiz de sua subárvore, torna-se fácil perceber que as classes \emph{Joystick}, \emph{Trackball}, \emph{Mouse} e \emph{TouchScreen} são suas equivalentes.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.55]{imagens/tutorialDeEquivalencia}
+	\caption{Exemplo de como se encontrar recursos equivalentes.}
+	\label{fig:tutorialDeEquivalencia}
+\end{figure}
 
 De volta à situação exemplificada na seção~\ref{cap:classificacaoDeRecursos}, suponha agora uma representação de recursos modelada conforme a figura~\ref{fig:recursos}. 
 
