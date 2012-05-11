@@ -117,7 +117,7 @@ Com o objetivo de disponibilizar as características de visibilidade, interaçã
 	\end{itemize}
 \end{itemize}
 
-O impacto sofrido na DSOA reflete diretamente no \emph{uP}. A visão do dispositivo no \emph{uOS} (\emph{UpDevice}) não sofrerá alterações, mas para que a equivalência de serviços possa ser garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deverá informar o recurso a que este é equivalente. Além disso, o identificador do recurso representará a classe deste. O \emph{UpDriver} ficará, portanto, com os seguintes campos:
+O \emph{uP} foi criado a partir dos conceitos da DSOA, dessa forma, o impacto sofrido na DSOA é diretamente refletido sobre ele. A visão do dispositivo no \emph{uOS} (\emph{UpDevice}) não sofrerá alterações, mas para que a equivalência de serviços possa ser garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deverá informar o recurso a que este é equivalente. Além disso, o identificador do recurso representará a classe deste. O \emph{UpDriver} ficará, portanto, com os seguintes campos:
 
 \begin{itemize}
 	\item \emph{``name''}:
@@ -136,7 +136,7 @@ O impacto sofrido na DSOA reflete diretamente no \emph{uP}. A visão do disposit
 		Lista dos serviços assíncronos do recurso;
 \end{itemize}
 
-O campo \emph{``equivalentDrivers''} irá carregar a informação sobre a equivalência de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos equivalentes. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) equivalência(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar registrar este novo driver na árvore de equivalência de recursos. Para isso, deverá ser criado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
+O campo \emph{``equivalentDrivers''} irá carregar a informação sobre a equivalência de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos equivalentes. O dispositivo, então, ficará responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) equivalência(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar e registrar este novo driver na árvore de equivalência de recursos. Para isso, deverá ser criado mais um serviço no protocolo \emph{Device Driver} que ficará com os seguintes serviços:
 
 \begin{itemize}
 	\item \emph{ListDrivers};
