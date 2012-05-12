@@ -17,7 +17,8 @@ Para garantir que determinado recurso seja equivalente a outro, deve-se consider
 
 \begin{enumerate}
 	\item $R1 \implies R2$;
-	\item $R2 \implies R3$.
+	\item $R2 \implies R3$;
+	\item $R1 \implies R3$.
 \end{enumerate}
 
 A partir delas e, com base na figura~\ref{fig:calculoDeEquivalencia}, tome as seguintes regras:
@@ -41,6 +42,14 @@ A partir delas e, com base na figura~\ref{fig:calculoDeEquivalencia}, tome as se
 	\item Refência circular
 
 		Não é permitida.
+\end{itemize}
+
+A partir das regras expostas acima, pode-se mostrar que a relação de equivalência proposta é não-reflexiva, não-simétrica e transitiva:
+
+\begin{itemize}
+	\item Reflexividade: o recurso R1 não é equivalente a ele mesmo. Neste caso eles seriam iguais;
+	\item Simetria: se o recurso R1 é equivalente ao recurso R2, o inverso não é verdade. R2 não pode ser equivalente a R1, pois nesse caso, eles seriam iguais;
+	\item Transitividade: o recurso R1 é equivalente a R2, que por sua vez é equivalente a R3. Neste caso, R1 é equivalente a R3.
 \end{itemize}
 
 \begin{comment}
