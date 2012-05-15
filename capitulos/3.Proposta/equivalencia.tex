@@ -103,7 +103,7 @@ COLOQUEI NO COMEÇO DA PROPOSTA
 
 \subsection{Árvore de Recursos}
 
-Cada uma das classes propostas servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outras classes agrupadas por funcionalidades. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir da classe padrão \emph{Pointer}. Ela é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com as demais classes padrões. A estrutura em árvore é importante pois permite uma melhor organização lógica das classes relacionadas, além de permitir uma fácil navegabilidade entre elas.
+Cada uma das classes propostas servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outras classes agrupadas por funcionalidades formando um grafo desconexo. Dessa forma, toda definição de \emph{driver} ou declara explicitamente a quais outros \emph{drivers} ele é equivalente ou não declara nenhum e se torna uma nova raiz. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir da classe padrão \emph{Pointer}. Ela é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com as demais classes padrões. Essa estrutura onde cada subgrafo conexo forma uma árvore é importante, pois permite uma melhor organização lógica das classes relacionadas, além de permitir uma fácil navegabilidade entre elas.
 
 \begin{figure}[ht]
 	\center
@@ -112,7 +112,7 @@ Cada uma das classes propostas servirá de raiz para uma árvore de recursos, ou
 	\label{fig:arvoreDeRecursos}
 \end{figure}
 
-Uma vez que tal estrutura esteja construída, torna-se simples descobrir todos os recursos equivalentes a quaisquer classes presentes na árvore. Para tal, basta tomar a subárvore cuja raiz é o elemento ao qual deseja-se obter seus equivalentes. Observe a figura~\ref{fig:tutorialDeEquivalencia} e imagine que seja necessário oferecer todos os recursos equivalentes à classe \emph{Clickable}. Ao se colocar tal classe como raiz de sua subárvore, torna-se fácil perceber que as classes \emph{Joystick}, \emph{Trackball}, \emph{Mouse} e \emph{TouchScreen} são suas equivalentes.
+Uma vez que tal estrutura esteja construída, para descobrir todos os recursos equivalentes a quaisquer classes presentes na árvore, basta tomar a subárvore cuja raiz é o elemento ao qual deseja-se obter seus equivalentes. Quanto mais próximo da raíz, mais genérico será o recurso, e à medida que se aproxima das folhas da árvore, mais específico será o recurso. Observe a figura~\ref{fig:tutorialDeEquivalencia} e imagine que seja necessário oferecer todos os recursos equivalentes à classe \emph{Clickable}. Ao se colocar tal classe como raiz de sua subárvore, torna-se fácil perceber que as classes \emph{Joystick}, \emph{Trackball}, \emph{Mouse} e \emph{TouchScreen} são suas equivalentes. A figura~\ref{fig:tutorialDeEquivalencia} mostra ainda situações de herança múltipla, em que \emph{Mouse} e \emph{TouchScreen} além de possuírem os serviços da classe \emph{Clickable}, possuem também serviços da classe \emph{Scrollable}.
 
 \begin{figure}[ht]
 	\center
