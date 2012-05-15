@@ -10,13 +10,9 @@ A padronização de recursos é de fundamental importância para \emph{framework
 	\item Quais protocolos uma instância do tipo X utiliza?
 \end{itemize}
 
-A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo a definição inicial do recurso com seus serviços apropriado, guiando diferentes implementações do mesmo \emph{driver}. Além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
+A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes implementações do mesmo \emph{driver}; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
-Conforme visto na seção ~\ref{sec:comparativo}, foram extraídas as características mais vantajosas dos padrões existentes e a partir delas propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
-
-\begin{comment}
-Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
-\end{comment}
+Conforme visto na seção ~\ref{sec:comparativo}, foram extraídas as características mais vantajosas dos padrões existentes e a partir delas construiu-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). Esta nova classificação é estabelecida por:
 
 \begin{itemize}
 	\item Forma de classificação
@@ -25,7 +21,7 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 
 	\item Representação
 
-	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens e substituí-lo seria inviável.
+	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens devido a sua portabilidade e leveza. Por esta razão, o padrão foi mantido.
 
 	\begin{comment}
 	Tal formato apresenta as seguintes características:
@@ -39,34 +35,35 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 	 \end{comment}
 \end{itemize}
 
-Além da definição da forma de classificação e da representação utilizada, a classificação de recursos para a DSOA construída também possui um conjunto de tipos básicos e extensíveis, apresentado na seção~\ref{sec:Aclassficacao}, e uma relação de equivalência entre eles, detalhada na seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabam por impactar no protocolo \emph{uP} e no middleware \emph{uOS}, como estes são baseados na arquitetura. Sendo assim, na seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
+Além da definição da forma de classificação e da representação utilizada, a classificação de recursos para a DSOA construída também possui um conjunto de tipos básicos e extensíveis, apresentado na seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabam por impactar no protocolo \emph{uP} e no middleware \emph{uOS}, como estes são baseados na arquitetura. Sendo assim, na seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
 
-\section{A Classificação}
-\label{sec:Aclassficacao}
-Levando-se em consideração os fatores apresentados anteriormente e analisando-se a tabela~\ref{tab:comparativoClasses}, definiu-se as seguintes classes padrões:
+\section{Tipos Básicos}
+\label{sec:tiposBasicos}
+
+A definição de um conjunto de tipos básicos auxilia na criação de novos dispositivos. Com base nesta classificação é possível adequar-se aos padrões pré-estabelecidos na criação de novos drivers, além de assegurar que as aplicações terão um dicionário comum de elementos raiz a serem utilizados. Com base nos tipos exibidos na tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos básicos da DSOA:
 
 \begin{itemize}
 	\item Cliente de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio Exemplo: TVs, celulares, aparelhos de som;
+		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio Exemplo: caixas de som, fones de ouvido;
 	\item Servidor de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio Exemplo: TVs, celulares, aparelhos de som;
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio Exemplo: microfones, tocadores de mp3;
 	\item Cliente de Vídeo
 		
-		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de renderização de vídeo. Exemplo: TVs, celulares, projetores;
+		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de renderização de vídeo. Exemplo: TVs, monitores, telas de celular;
 	\item Servidor de Vídeo
 		
-		Abrange quaisquer tipos de dispositivos que possuam operar como servidor de vídeo. Exemplo: TVs, celulares;
+		Abrange quaisquer tipos de dispositivos que possuam operar como servidor de vídeo. Exemplo: tocadores de DVD, set-top boxes;
 	\item Display de Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem. Exemplo: TVs, celular, impressora;
+		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem. Exemplo: impressoras, TVs, monitores;
 	\item Servidor Imagem
 		
 		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem. Exemplo: câmeras digitais, \emph{scanners};
 	\item Teclado
 		
-		Abrange quaisquer tipos de dispositivos que possam prover um recurso de teclado. Exemplo: teclados, \emph{notebooks}, celulares, \emph{tablets};
+		Abrange quaisquer tipos de dispositivos que possam prover um recurso de teclado. Exemplo: teclados e dispositivos de reconhecimento gestual;
 	\item Apontador
 		
 		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
