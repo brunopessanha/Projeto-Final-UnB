@@ -1,6 +1,6 @@
-\chapter{Proposta de Classificação}
+\chapter{Classificação de Recursos na DSOA}
 
-A padronização de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica de recursos em determinado momento e contexto. Tal padronização é mais do que uma simples tarefa de nomear recursos, pois a aplicação cliente precisa saber como interagir com eles por meio de suas interfaces. Para capturar a essência de cada tipo de recurso, deve-se levar em consideração algumas questões~\cite{pervasiveComputing}:
+A padronização de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica de recursos em determinado momento e contexto. Tal padronização é mais do que uma simples tarefa de nomear recursos, pois uma aplicação cliente precisa saber como interagir com eles por meio de suas interfaces. Uma classificação deve responder as seguintes questões ~\cite{pervasiveComputing} para garantir a semântica entre as partes envolvidas:
 
 \begin{itemize}
 	\item O que os clientes esperam de uma instância de um recurso do tipo X?
@@ -10,9 +10,9 @@ A padronização de recursos é de fundamental importância para \emph{framework
 	\item Quais protocolos uma instância do tipo X utiliza?
 \end{itemize}
 
-Dessa forma, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
+A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo a definição inicial do recurso com seus serviços apropriado, guiando diferentes implementações do mesmo \emph{driver}. Além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
-Após pesquisas, estudos e comparações realizadas e apresentadas em seções anteriores, foram extraídas as características mais vantajosas dos padrões existentes e a partir delas propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
+Conforme visto na seção ~\ref{sec:comparativo}, foram extraídas as características mais vantajosas dos padrões existentes e a partir delas propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}).
 
 \begin{comment}
 Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa classificação deverá ser relacionada, extensível e um dispositivo deverá poder fazer parte de múltiplas classes. A classificação relacionada facilita a implementação de novos \emph{drivers} para o \emph{uOS} que poderão se aproveitar das interfaces já existentes. Ser extensível, pois permite uma relação de especialização entre diferentes classes. A capacidade de permitir que um dispositivo pertença à diferentes classes, garante uma flexibilidade para dispositivos com diversos recursos poderem se encaixar nas classificações padrões sem a necessidade da definição de uma nova classe.
@@ -39,8 +39,7 @@ Neste capítulo falaremos sobre a classificação de dispositivos proposta. Essa
 	 \end{comment}
 \end{itemize}
 
-A seguir, será apresentada a classificação de recursos proposta (seção ~\ref{sec:Aclassficacao}), o conceito de equivalência de recursos (seção ~\ref{sec:equivalenciaRecursos}) e, por fim, o impacto que esta classificação trará para o middleware \emph{uOS} (seção \ref{sec:impactoUOS}).
-
+Além da definição da forma de classificação e da representação utilizada, a classificação de recursos para a DSOA construída também possui um conjunto de tipos básicos e extensíveis, apresentado na seção~\ref{sec:Aclassficacao}, e uma relação de equivalência entre eles, detalhada na seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabam por impactar no protocolo \emph{uP} e no middleware \emph{uOS}, como estes são baseados na arquitetura. Sendo assim, na seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
 
 \section{A Classificação}
 \label{sec:Aclassficacao}
