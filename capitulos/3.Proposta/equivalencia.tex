@@ -13,15 +13,14 @@ O exemplo, apesar de lúdico, apresenta uma situação clara de equivalência en
 
 \subsection{Cálculo de Equivalência}
 
-Para garantir que determinado recurso seja equivalente a outro, deve-se considerar o conjunto de serviços presentes em cada recurso envolvido, bem como as suas relações. Admita que a notação $A \implies B$ denote que um recurso A é equivalente a um recurso B e considere as afirmações abaixo:
+Para que determinado recurso seja equivalente a outro, deve-se garantir que as 3 regras a seguir sejam sempre respeitadas. Para tal, admita que a notação $A \implies B$ denote que um recurso A é equivalente a um recurso B.
 
+\begin{comment}
 \begin{enumerate}
 	\item $R1 \implies R2$;
 	\item $R2 \implies R3$;
 	\item $R1 \implies R3$.
 \end{enumerate}
-
-A partir delas e, com base na figura~\ref{fig:calculoDeEquivalencia}, tome as seguintes regras:
 
 \begin{figure}[ht]
 	\center
@@ -29,29 +28,73 @@ A partir delas e, com base na figura~\ref{fig:calculoDeEquivalencia}, tome as se
 	\caption{Cálculo de equivalência: exemplo de recursos equivalentes.}
 	\label{fig:calculoDeEquivalencia}
 \end{figure}
+\end{comment}
 
-\begin{itemize}
+\begin{enumerate}
 	\item Consistência de serviços
 
-		Os serviços providos por R2 devem existir em R1. Observe que tal obrigação não impede que R1 contenha outros serviços desconhecidos por R2. Caso todos os serviços em R1 sejam iguais aos serviços em R2, tais recursos são iguais e não equivalentes.
+		Seja $R1 \implies R2$. Dessa forma, os serviços providos por R2 devem existir em R1. Observe que tal obrigação não impede que R1 contenha outros serviços desconhecidos por R2. Caso todos os serviços em R1 sejam iguais aos serviços em R2, tais recursos são iguais.
 	\item Consistência de interface
 
-		As interfaces dos serviços providos por R2 que também estão em R1 devem ser idênticas. Isso implica em dizer que os nomes dos serviços devem ser iguais, bem como os seus parâmetros.
+		Seja $R1 \implies R2$. As interfaces dos serviços providos por R2 que também estão em R1 devem ser idênticas. Isso implica em dizer que os nomes dos serviços devem ser iguais, bem como os seus parâmetros.
 
 		Parte-se do princípio que não existirá interesse em camuflar um serviço malicioso ao expor uma interface compatível com a equivalência.
 	\item Refência circular
 
-		Não é permitida.
-\end{itemize}
+		Para a ocorrência de equivalência, é necessário a existência de uma classe inicial, à qual outros recursos possam se afirmar equivalentes. Neste caso, é necessario que não hajam ciclos nessas referências, de tal forma que seja possível encontrar a classe original.
 
-%A partir das regras expostas acima, pode-se mostrar que a relação de equivalência proposta é não-reflexiva, não-simétrica e transitiva:
+		Por definição, são necessárias pelo menos duas classes distintas para a possibilidade de ocorrência de uma referência circular.
+\end{enumerate}
 
 Desta forma a relação de equivalência é:
 
 \begin{itemize}
-	\item Reflexiva: o recurso R1 é equivalente a ele mesmo;
-	\item Simétrica: se o recurso R1 é equivalente ao recurso R2, o inverso não é verdade, exceto para o caso em que ambos os recursos são iguais;
-	\item Transitiva: o recurso R1 é equivalente a R2, que por sua vez é equivalente a R3. Neste caso, R1 é equivalente a R3.
+	\item Reflexiva: $R1 \implies R1$;
+
+	\begin{itemize}
+		\item Prova \\
+
+		Sejam R1 e R2 recursos quaisquer tais que $R1 = R2$. Considere que S(X) represente o conjunto de serviços contidos no recurso X, que S($X \cap Y$) represente o conjunto resultante da intercessão dos serviços existentes em X e Y e que I(S(X)) seja o conjunto de interfaces dos serviços presentes em X. Logo: \\
+		
+		\begin{enumerate}
+			
+			\item $S(R1 \cap R2) = S(R2)$; \\
+			\item $I(S(R1 \cap R2)) = I(S(R2))$; \\
+			\item A quantidade de recursos distintos envolvidos é menor do que 2. Portanto não existe referência circular.
+		\end{enumerate}
+		\begin{flushright}$\Box$\end{flushright}
+	\end{itemize}
+	
+	\item Não-simétrica: se $R1 \implies R2$ e $R1 \neq R2$, então o inverso não é verdade;
+
+	\begin{itemize}
+		\item Prova \\
+
+		Sejam R1 e R2 recursos quaisquer tais que $R1 \neq R2$. \\
+
+		\begin{enumerate}
+			\item $S(R2 \cap R1) \neq S(R1)$; \\
+		\end{enumerate}
+
+		Pela falha da primeira regra, percebe-se que o recurso R2 não é equivalente a R1.
+		\begin{flushright}$\Box$\end{flushright}
+	\end{itemize}
+
+	\item Transitiva: se $R1 \implies R2$ e $R2 \implies R3$, então $R1 \implies R3$.
+
+	\begin{itemize}
+		\item Prova \\
+
+		Sejam R1, R2 e R3 recursos quaisquer tais que $R1 \implies R2$ e $R2 \implies R3$ e $R1 \neq R2$, $R2 \neq R3$ e $R1 \neq R3$. \\
+
+		\begin{enumerate}
+			
+			\item $S(R2 \cap R3) = S(R3)$. Mas $S(R1 \cap R2) = S(R2)$. Logo, $S(R1 \cap R3) = S(R3)$; \\
+			\item $I(S(R2 \cap R3)) = I(S(R3))$. Mas $I(S(R1 \cap R2)) = I(S(R2))$. Logo $I(S(R1 \cap R3)) = I(S(R3))$; \\
+			\item $S(R2 \cap R1) \neq S(R1)$, $S(R3 \cap R2) \neq S(R2)$ e $S(R3 \cap R1) \neq S(R1)$.
+		\end{enumerate}
+		\begin{flushright}$\Box$\end{flushright}
+	\end{itemize}	
 \end{itemize}
 
 \begin{comment}
