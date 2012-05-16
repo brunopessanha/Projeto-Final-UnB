@@ -11,6 +11,8 @@ O exemplo, apesar de lúdico, apresenta uma situação clara de equivalência en
 
 É exatamente esse o sentido ao se afirmar que dois recursos são equivalentes. Um não precisa ser igual ao outro, mas apenas possuir uma característica que, em determinado momento, possibilite a intercambialidade. Seria possível, por exemplo, utilizar um \emph{joystick} como um dispositivo apontador e, a qualquer momento, substitui-lo por um \emph{laser pointer} de forma que os serviços necessários continuassem sendo providos. Repare que tais dispositivos, assim como a rodinha e a tampinha, são bastante diferentes em diversas de suas características, mas ainda assim são capazes de fornecer serviços iguais, como mover uma seta pela tela.
 
+Tomando o caso anterior, caso uma aplicação necessite apenas da capacidade de indentificar localizações em uma tela, um apontador seria suficiente. Neste caso ao se buscar por apontadores no ambiente teríamos como resposta todos os dispositivos equivalentes nesta função (como \emph{mouses}, \emph{joysticks}, \emph{laser pointers} e \emph{trackpads}). Mas no caso de uma aplicação que necessite de saber dos movimentos do usuário (como o gesto de \emph{pinch-zoom}, pinça com os dedos) apenas o \emph{trackpad} seria adequado. Para que isto seja possível é necessário conhecer como é realizado o cálculo de equivalência entre eles.
+
 \subsection{Cálculo de Equivalência}
 
 Para que determinado recurso seja equivalente a outro, deve-se garantir que as 3 regras a seguir sejam sempre respeitadas. Para tal, admita que a notação $A \implies B$ denote que um recurso A é equivalente a um recurso B.
