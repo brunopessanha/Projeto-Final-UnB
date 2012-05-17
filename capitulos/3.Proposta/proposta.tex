@@ -45,31 +45,98 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 \begin{itemize}
 	\item Cliente de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio Exemplo: caixas de som, fones de ouvido;
+		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio. Exemplo: caixas de som, fones de ouvido;
+
+		\emph{\bf{Identificador do Recurso:}} \emph{AudioOutput}.
+
+		\emph{\bf{Serviços:}}
+		\begin{itemize}
+			\item \emph{play(stream);}
+		\end{itemize}
+
 	\item Servidor de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio Exemplo: microfones, tocadores de mp3;
-	\item Cliente de Vídeo
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio. Exemplo: microfones, tocadores de mp3;
+
+		\emph{\bf{Identificador do Recurso:}} \emph{AudioInput}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{sendAudio(stream);}
+		\end{itemize}
+
+	\item Video Player
 		
 		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de renderização de vídeo. Exemplo: TVs, monitores, telas de celular;
+
+		\emph{\bf{Identificador do Recurso:}} \emph{VideoOutput}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{play(stream);}
+		\end{itemize}
+
 	\item Servidor de Vídeo
 		
 		Abrange quaisquer tipos de dispositivos que possuam operar como servidor de vídeo. Exemplo: tocadores de DVD, set-top boxes;
+
+		\emph{\bf{Identificador do Recurso:}} \emph{VideoInput}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{sendVideo(stream);}
+		\end{itemize}
+
 	\item Display de Imagem
 		
 		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem. Exemplo: impressoras, TVs, monitores;
+
+		\emph{\bf{Identificador do Recurso:}} \emph{ImageDisplay}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{display(image);}
+		\end{itemize}
+
 	\item Servidor Imagem
 		
 		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem. Exemplo: câmeras digitais, \emph{scanners};
+
+		\emph{\bf{Identificador do Recurso:}} \emph{Image}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{sendImage(image);}
+		\end{itemize}
 	\item Teclado
 		
 		Abrange quaisquer tipos de dispositivos que possam prover um recurso de teclado. Exemplo: teclados e dispositivos de reconhecimento gestual;
+
+		\emph{\bf{Identificador do Recurso:}} \emph{Keyboard}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{charTyped(key);}
+			\item \emph{commandTyped(key);}
+		\end{itemize}
+
 	\item Apontador
 		
 		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
+
+		\emph{\bf{Identificador do Recurso:}} \emph{Pointer}.
+
+		\emph{\bf{Serviços:}} 
+		\begin{itemize}
+			\item \emph{buttonPressed(button);}
+			\item \emph{buttonReleased(button);}
+		\end{itemize}
+
 \end{itemize}
 
-Tal definição é importante pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
+Repare que os tipos básicos possuem poucos serviços. Esse fato permite que \emph{drivers} mais especializados possam ser definidos a partir deles, pois os recursos básicos possuem apenas os serviços mais simples que se espera de cada um dos recursos. Por exemplo, o serviço mais simples que um recurso de Display de Imagem, uma televisão, por exemplo, pode ter, é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, dependendo da necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados.
+
+Tal definição é importante, pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
 \begin{comment}
 Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar os serviços providos de um recurso de imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
