@@ -17,30 +17,23 @@ Tomando o caso anterior, caso uma aplicação necessite apenas da capacidade de 
 
 Para que determinado recurso seja equivalente a outro, deve-se garantir que as 3 regras a seguir sejam sempre respeitadas. Para tal, admita que a notação $A \implies B$ denote que um recurso A é equivalente a um recurso B.
 
-\begin{comment}
-\begin{enumerate}
-	\item $R1 \implies R2$;
-	\item $R2 \implies R3$;
-	\item $R1 \implies R3$.
-\end{enumerate}
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.39]{imagens/calculoDeEquivalencia}
-	\caption{Cálculo de equivalência: exemplo de recursos equivalentes.}
-	\label{fig:calculoDeEquivalencia}
-\end{figure}
-\end{comment}
-
 \begin{enumerate}
 	\item Consistência de serviços
 
+		Entende-se por consistência de serviços a garantia de que o recurso equivalente contenha em sua definição, além dos seus próprios serviços, todos daqueles presentes na classe à qual ele se diz equivalente. Portanto, caso $R1 \implies R2$, os serviços providos por R2 devem existir em R1.
+
+		\begin{comment}	
 		Seja $R1 \implies R2$. Dessa forma, os serviços providos por R2 devem existir em R1. Observe que tal obrigação não impede que R1 contenha outros serviços desconhecidos por R2. Caso todos os serviços em R1 sejam iguais aos serviços em R2, tais recursos são iguais.
+		\end{comment}
 	\item Consistência de interface
 
-		Seja $R1 \implies R2$. As interfaces dos serviços providos por R2 que também estão em R1 devem ser idênticas. Isso implica em dizer que os nomes dos serviços devem ser iguais, bem como os seus parâmetros.
+		Entende-se por consistência de interfaces a garantia de que dois ou mais serviços existentes em recursos distintos possuam nomes e parâmetros iguais. Portanto, caso $R1 \implies R2$, as interfaces dos serviços providos por R2 que também estão em R1 devem ser idênticas.
 
 		Parte-se do princípio que não existirá interesse em camuflar um serviço malicioso ao expor uma interface compatível com a equivalência.
+
+		\begin{comment}
+		Seja $R1 \implies R2$. As interfaces dos serviços providos por R2 que também estão em R1 devem ser idênticas. Isso implica em dizer que os nomes dos serviços devem ser iguais, bem como os seus parâmetros.
+		\end{comment}
 	\item Refência circular
 
 		Para a ocorrência de equivalência, é necessário a existência de uma classe inicial, à qual outros recursos possam se afirmar equivalentes. Neste caso, é necessario que não hajam ciclos nessas referências, de tal forma que seja possível encontrar a classe original.
