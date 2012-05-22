@@ -1,16 +1,16 @@
 \section{Impacto}
 \label{sec:impactoUOS}
 
-A proposta anteriomente definida requer algumas mudanças no \emph{uOS}. Esta seção mostrará um pouco mais sobre como o \emph{uP} foi definido a partir dos conceitos da DSOA e, por fim, mostrará os impactos do uso da classificação para a determinação da equivalência de recursos.
+Esta classificação de recursos impacta na arquitetura original da DSOA de modo que a interface dos recurso, antes contendo apenas seu identificador e serviços, agora deve ter indícios de suas equivalências. Álém disto, modificações na arquitetura impactam nos protocolos uP e no middleware uOS a fim de que estes permaneçam adequados a mesma.
 
-O \emph{uP (Ubiquitous Protocols)} foi construído baseado na arquitetura DSOA. É um conjunto de protocolos criado com objetivo de estabelecer um meio de interação entre os serviços dentro desta arquitetura. Tais protocolos definem o canal de comunicação e a forma de interação entre as entidades do ambiente. As mensagens são transmitidas no formato JSON (\emph{JavaScript Object Notation})~\cite{json}.
+O \emph{uP (Ubiquitous Protocols)} é um conjunto de protocolos criado com objetivo de estabelecer um meio de interação entre os serviços dentro desta arquitetura. Tais protocolos definem o canal de comunicação e a forma de interação entre as entidades do ambiente. As mensagens são transmitidas no formato JSON (\emph{JavaScript Object Notation})~\cite{json}.
 
 Cada um dos conceitos apresentados na DSOA possui uma representação no \emph{uP} com seus respectivos atributos:
 
 \begin{itemize}
 	\item Dispositivo(\emph{UpDevice}):
 	
-		Por meio dos seguintes atributos, é possível identificar unicamente o dispositivo no ambiente, e quais são as interfaces rede que o dispositivo possui para realizar alguma comunicação:
+		Representa o conceito do Dispositivo, ou seja, um aparelho que possua capacidade de abrigar aplicações e possua recursos.
 
 	\item \emph{Driver}(\emph{UpDriver}): 
 
@@ -18,7 +18,7 @@ Cada um dos conceitos apresentados na DSOA possui uma representação no \emph{u
 
 	\item Serviço(\emph{UpService}): 
 
-		Representa o conceito de mesmo nome definido na DSOA.
+		Representa a interface do Recurso.
 \end{itemize}
 
 Além disso, com o objetivo de disponibilizar as características de visibilidade, interação e efeito, foram criados mecanismos de acesso aos recursos. O \emph{uP} é dividido em protocolos básicos, que são utilizados para invocar serviços e protocolos complementares que completam suas funcionalidades.

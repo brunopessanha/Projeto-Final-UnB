@@ -1,6 +1,6 @@
 \chapter{Classificação de Recursos na DSOA}
 
-A padronização de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica de recursos em determinado momento e contexto. Tal padronização é mais do que uma simples tarefa de nomear recursos, pois uma aplicação cliente precisa saber como interagir com eles por meio de suas interfaces. Uma classificação deve responder as seguintes questões ~\cite{pervasiveComputing} para garantir a semântica entre as partes envolvidas:
+A padronização de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica destes em determinado momento e contexto. Esta não se limita apenas a uma tarefa de nomear recursos, pois uma aplicação cliente precisa saber como interagir. Para isto é necessário conhecer as interfaces de acesso. Uma classificação deve responder as seguintes questões ~\cite{pervasiveComputing} para garantir a semântica entre as partes envolvidas:
 
 \begin{itemize}
 	\item O que os clientes esperam de uma instância de um recurso do tipo X?
@@ -10,14 +10,14 @@ A padronização de recursos é de fundamental importância para \emph{framework
 	\item Quais protocolos uma instância do tipo X utiliza?
 \end{itemize}
 
-A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes implementações do mesmo \emph{driver}; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem classes de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível. Além das perguntas acima, um importante fator levado em consideração, foi o fato da DSOA ter sido desenvolvida com o objetivo de atender diversas plataformas abstraindo detalhes como capacidade computacional e linguagem de programação~\cite{buzetoDSOA2010}.
+A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes implementações do mesmo \emph{driver}; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. DDessa maneira, a classificação de recursos facilita o desenvolvimento de novos \emph{drivers} a serem utilizados pelas aplicações. Isso pois a definição de interfaces pré-estabelecidas junto com as classes dos recursos permite a escolha destas por parte do desenvolvedor. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível. Além das perguntas acima, um importante fator levado em consideração, foi o fato da DSOA ter sido desenvolvida com o objetivo de atender diversas plataformas abstraindo detalhes como capacidade computacional e linguagem de programação~\cite{buzetoDSOA2010}.
 
-Conforme visto na seção~\ref{sec:comparativo}, foram extraídas as características mais vantajosas dos padrões existentes como o relacionamento entre classes de recursos, as heranças simples e múltiplas e a representação que utilize um padrão leve. A partir delas, construiu-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). O JSON foi escolhido ante XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes e possivelmente reduzidas. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de mecanismos externos para tratamento de mensagens, pois o tratamento do formato JSON não exige muita capacidade de computação. Esta nova classificação é estabelecida por:
+Conforme visto na seção~\ref{sec:comparativo}, foram extraídas as características mais vantajosas dos padrões existentes como o relacionamento entre classes de recursos, as heranças simples e múltiplas e a representação que utilize um padrão leve. A partir delas, construiu-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). O JSON foi escolhido ante XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes e possivelmente reduzidas. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de mecanismos externos para tratamento de mensagens, pois o tratamento do formato JSON não exige muita capacidade de computação~\cite{comparativojson}. Esta nova classificação é estabelecida por:
 
 \begin{itemize}
 	\item Forma de classificação
 
-	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança. Esta possibilita a extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente um objeto tão simples quanto possível, almejando-se obter uma alta coesão e um baixo acoplamento.
+	Optou-se por uma classificação relacionada, em que classes de recursos podem se relacionar umas com as outras utilizando-se herança. Esta possibilita a extensão, em que interfaces previamente estabelecidas seriam utilizadas na elaboração de novos \emph{drivers}. Obtêm-se, com isso, a possibilidade da utilização de polimorfismo e a vantagem de que cada classe represente exatamente o objeto físico do recurso, almejando-se obter uma alta coesão e um baixo acoplamento.
 
 	\item Representação
 
@@ -52,6 +52,8 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 		\emph{\bf{Serviços:}}
 		\begin{itemize}
 			\item \emph{play(stream);}
+
+				Serviço assíncrono que recebe e toca um \emph{stream} de áudio.
 		\end{itemize}
 
 	\item Servidor de Áudio
@@ -62,7 +64,9 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
-			\item \emph{sendAudio(stream);}
+			\item \emph{getAudio(stream);}
+
+				Serviço assíncrono que obtém e envia um \emph{stream} de áudio.
 		\end{itemize}
 
 	\item Video Player
@@ -74,39 +78,47 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
 			\item \emph{play(stream);}
+
+				Serviço assíncrono que recebe e renderiza um \emph{stream} de vídeo.
 		\end{itemize}
 
 	\item Servidor de Vídeo
 		
-		Abrange quaisquer tipos de dispositivos que possuam operar como servidor de vídeo. Exemplo: tocadores de DVD, set-top boxes;
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de vídeo. Exemplo: tocadores de DVD, set-top boxes;
 
 		\emph{\bf{Identificador do Recurso:}} \emph{VideoInput}.
 
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
-			\item \emph{sendVideo(stream);}
+			\item \emph{getVideo(stream);}
+
+				Serviço assíncrono que envia um \emph{stream} de vídeo.
 		\end{itemize}
 
 	\item Display de Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem. Exemplo: impressoras, TVs, monitores;
+		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem estática. Exemplo: impressoras, TVs, monitores;
 
 		\emph{\bf{Identificador do Recurso:}} \emph{ImageDisplay}.
 
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
 			\item \emph{display(image);}
+
+				Serviço síncrono que recebe e renderiza uma imagem estática.
 		\end{itemize}
 
 	\item Servidor Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem. Exemplo: câmeras digitais, \emph{scanners};
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem estática. Exemplo: câmeras digitais, \emph{scanners};
 
 		\emph{\bf{Identificador do Recurso:}} \emph{Image}.
 
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
-			\item \emph{sendImage(image);}
+			\item \emph{getImage(image);}
+
+				Serviço síncrono que obtém e envia uma imagem estática.
 		\end{itemize}
 	\item Teclado
 		
@@ -116,8 +128,13 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
-			\item \emph{charTyped(key);}
-			\item \emph{commandTyped(key);}
+			\item \emph{keyPressed(key);}
+
+				Serviço síncrono que envia o código da tecla que foi pressionada no teclado.
+
+			\item \emph{keyReleased(key);}
+
+				Serviço síncrono que envia o código da tecla que foi liberada após ser pressionado no teclado.
 		\end{itemize}
 
 	\item Apontador
@@ -128,13 +145,15 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 
 		\emph{\bf{Serviços:}} 
 		\begin{itemize}
-			\item \emph{buttonPressed(button);}
-			\item \emph{buttonReleased(button);}
+			\item \emph{move(dx, dy);}
+
+				Serviço assíncrono que envia dados de deslocamento do ponteiro do mouse nos dois eixos do plano cartesiano.
 		\end{itemize}
 
 \end{itemize}
 
-Repare que os tipos básicos possuem poucos serviços. Esse fato permite que \emph{drivers} mais especializados possam ser definidos a partir deles, pois os recursos básicos possuem apenas os serviços mais simples que se espera de cada um dos recursos. Por exemplo, o serviço mais simples que um recurso de Display de Imagem, uma televisão, por exemplo, pode ter, é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, dependendo da necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
+Esses serviços são essenciais aos tipos básicos. Embora sejam poucos, são os serviços mais básicos que se espera de cada um dos recursos.
+Esse fato permite que \emph{drivers} mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de Display de Imagem, uma televisão, por exemplo, pode ter, é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, dependendo da necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
 
 Tal definição é importante, pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
