@@ -11,9 +11,9 @@ A padronização de recursos é de fundamental importância para \emph{framework
 	\item Quais protocolos uma instância do tipo X utiliza?
 \end{itemize}
 
-A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes implementações do mesmo \emph{driver}; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilita o desenvolvimento de novos \emph{drivers} a serem utilizados pelas aplicações. Isso pois a definição de interfaces pré-estabelecidas junto com as classes dos recursos permite a escolha destas por parte do desenvolvedor. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível. Além das perguntas acima, um importante fator levado em consideração, foi o fato da DSOA ter sido desenvolvida com o objetivo de atender diversas plataformas abstraindo detalhes como capacidade computacional e linguagem de programação~\cite{buzetoDSOA2010}.
+A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes implementações do mesmo \emph{driver}; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem tipos de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível. Além das perguntas acima, um importante fator levado em consideração foi o fato da DSOA ter sido desenvolvida com o objetivo de atender diversas plataformas abstraindo detalhes como capacidade computacional e linguagem de programação~\cite{buzetoDSOA2010}.
 
-Conforme visto na seção~\ref{sec:comparativo}, foram extraídas as características mais vantajosas dos padrões existentes como o relacionamento entre classes de recursos, as heranças simples e múltiplas e a representação que utilize um padrão leve. A partir delas, construiu-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). O JSON foi escolhido ante XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes e possivelmente reduzidas. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de mecanismos externos para tratamento de mensagens, pois o tratamento do formato JSON não exige muita capacidade de computação~\cite{comparativojson}. Esta nova classificação é estabelecida por:
+Conforme visto na seção~\ref{sec:comparativo}, extraiu-se as características mais vantajosas dos padrões existentes como o relacionamento entre classes de recursos, as heranças simples e múltiplas e a representação que utilize um padrão leve. A partir delas, construiu-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). O JSON foi escolhido ante o XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes e possivelmente reduzidas. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de mecanismos externos para tratamento de mensagens, pois o tratamento do formato JSON não exige muita capacidade de computação. Esta nova classificação é estabelecida por:
 
 \begin{itemize}
 	\item Forma de classificação
@@ -23,25 +23,14 @@ Conforme visto na seção~\ref{sec:comparativo}, foram extraídas as caracterís
 	\item Representação
 
 	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens devido a sua portabilidade e leveza.
-
-	\begin{comment}
-	Tal formato apresenta as seguintes características:
-	
-		\begin{itemize}
-	 		\item Baixo custo computacional~\cite{comparativojson};
-	 		\item É auto-descritivo, o que facilita os processos de leitura e escrita por seres-humanos~\cite{json};
-	 		\item É estruturado, o que facilita sua criação e análise por computadores~\cite{json};
-	 		\item É independente de plataforma, pois utiliza UTF-8 como codificação~\cite{utf8}.
-	 	\end{itemize}
-	 \end{comment}
 \end{itemize}
 
-Além da definição da forma de classificação e da representação utilizada, a classificação de recursos para a DSOA construída também possui um conjunto de tipos básicos e extensíveis, apresentado na seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabam por impactar no protocolo \emph{uP} e no \emph{middleware uOS}, como estes são baseados na arquitetura. Sendo assim, na seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
+Além da definição da forma de classificação e da representação utilizada, a classificação de recursos construída para a DSOA também possui um conjunto de tipos básicos e extensíveis, apresentado na seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabaram por impactar no protocolo \emph{uP} e no \emph{middleware uOS}, pois estes são baseados em tal arquitetura. Sendo assim, na seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
 
 \section{Tipos Básicos}
 \label{sec:tiposBasicos}
 
-A definição de um conjunto de tipos básicos auxilia na criação de novos dispositivos. Com base nesta classificação é possível adequar-se aos padrões pré-estabelecidos na criação de novos drivers, além de assegurar que as aplicações terão um dicionário comum de elementos raiz a serem utilizados. Com base nos tipos exibidos na tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos básicos da DSOA:
+A definição de um conjunto de tipos básicos auxilia na criação de novos dispositivos. Com base nesta classificação, é possível adequar-se aos padrões pré-estabelecidos na criação de novos drivers, além de assegurar que as aplicações tenham um dicionário comum de elementos raiz a serem utilizados. Com base nos tipos exibidos na tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos básicos da DSOA:
 
 \begin{itemize}
 	\item Cliente de Áudio
@@ -156,11 +145,7 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos dis
 Esses serviços são essenciais aos tipos básicos. Embora sejam poucos, são os serviços mais básicos que se espera de cada um dos recursos.
 Esse fato permite que \emph{drivers} mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de Display de Imagem, uma televisão, por exemplo, pode ter, é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, dependendo da necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
 
-Tal definição é importante, pois é ela que permitirá um agrupamento de recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
-
-\begin{comment}
-Suponha que um usuário, por meio de uma aplicação de seu celular, deseja utilizar os serviços providos de um recurso de imagem. Considere ainda, que existam três instâncias disponíveis deste recurso no \emph{smart space}. Para garantir a equivalência dos recursos devemos garantir que eles possuam os mesmos serviços, e para isso, devemos garantir que os serviços possuam a mesma interface, ou seja, os mesmos tipos e número de parâmetros. Suponha que para o usuário que deseja o recurso simples de imagem seja indiferente a quantidade de \emph{megapixels} da imagem. Para o usuário basta apenas o provimento do serviço que retorne algum dado ou altere o estado de alguma aplicação. Dessa forma, devemos garantir que qualquer uma das três instâncias possam prover esse serviço. Uma câmera com \emph{flash}, por exemplo, para este cenário, seria equivalente a um recurso de câmera sem \emph{flash}.
-\end{comment}
+Tal definição foi importante, pois foi o que permitiu um agrupamento dos recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
 \input{capitulos/3.Proposta/equivalencia}
 \input{capitulos/3.Proposta/impacto}
