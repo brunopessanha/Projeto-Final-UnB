@@ -11,9 +11,9 @@ O exemplo, apesar de lúdico, apresenta uma situação clara de equivalência en
 
 É exatamente esse o sentido ao se afirmar que dois recursos são equivalentes. Um não precisa ser igual ao outro, mas apenas possuir uma característica que, em determinado momento, possibilite a intercambialidade. Seria possível, por exemplo, utilizar um \emph{joystick} como um dispositivo apontador e, a qualquer momento, substitui-lo por um \emph{laser pointer} de forma que os serviços necessários continuassem sendo providos. Repare que tais dispositivos, assim como a rodinha e a tampinha, são bastante diferentes em diversas de suas características, mas ainda assim são capazes de fornecer serviços iguais, como mover uma seta pela tela.
 
-Tomando o caso anterior, caso uma aplicação necessite apenas da capacidade de indentificar localizações em uma tela, um apontador seria suficiente. Neste caso ao se buscar por apontadores no ambiente teríamos como resposta todos os dispositivos equivalentes nesta função (como \emph{mouses}, \emph{joysticks}, \emph{laser pointers} e \emph{trackpads}). Mas no caso de uma aplicação que necessite de saber dos movimentos do usuário (como o gesto de \emph{pinch-zoom}, pinça com os dedos) apenas o \emph{trackpad} seria adequado. Para que isto seja possível é necessário conhecer como é realizado o cálculo de equivalência entre eles.
+Tomando o caso anterior, caso uma aplicação necessite apenas da capacidade de indentificar localizações em uma tela, um apontador seria suficiente. Neste caso ao se buscar por apontadores no ambiente teríamos como resposta todos os dispositivos equivalentes nesta função (como \emph{mouses}, \emph{joysticks}, \emph{laser pointers} e \emph{trackpads}). Mas no caso de uma aplicação que necessite de saber dos movimentos do usuário (como o gesto de \emph{pinch-zoom}, pinça com os dedos) apenas o \emph{trackpad} seria adequado. Para que isto seja possível é necessário conhecer como é estabelecida a relação de equivalência.
 
-\subsection{Cálculo de Equivalência}
+\subsection{Relação de Equivalência}
 
 Para que determinado recurso seja equivalente a outro, deve-se garantir que as 3 regras a seguir sejam sempre respeitadas. Para tal, admita que a notação $A \implies B$ denote que um recurso A é equivalente a um recurso B.
 
@@ -143,20 +143,13 @@ COLOQUEI NO COMEÇO DA PROPOSTA
 
 \subsection{Árvore de Recursos}
 
-Cada uma das classes propostas servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outras classes agrupadas por funcionalidades formando um grafo desconexo. Dessa forma, toda definição de \emph{driver} ou declara explicitamente a quais outros \emph{drivers} ele é equivalente ou não declara nenhum e se torna uma nova raiz. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir da classe padrão \emph{Pointer}. Ela é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com as demais classes padrões. Essa estrutura onde cada subgrafo conexo forma uma árvore é importante, pois permite uma melhor organização lógica das classes relacionadas, além de permitir uma fácil navegabilidade entre elas.
+Cada um dos tipos básicos (seção~\ref{sec:tiposBasicos}) servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outras classes agrupadas por funcionalidades formando um grafo desconexo. Dessa forma, toda definição de \emph{driver} ou declara explicitamente a quais outros \emph{drivers} ele é equivalente ou não declara nenhum e se torna uma nova raiz. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir da classe padrão \emph{Pointer}. Ela é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com as demais classes padrões. Essa estrutura onde cada subgrafo conexo forma uma árvore é importante, pois permite uma melhor organização lógica das classes relacionadas, além de permitir uma fácil navegabilidade entre elas.
 
 \begin{figure}[ht]
 	\center
-	\includegraphics[scale=0.35]{imagens/hierarquiaDeRecursos}
-	\caption{Exemplo da estrutura de árvores de recursos.}
+	\includegraphics[scale=0.55]{imagens/arvoreDeRecursos}
+	\caption{Exemplo de uma das árvores de recursos.}
 	\label{fig:arvoreDeRecursos}
 \end{figure}
 
-Uma vez que tal estrutura esteja construída, para descobrir todos os recursos equivalentes a quaisquer classes presentes na árvore, basta tomar a subárvore cuja raiz é o elemento ao qual deseja-se obter seus equivalentes. Quanto mais próximo da raíz, mais genérico será o recurso, e à medida que se aproxima das folhas da árvore, mais específico será o recurso. Observe a figura~\ref{fig:tutorialDeEquivalencia} e imagine que seja necessário oferecer todos os recursos equivalentes à classe \emph{Clickable}. Ao se colocar tal classe como raiz de sua subárvore, torna-se fácil perceber que as classes \emph{Joystick}, \emph{Trackball}, \emph{Mouse} e \emph{TouchScreen} são suas equivalentes. A figura~\ref{fig:tutorialDeEquivalencia} mostra ainda situações de herança múltipla, em que \emph{Mouse} e \emph{TouchScreen} além de possuírem os serviços da classe \emph{Clickable}, possuem também serviços da classe \emph{Scrollable}. A definição de novos recursos deve respeitar a interface da classe que foi herdada. Essa condição já é garantida pela utilização de herança de interfaces Java.
-
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.55]{imagens/tutorialDeEquivalencia}
-	\caption{Exemplo de como se encontrar recursos equivalentes.}
-	\label{fig:tutorialDeEquivalencia}
-\end{figure}
+Uma vez que tal estrutura esteja construída, para descobrir todos os recursos equivalentes a quaisquer classes presentes na árvore, basta tomar a subárvore cuja raiz é o elemento ao qual deseja-se obter seus equivalentes. Quanto mais próximo da raíz, mais genérico será o recurso, e à medida que se aproxima das folhas da árvore, mais específico será o recurso. Tomando o exemplo da figura~\ref{fig:arvoreDeRecursos} e caso seja necessário oferecer todos os recursos equivalentes à classe \emph{Clickable}. Ao se colocar tal classe como raiz de sua subárvore, torna-se fácil perceber que as classes \emph{Joystick}, \emph{Trackball}, \emph{Mouse} e \emph{TouchScreen} são suas equivalentes. A figura~\ref{fig:arvoreDeRecursos} mostra ainda situações de herança múltipla, em que \emph{Mouse} e \emph{TouchScreen}, além de possuírem os serviços da classe \emph{Clickable}, possuem também serviços da classe \emph{Scrollable}. A definição de novos recursos deve respeitar a interface da classe que foi herdada. Essa condição já é garantida pela utilização de herança de interfaces Java.
