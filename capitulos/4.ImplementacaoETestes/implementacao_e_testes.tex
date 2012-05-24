@@ -3,4 +3,25 @@
 Como visto no capítulo~\ref{cap:proposta}, a classificação de recursos, além de facilitar o desenvolvimento de novos \emph{drivers}, possibilita a escolha de recursos equivalentes e adiciona flexibilidade ao \emph{smart space}. Para demonstrar essas vantagens, será mostrado na seção X um estudo de caso sobre a classificaçào de recursos na DSOA.
 
 \input{capitulos/4.ImplementacaoETestes/hydra}
+
+Desenvolvida com a capacidade de sondar o \emph{smart space} em busca de recursos e serviços, a Hydra é uma aplicação capaz de oferecer acesso remoto, distribuido e desagregado dos recursos de entrada e saída dos dispositivos. Sua função é permitir que determinado dispositivo possa disponibilizar seus recursos para utilização por parte de outros aparelhos presentes no ambiente. Seu processo de comunicação com os dispositivos é intermediado pelo uOs, que abstrai a complexidade do processo. Dessa forma, faz-se necessária a utilização de \emph{drivers} que mapeiem os recursos existentes no ambiente de tal forma a manter a compatibilidade com a DSOA.
+
+\begin{comment}
+A Hydra consiste em uma aplicação construída com o objetivo de explorar a forma como o ambiente é decomposto em recursos e serviços para possibilitar uma forma desagregada de acesso a recursos de entrada e saída dos dispositivos. Seu objetivo é permitir que um determinado dispositivo tenha seus recursos de entrada e saída redirecionados para outros dispositivos, repassando a estes o controle de sua operação.
+
+A Hydra, trabalhando sobre o middleware uOS, percebe o ambiente como um conjunto
+de recursos presentes. A comunicação entre a Hydra os recursos ocorre com intermédio do
+uOS, abstraindo tanto da Hydra quando dos drivers o outro ponto de comunicação. Para
+os drivers, não importa para quem estão sendo prestados os serviços, e cabe à aplicação
+a escolha entre os recursos do ambiente.
+
+Por trabalhar com os conceitos da DSOA (Seção 3.1), a Hydra vê os recursos do
+ambiente de forma transparente, e pode fazer uso de qualquer recurso compatível com as
+interfaces por ele esperadas e permite que outros dispositivos utilizem os mesmos recursos
+do ambiente.
+
+A aplicação Hydra se propõe a reconhecer determinados drivers e redirecionar seus
+serviços corretamente.
+\end{comment}
+
 \input{capitulos/4.ImplementacaoETestes/os_prototipos}
