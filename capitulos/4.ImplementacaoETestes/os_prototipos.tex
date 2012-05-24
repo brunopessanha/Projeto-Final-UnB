@@ -1,4 +1,131 @@
 \section{Os protótipos}
 \label{sec:osPrototipos}
 
-A fim de se demonstrar a flexibilidade adicionada pela classificação de recursos, foram construídas duas aplicações para \emph{smart phones} Android. Uma aplicação implementa um recurso do tipo \emph{Clickable}, que por sua vez é equivalente ao tipo básico \emph{Pointer} e a segunda implementa um recurso do tipo \emph{MouseDriver} equivalente aos recursos \emph{Clickable} e \emph{Scrollable}, ambos equivalentes ao tipo básico \emph{Pointer}.
+A fim de se demonstrar a flexibilidade adicionada pela classificação de recursos, foram construídas duas aplicações para \emph{smart phones} Android que utilizam da tela sensível ao toque para implementar um recurso de \emph{mouse} integradas com a \emph{Hydra}. Uma aplicação implementa um recurso do tipo \emph{Clickable}, equivalente ao tipo básico \emph{Pointer}. A segunda implementa um recurso equivalente aos recursos \emph{Clickable} e \emph{Scrollable}, ambos equivalentes ao tipo básico \emph{Pointer}. Dessa forma, obteve-se dois recursos de \emph{Mouse}, sendo que um possui apenas serviços de \emph{click} além da movimentação do ponteiro do mouse e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}. 
+
+O recurso \emph{Clickable} possui a seguinte interface:
+
+\begin{itemize}
+	
+	\item Nome do Recurso: \emph{Clickable};
+
+	\item Serviços:
+		
+		\begin{itemize}
+			
+			\item ``\emph{registerListener}'': Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual deseja ser notificado.
+
+			\item ``\emph{unregisterListener}'': Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual não deseja mais ser notificado.
+
+			\item ``\emph{move}'': Serviço assíncrono herdado do recurso equivalente \emph{Pointer} Possui dois parâmetros definidos da seguinte forma:
+
+				\begin{itemize}
+					\item ``\emph{axisX}'': parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo X a posição do ponteiro do \emph{mouse} foi alterada.
+
+					\item ``\emph{axisY}'': parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo Y a posição do ponteiro do \emph{mouse} foi alterada.
+				\end{itemize}
+			
+			\item ``\emph{buttonPressed}'': Serviço assíncrono que informa que um botão foi pressionado. Possui um parâmetro definido da seguinte forma:
+
+				\begin{itemize}
+					\item ``\emph{button}'': parâmetro inteiro obrigatório que informa o código do botão pressionado.
+				\end{itemize}
+			
+			\item ``\emph{buttonReleased}'': Serviço assíncrono que informa que um botão foi pressionado. Possui um parâmetro definido da seguinte forma:
+
+				\begin{itemize}
+					\item ``\emph{button}'': parâmetro inteiro obrigatório que informa o código do botão que foi liberado após ter sido pressionado.
+				\end{itemize}
+
+		\end{itemize}
+\end{itemize}
+
+Já o recurso \emph{Scrollable} possui a seguinte interface:
+
+\begin{itemize}
+	
+	\item Nome do Recurso: \emph{Scrollable};
+
+	\item Serviços:
+		
+		\begin{itemize}
+			
+			\item ``\emph{registerListener}'': Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual deseja ser notificado.
+
+			\item ``\emph{unregisterListener}'': Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual não deseja mais ser notificado.
+
+			\item ``\emph{move}'': Serviço assíncrono herdado do recurso equivalente \emph{Pointer} Possui dois parâmetros definidos da seguinte forma:
+
+				\begin{itemize}
+					\item ``\emph{axisX}'': parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo X a posição do ponteiro do \emph{mouse} foi alterada.
+
+					\item ``\emph{axisY}'': parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo Y a posição do ponteiro do \emph{mouse} foi alterada.
+				\end{itemize}
+			
+			\item ``\emph{scroll}'': Serviço assíncrono que informa que um botão foi pressionado. Possui um parâmetro definido da seguinte forma:
+
+				\begin{itemize}
+					\item ``\emph{distance}'': parâmetro inteiro obrigatório que informa a quantidade de unidades que uma barra de rolagem foi movimentada.
+				\end{itemize}
+
+		\end{itemize}
+\end{itemize}
+
+Para implementação dos dois \emph{drivers} foi utilizada a versão JSE do \emph{uOS}, a listagem~\ref{notificacoesDeEventos} mostra como os dispositivos registrados são notificados pelos eventos da implementação do recurso de \emph{Mouse} com serviços de \emph{move}, \emph{click} e \emph{scroll}.
+
+\lstset{caption={Notificações de eventos},label=notificacoesDeEventos, language=Java}
+\begin{lstlisting}[frame=single]
+	@Override
+	public void move(int axisX, int axisY) {
+		Notify notify = new Notify(MOVE_EVENT)
+			.addParameter(AXIS_X, String.valueOf(axisX))
+			.addParameter(AXIS_Y, String.valueOf(axisY));
+		
+        sendEvent(notify);
+	}
+    
+	@Override
+	public void scroll(int distance) {
+		Notify notify = new Notify(SCROLL_EVENT)
+			.addParameter(DISTANCE, String.valueOf(distance));
+	
+	    sendEvent(notify);	
+	}
+
+	@Override
+	public void buttonPressed(int button) {
+		raiseButtonEvent(button, BUTTON_PRESSED_EVENT);
+	}
+
+	@Override
+	public void buttonReleased(int button) {
+		raiseButtonEvent(button, BUTTON_RELEASED_EVENT);
+	}
+
+	private void raiseButtonEvent(Integer button, String event) {
+		
+		Notify notify = new Notify(event)
+			.addParameter(Mouse.BUTTON, button.toString());
+
+        sendEvent(notify);
+	}
+
+	private void sendEvent(Notify notify) {
+		
+		notify.setDriver(Mouse.DRIVER_NAME);
+	    notify.setInstanceId(instanceId);
+		
+		for (int i = 0 ; i < listenerDevices.size(); i++){
+	        UpNetworkInterface uni = 
+	        		(UpNetworkInterface) listenerDevices.get(i);
+	        UpDevice device = new UpDevice("Anonymous");
+	        device.addNetworkInterface(uni.getNetworkAddress(), 
+	        		uni.getNetType());
+	        try {
+	            this.gateway.sendEventNotify(notify, device);
+	        } catch (NotifyException e) {
+	        	Log.e("MOUSE DRIVER", e.getMessage());
+	        }
+	    }
+	}
+\end{lstlisting}
