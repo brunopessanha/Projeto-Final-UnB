@@ -1,7 +1,7 @@
 \section{Os protótipos}
 \label{sec:osPrototipos}
 
-A fim de se demonstrar a flexibilidade adicionada pela classificação de recursos, foram construídas duas aplicações para \emph{smart phones} Android que utilizam da tela sensível ao toque para implementar um recurso de \emph{mouse} integradas com a \emph{Hydra}. Uma aplicação implementa um recurso do tipo \emph{Clickable}, equivalente ao tipo básico \emph{Pointer}. A segunda implementa um recurso equivalente aos recursos \emph{Clickable} e \emph{Scrollable}, ambos equivalentes ao tipo básico \emph{Pointer}. Dessa forma, obteve-se dois recursos de \emph{Mouse}, sendo que um possui apenas serviços de \emph{click} além da movimentação do ponteiro do mouse e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}. 
+A fim de se demonstrar a flexibilidade adicionada pela classificação de recursos, foram construídas duas aplicações para \emph{smart phones} Android que utilizam da tela sensível ao toque para implementar um recurso de \emph{mouse} integradas com a \emph{Hydra}. Uma das aplicações implementa um recurso do tipo \emph{Clickable}, equivalente ao tipo básico \emph{Pointer}. A outra implementa um recurso equivalente aos recursos \emph{Clickable} e \emph{Scrollable}, ambos equivalentes ao tipo básico \emph{Pointer}. Dessa forma, obteve-se dois recursos de \emph{Mouse}, sendo que um possui apenas serviços de \emph{click} além da movimentação do ponteiro do mouse e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}. 
 
 O recurso \emph{Clickable} possui a seguinte interface:
 
@@ -17,7 +17,7 @@ O recurso \emph{Clickable} possui a seguinte interface:
 
 			\item ``\emph{unregisterListener}'': Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual não deseja mais ser notificado.
 
-			\item ``\emph{move}'': Serviço assíncrono herdado do recurso equivalente \emph{Pointer} Possui dois parâmetros definidos da seguinte forma:
+			\item ``\emph{move}'': Serviço assíncrono herdado do recurso equivalente \emph{Pointer}. Possui dois parâmetros definidos da seguinte forma:
 
 				\begin{itemize}
 					\item ``\emph{axisX}'': parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo X a posição do ponteiro do \emph{mouse} foi alterada.
@@ -31,7 +31,7 @@ O recurso \emph{Clickable} possui a seguinte interface:
 					\item ``\emph{button}'': parâmetro inteiro obrigatório que informa o código do botão pressionado.
 				\end{itemize}
 			
-			\item ``\emph{buttonReleased}'': Serviço assíncrono que informa que um botão foi pressionado. Possui um parâmetro definido da seguinte forma:
+			\item ``\emph{buttonReleased}'': Serviço assíncrono que informa que um botão que fora pressionado foi liberado. Possui um parâmetro definido da seguinte forma:
 
 				\begin{itemize}
 					\item ``\emph{button}'': parâmetro inteiro obrigatório que informa o código do botão que foi liberado após ter sido pressionado.
@@ -71,7 +71,7 @@ Já o recurso \emph{Scrollable} possui a seguinte interface:
 		\end{itemize}
 \end{itemize}
 
-Para implementação dos dois \emph{drivers} foi utilizada a versão JSE do \emph{uOS}, a listagem~\ref{notificacoesDeEventos} mostra como os dispositivos registrados são notificados pelos eventos da implementação do recurso de \emph{Mouse} com serviços de \emph{move}, \emph{click} e \emph{scroll}.
+Para implementação dos dois \emph{drivers} foi utilizada a versão JSE do \emph{uOS}, a listagem~\ref{notificacoesDeEventos} mostra como é feito o envio de notificação de eventos de \emph{move}, \emph{click} e \emph{scroll}.
 
 \lstset{caption={Notificações de eventos},label=notificacoesDeEventos, language=Java}
 \begin{lstlisting}[frame=single]
@@ -127,5 +127,38 @@ Para implementação dos dois \emph{drivers} foi utilizada a versão JSE do \emp
 	        	Log.e("MOUSE DRIVER", e.getMessage());
 	        }
 	    }
+	}
+\end{lstlisting}
+
+Do lado da aplicação \emph{Hydra}, alteramos a classe \emph{MouseEventsListener} para utilizar as novas interfaces. A listagem~\ref{registroNotificacoes} mostra como é feito cada registro de notificação a um evento. A listagem mostra ainda que a \emph{Hydra} se registra pra serviços de \emph{click}, \emph{move}, \emph{scroll}, mas a listagem~\ref{listDrivers} mostra que a aplicação procura apenas por recursos \emph{Clickable}. Ou seja, para cumprir sua função e funcionar de cliente para um recurso de \emph{mouse}, a \emph{Hydra} precisa apenas dos serviços de \emph{click} e \emph{move} e por isso procura apenas pelo recurso que provê esses serviços, embora também tente subscrever às notificaçòes de eventos de \emph{scroll}, ela funciona normalmente sem este serviço.
+ 
+
+\lstset{caption={Registro de Notificações de eventos},label=registroNotificacoes, language=Java}
+\begin{lstlisting}[frame=single]
+	public void registerForDriver(DriverData driverData)
+		throws NotifyException {
+		gateway.registerForEvent(this, driverData.getDevice(),
+				driverData.getDriver().getName(),
+				driverData.getInstanceID(), 
+				Pointer.MOVE_EVENT);
+		gateway.registerForEvent(this, driverData.getDevice(),
+				driverData.getDriver().getName(),
+				driverData.getInstanceID(), 
+				Clickable.BUTTON_PRESSED_EVENT);
+		gateway.registerForEvent(this, driverData.getDevice(),
+				driverData.getDriver().getName(),
+				driverData.getInstanceID(), 
+				Clickable.BUTTON_RELEASED_EVENT);
+		gateway.registerForEvent(this, driverData.getDevice(),
+				driverData.getDriver().getName(),
+				driverData.getInstanceID(), 
+				Scrollable.SCROLL_EVENT);
+	}
+\end{lstlisting}
+
+\lstset{caption={Busca por drivers \emph{Clickable}},label=listDrivers, language=Java}
+\begin{lstlisting}[frame=single]
+	public List<DriverData> getMouseDriversList() {
+		return gateway.getDriverManager().listDrivers(Clickable.DRIVER_NAME, null);
 	}
 \end{lstlisting}
