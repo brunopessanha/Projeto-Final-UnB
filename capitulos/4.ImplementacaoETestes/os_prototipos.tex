@@ -159,6 +159,7 @@ Do lado da aplicação \emph{Hydra}, alteramos a classe \emph{MouseEventsListene
 \lstset{caption={Busca por drivers \emph{Clickable}},label=listDrivers, language=Java}
 \begin{lstlisting}[frame=single]
 	public List<DriverData> getMouseDriversList() {
-		return gateway.getDriverManager().listDrivers(Clickable.DRIVER_NAME, null);
+		return gateway.getDriverManager().
+			listDrivers(Clickable.DRIVER_NAME, null);
 	}
 \end{lstlisting}
