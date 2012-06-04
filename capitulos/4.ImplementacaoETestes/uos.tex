@@ -1,0 +1,18 @@
+\section{\emph{uOS - Ubiquitous OS}}
+
+O \emph{uOS} foi desenvolvido com o objetivo de fornecer uma uma infra-estrutura de software utilizando conceitos de computação ubíqua com foco na adaptabilidade de serviços. Utilizando a arquiteura \emph{DSOA}, o \emph{uOS} é responsável por dar suporte para o desenvolvimento de \emph{drivers} e aplicações. Além disso, o \emph{uOS} utiliza o conjunto de protocolos do \emph{uP} para realizar sua comunicação.
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.4]{imagens/ecossistemaUbiquitos}
+	\caption{Arquitetura do \emph{uOS}.}
+	\label{fig:ecossistemaUbiquitos}
+\end{figure}
+
+A figura~\ref{fig:ecossistemaUbiquitos} mostra a arquitetura do \emph{middleware}, onde os \emph{plugins} se destacam como um componente dentro do \emph{uOS} que, por sua vez, utiliza destes \emph{plugins} para interfacear a comunicação entre aplicações, por meio de \emph{drivers}. No \emph{uOS} foram feitas alterações no \emph{Driver Manager}, \emph{Device Manager}.
+
+No \emph{Driver Manager} foi adicionada uma estrutura em forma de floresta, onde a raiz de cada árvore representa um recurso novo, ou seja que não é equivalente a nenhum outro recurso. Essa estrutura é inicializada juntamente com o \emph{Driver Manager} com cada tipo básico definidos na seção~\ref{sec:tiposBasicos} compondo uma nova raiz da estrutura. Este módulo é responsável por manter as relações de equivalência dos recursos, mantendo a consistência de serviços e interfaces e impedindo que ocorra uma referência circular entre recursos equivalentes. Quando um novo recurso é registrado no \emph{middleware}, após as validações, ele é adicionado na árvore de equivalência correta. Além disso, esse novo recurso é adicionado à uma Ontologia por meio da \emph{uOS-Context API}, um conjunto de interfaces que permite a manipulação estrutural e semântica da Ontologia de Contexto do \emph{uOS}~\cite{ozakisbcup2011}.
+
+Quando um novo recurso a ser registrado é equivalente a pelo menos um recurso desconhecido, o \emph{Driver Manager} não irá registrá-lo em sua árvore de equivalência enquanto não conhecê-lo. Neste caso, o módulo \emph{Device Manager} é responsável por descobrir esse(s) recurso(s). Após conhecer a interface dos recursos, este módulo irá então registrar cada recurso desconhecido para então registrar o novo recurso na árvore de equivalência.
+
+Para que o \emph{Device Manager} possa descobrir a interface de um determinado recurso ele deve procurar o dispositivo que possui este recurso. Dessa forma, o \emph{Device Driver} foi acrescido do serviço \emph{``tellEquivalentDrivers''} que informa a interface de todos os recursos necessários para que o registro no \emph{uOS} possa ocorrer.
