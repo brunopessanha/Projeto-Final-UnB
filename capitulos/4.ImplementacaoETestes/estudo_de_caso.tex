@@ -169,17 +169,21 @@ Do lado da aplicação \emph{Hydra}, alterou-se a classe \emph{MouseEventsListen
 
 \subsection{Os protótipos}
 
+A figura~\ref{fig:printscreen_symbian} mostra o protótipo desenvolvido para Symbian sendo executado em um celular Nokia N95. No centro da tela é mostrado o fator de movimentação para cada movimento no \emph{joystick} do celular, ou seja, quantas unidades do movimento real do cursor do \emph{mouse} representa um movimento no \emph{joystick} do celular. Esse fator de movimentação foi criado, pois a tela do celular é muito menor que outros dispostivos de saída de vídeo. Uma grande limitação do dispositivo utilizado é que seu \emph{joystick} se movimenta apenas em uma direção a cada vez que o botão é pressionado, sempre na vertical ou na horizontal, não permetindo que \emph{mouse} se movimente em diferentes ângulos.
+
+O fator de movimentação não foi implementado na aplicação para Android, pois foi utilizado um dispositivo com tela sensível ao toque que torna mais natural a movimentação do cursor do \emph{mouse} assemelhando-se com o uso de um \emph{touchpad} de \emph{notebook}. Ao se utilizar a tela sensível ao toque obteve-se uma grande vantagem em relação à implementação anterior, pois é possível movimentar o cursor do \emph{mouse} em qualquer direção. A figura~\ref{fig:printscreen_android} mostra a tela do protótipo utilizado.
+
 \begin{figure}[h]
 	\centering
 	\begin{minipage}[t]{0.45\linewidth}
-		\includegraphics[width=\linewidth]{imagens/printscreen_android}
-		\caption{Aqui ficará a imagem do protótipo do Lucas Almeida.}
-		\label{fig:printscreen_android}
+		\includegraphics[width=\linewidth]{imagens/printscreen_n95}
+		\caption{Printscreen do protótipo desenvolvido para Symbian.}
+		\label{fig:printscreen_symbian}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.45\linewidth}
 		\includegraphics[width=\linewidth]{imagens/printscreen_android}
 		\caption{Printscreen do protótipo desenvolvido para Android. O círculo verde representa a posição do dedo no momento da captura da imagem.}
-		\label{fig:printscreen_android2}
+		\label{fig:printscreen_android}
 	\end{minipage}
 \end{figure}
