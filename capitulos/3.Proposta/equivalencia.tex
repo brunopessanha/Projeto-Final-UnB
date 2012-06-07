@@ -83,6 +83,7 @@ Desta forma a relação de equivalência é:
 \end{itemize}
 
 \subsection{Árvore de Recursos}
+\label{subsec:arvoreDeRecursos}
 
 Para que fosse possível validar as relações de equivalências propostas, fez-se necessária a criação de uma estrutura capaz de relacionar os tipos básicos com os seus subtipos. Tal estrutura deveria permitir uma boa organização lógica dos tipos relacionados e facilitar a navegabilidade entre eles. Dessa forma, criou-se uma representação em que cada um dos tipos básicos (seção~\ref{sec:tiposBasicos}) servirá de raiz para uma árvore de recursos, ou seja, existirão diversas árvores, cada qual com outros tipos agrupados por funcionalidades formando um grafo desconexo. Dessa forma, toda definição de \emph{driver} ou declara explicitamente a quais outros \emph{drivers} ele é equivalente ou não declara nenhum e se torna uma nova raiz. Para tornar tal estrutura mais clara, considere a figura~\ref{fig:arvoreDeRecursos}. Observe a hierarquia formada a partir do tipo básico \emph{Pointer}. Ele é responsável por agrupar todas as classes de recursos capazes de prover serviços relacionados aos apontadores existentes, por exemplo, \emph{click} e \emph{scroll}. O mesmo acontece com os demais tipos básicos.
 
