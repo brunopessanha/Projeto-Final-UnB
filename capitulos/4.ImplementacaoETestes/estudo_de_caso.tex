@@ -134,7 +134,7 @@ Para implementação dos dois \emph{drivers} foi utilizada a versão JSE do \emp
 \end{lstlisting}
 \end{comment}
 
-Do lado da aplicação \emph{Hydra}, alterou-se a classe \emph{MouseEventsListener} para utilizar as novas interfaces. Tal classe se registra pra os serviços de \emph{click}, \emph{move} e \emph{scroll}, mas busca apenas por recursos \emph{Clickable}. Ou seja, para cumprir sua função e assumir papel de cliente para um recurso de \emph{mouse}, a \emph{Hydra} precisa apenas dos serviços de \emph{click} e \emph{move} e por isso procura somente pelo recurso que provê esses serviços, embora também tente utilizar as notificaçòes de eventos de \emph{scroll}, ela funciona normalmente sem este serviço.
+Do lado da aplicação \emph{Hydra}, alterou-se a classe \emph{MouseEventsListener} para utilizar as novas interfaces. Tal classe se registra pra os serviços de \emph{click}, \emph{move} e \emph{scroll}, mas busca apenas por recursos \emph{Clickable}. Ou seja, para cumprir sua função e assumir papel de cliente para um recurso de \emph{mouse}, a \emph{Hydra} precisa apenas dos serviços de \emph{click} e \emph{move} e por isso procura somente pelo recurso que provê esses serviços. Apesar de procurar essencialmente por esses dois recursos, caso um recurso de \emph{scroll} esteja disponível, a \emph{Hydra} está preparada para se registrar, receber e tratar notificações desse tipo de evento.
  
 \begin{comment}
 \lstset{caption={Registro de Notificações de eventos},label=registroNotificacoes, language=Java}
