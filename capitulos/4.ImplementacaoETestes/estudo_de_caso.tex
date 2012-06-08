@@ -1,9 +1,11 @@
 \section{Estudo de caso}
 \label{sec:estudoDeCaso}
 
-A fim de se demonstrar a corretude da proposta, construiu-se duas aplicações para \emph{smart phones} Android (figura~\ref{fig:printscreen_android}) e integradas com a \emph{Hydra} que utilizam a tela sensível ao toque para implementar um recurso de \emph{mouse}. A primeira implementa um recurso do tipo \emph{Clickable}, equivalente ao tipo básico \emph{Pointer}, enquanto que a segunda implementa um recurso equivalente aos recursos \emph{Clickable} e \emph{Scrollable}, sendo que esta última também é equivalente ao tipo básico \emph{Pointer}. Portanto, obteve-se dois recursos de \emph{Mouse}, de forma que um possui apenas o serviço de \emph{click}, além da movimentação do ponteiro do mouse e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}. 
+A fim de se demonstrar a corretude da proposta, construiu-se duas aplicações para \emph{smart phones} Android (figura~\ref{fig:printscreen_android}) que utilizam a tela sensível ao toque para implementar um recurso de \emph{mouse}. A primeira implementa um recurso do tipo \emph{Clickable}, equivalente ao tipo básico \emph{Pointer}, enquanto que a segunda implementa um recurso equivalente aos recursos \emph{Clickable} e \emph{Scrollable}, sendo que esta última também é equivalente ao tipo básico \emph{Pointer}. Portanto, obteve-se dois recursos de \emph{Mouse}, de forma que um possui apenas o serviço de \emph{click}, além da movimentação do ponteiro do mouse e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}.
 
-O recurso \emph{Clickable} possui a seguinte interface:
+Ambas a aplicações são integradas com a \emph{Hydra}, que é uma aplicação desenvolvida com a capacidade de sondar o \emph{smart space} em busca de recursos e serviços e redireciona-los de forma a oferecer acesso remoto, distribuido e desagregado dos recursos de entrada e saída dos dispositivos. Sua função é permitir que determinado dispositivo disponibilize seus recursos para utilização por parte de outros aparelhos presentes no ambiente, repassando a estes o controle da operação do recurso requisitado. Seu processo de comunicação com os dispositivos é intermediado pelo \emph{uOS}, que abstrai a complexidade do processo. Dessa forma, faz-se necessária a utilização de \emph{drivers} que mapeiem os recursos existentes no ambiente de tal forma a manter a compatibilidade com a DSOA~\cite{lucas2011}. Seguem abaixo as interfaces dos \emph{drivers} utilizados.
+
+Recurso \emph{Clickable}:
 
 \begin{itemize}
 	
@@ -40,7 +42,7 @@ O recurso \emph{Clickable} possui a seguinte interface:
 		\end{itemize}
 \end{itemize}
 
-Já o recurso \emph{Scrollable} possui a seguinte interface:
+Recurso \emph{Scrollable}:
 
 \begin{itemize}
 	
