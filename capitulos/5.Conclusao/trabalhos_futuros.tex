@@ -1,10 +1,12 @@
 \section{Trabalhos futuros}
 
+No decorrer deste trabalho, algumas funcionalidades e melhorias foram percebidas, contudo nem todas puderam ser implementadas. Algumas por falta de tempo hábil, outras porque parte das ferramentas necessárias ainda não estavam finalizadas; é o caso da ontologia, que foi finalizada na fase final da implementação da árvore de recursos.
+
+Abaixo, seguem as funcionalidades e melhorias levantadas:
 
 \begin{enumerate}
-	\item Possibilidade de criação de mecanismo de \emph{failover} que possibilita que a adaptabilidade de serviços seja transparente ao usuário. Atualmente quando um recurso se torna indisponível, o usuário deve selecionar qual seria um outro recurso equivalente que pudesse continuar provendo aquele serviço;
-	\item Inclusão de inteligência artifical para escolha automática de melhor recurso disponível.
-		- Utilizando para a escolha dados de QoS, confiança, segurança, etc;
+	\item Criação de um mecanismo de \emph{failover}\footnote{Procedimento que permite a troca automática de recursos equivalentes, ou seja, sem a necessidade de interação com o usuário.} que possibilita que a adaptabilidade de serviços seja transparente ao usuário. Atualmente quando um recurso se torna indisponível, o usuário deve selecionar um outro recurso equivalente que possa continuar provendo o mesmo serviço;
+	\item Inclusão de inteligência artifical que permita a escolha automática do melhor recurso disponível com base nos dados de QoS, confiança, segurança, etc;
 	\item Utilizar a ontologia em vez da árvore de recursos para determinar equivalências;
-	\item Hydra redirecionar consulta feita por mouse utilizando a ontologia.
+	\item Permitir a Hydra redirecionar, utilizando a ontologia, uma consulta feita por mouse.
 \end{enumerate}
