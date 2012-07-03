@@ -1,7 +1,20 @@
 \chapter{Conclusão e trabalhos futuros}
 
 A quantidade de dispositivos inteligentes disponíveis para consumo têm aumentado consideravelmente com o passar dos anos. Inúmeros aparelhos têm se tornado essenciais no dia-a-dia das pessoas, e a tendência é que essa dependência aumente gradativamente. Diminutos eletrônicos conectados à internet têm reduzido as distâncias e possibilitado novos tipos de interações nunca antes imaginadas. Atualmente, utilizando um único \emph{smartphone}, é possivel acessar o seu \emph{site} preferido, consultar as ações da bolsa de valores e a previsão do tempo, mudar o canal da sua televisão, ligar a luz do seu quarto, obter rotas urbanas, dentre várias outras tarefas.
+\begin{comment}
 É nesse ambiente cada vez mais ubíquo que a classificação de recursos se insere: ambientes com dispositivos heterogêneos (móveis ou não) interagindo entre si, trocando informações ou utilizando capacidades características de cada aparelho.
+\end{comment}
 
-\input{capitulos/5.Conclusao/contribuicoes}
+Com recursos cada vez mais capazes e variados, faz-se necessária uma padronização dos mesmos para se atingir o objetivo da ubicomp. É nessa tarefa que a DSOA se concentra, porém apenas com a classificação de recursos este acesso será flexível para abranger essa heterogeneidade de opções.
+
+Como as principais contribuições deste trabalho, pode-se listar:
+
+\begin{itemize}
+	\item Possibilidade do usuário saber quais são os recursos equivalentes disponíveis no ambiente, coloborando para melhorar a adaptabilidade de serviços do \emph{uOS}. Antes deste trabalho os recursos não tinham relação entre sí, dificultando a escolha por parte do usuário e impossibilitando que o \emph{middleware} pudesse tomar esta decisão sem consultar o usuário;
+	\item Definição das interfaces de recursos básicos que auxiliam o desenvolvimento de novos drivers. Além disso, essa classificação possui a capacidade de ser extendida com a criação de novas interfaces de novos recursos que não se encaixem em nenhuma das classificações;
+	\item Alimentação da ontologia com os recursos que estiveram no ambiente.
+\end{itemize}
+
+Tais contribuições possibilitam o desenvolvimento de novas funcionalidades que serão detalhadas na seção~\ref{sec:trabalhosFuturos}.
+
 \input{capitulos/5.Conclusao/trabalhos_futuros}
