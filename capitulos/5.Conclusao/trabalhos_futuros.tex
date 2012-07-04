@@ -1,10 +1,9 @@
 \section{Trabalhos futuros}
 \label{sec:trabalhosFuturos}
 
-No decorrer deste trabalho, algumas funcionalidades e melhorias foram percebidas. A partir deste trabalho será possível criar novas funcionalidades que irão tornar o \emph{uOS} uma plataforma mais completa. A que mais se destaca é a possibilidade de escolha automática do melhor recurso disponível, tornando essa tarefa independente da ação do usuário.  Essa escolha automática poderá se utilizar de heurísticas e regras de produção pra definir qual será o melhor recurso equivalente que irá substituir o serviço que se tornou indisponível. A escolha poderá ser realizada baseando-se em dados 
-de QoS, confiança, segurança, etc. Dessa forma, o usuário não precisará se preocupar em definir qual será o melhor recurso disponível no ambiente para que então possa tomar uma decisão.
+Com a conclusão deste trabalho, tornou-se possível adicionar novas funcionalidades que poderão tornar o \emph{uOS} uma plataforma mais robusta. Pode-se, por exemplo, otimizar o processo da adaptabilidade de serviços, desenvolvendo-se um mecanismo de escolha automática de recursos de forma a retornar o melhor recurso disponivel para cada ocasião. Para tal, cada algoritmo de seleção poderá valer-se de heurísticas, regras de produção, ontologias, QoS, níveis de confiança ou segurança, etc. Com isso, aproximar-se-á o \emph{uOS} de um sistema cada vez mais ubíquo (exigindo menos interação com o usuário) e tolerante a falhas, pois caso um serviço torne-se indisponível, um novo recurso provedor poderá ser automaticamente selecionado para substituição.
 
-Atualmente, caso um serviço se torne indisponível, caberá ao usuário escolher um novo recurso provedor daquele serviço.
-Entretanto, a equivalência de recursos permite a criação de um mecanismo de recuperação de falhas que possibilita que a adaptabilidade de serviços ocorra de forma transparente ao usuário.
+Outro fator a ser observado, é que a definição de tipos básicos possibilita a criação de uma biblioteca de \emph{drivers}, que devem ser utilizados no desenvolvimento de novos tipos. Para tal, basta estender um tipo apropriado e adicionar os serviços necessários para o seu correto funcionamento. Dessa forma, obtêm-se uma biblioteca expansível em que cada \emph{driver} desenvolvido pode ser aproveitado na criação de \emph{drivers} subsequentes.
+
 
 Como o \emph{uOS} alimenta uma ontologia sempre que descobre novos recursos no ambiente, ao se utilizar a ontologia para determinar a equivalência entre recursos é possível agregar relações adicionadas pelas aplicações para descobrir novas equivalências em tempo de execução, expandindo o conhecimento sobre o ambiente.
