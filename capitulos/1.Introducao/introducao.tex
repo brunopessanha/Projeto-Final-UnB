@@ -1,12 +1,5 @@
 \chapter{Introdução}
 
-\begin{figure}[ht]
-	\center
-	\includegraphics[scale=0.7]{imagens/salaUbiqua}
-	\caption{Exemplo de ambiente inteligente.}
-	\label{fig:ambienteInteligente}
-\end{figure}
-
 A computação ubíqua caracteriza-se por representar ambientes computacionais responsáveis por realizar determinadas tarefas predeterminadas de tal forma que certas premissas sejam obedecidas. Tais ambientes são normalmente compostos por um \emph{middleware} e diversas outras aplicações externas. Ao primeiro, cabe tratar e abstrair os detalhes das camadas inferiores e orquestrar as interações entre os diversos dispositivos espalhados pelo ambiente, enquanto que as aplicações devem tratar as interações realizadas junto aos usuários. É necessário que os componentes desse tipo de sistema trabalhem harmonicamente a fim de evitar, sempre que possível, toda e qualquer intervenção humana. A esta característica dá-se o nome de invisibilidade ~\cite{gomes2007, weiser1993, weiser1999}. Faz-se necessário, inclusive, que tais sistemas sejam pró-ativos ~\cite{gomes2007, buzeto2010} e consigam determinar, com a ajuda de informações de contexto previamente coletadas, quais as melhores decisões a serem tomadas em determinados instantes. Deve-se considerar, ainda, a mobilidade ~\cite{gomes2007, buzeto2010, weiser1999} dos aparelhos presentes e regidos dentro do ambiente em questão, a saber, o \emph{smart space}.
 
 Ambientes inteligentes têm se tornado cada vez mais comuns no dia-a-dia das pessoas, principalmente com a inserção dos \emph{smartphones} no mercado. São dezenas de novos dispositivos lançados mensalmente, cada um com suas particularidades de \emph{software} e \emph{hardware}. Tal variedade, se boa por um lado, por outro dificulta o processo de interação entre os diversos aparelhos das muitas fabricantes existentes. Dessa forma, faz-se necessária a criação de um mecanismo que permita abstrair os detalhes inerentes de cada equipamento, permitindo uma intercambialidade de capacidades por parte dos dispositivos (sejam eles \emph{smartphones}, \emph{tablets}, \emph{notebooks}), característica conhecida por adaptabilidade de serviços.
@@ -14,6 +7,14 @@ Ambientes inteligentes têm se tornado cada vez mais comuns no dia-a-dia das pes
 Uma vez que tais dispositivos consigam se comunicar e utilizar capacidades alheias às suas próprias, torna-se interessante que haja uma classificação capaz de identificar quais recursos são equivalentes e substituíveis, a fim de possibilitar uma substituição de certo dispositivo sempre que necessário.
 
 \begin{comment}
+
+\begin{figure}[ht]
+	\center
+	\includegraphics[scale=0.7]{imagens/salaUbiqua}
+	\caption{Exemplo de ambiente inteligente.}
+	\label{fig:ambienteInteligente}
+\end{figure}
+
 Em um ambiente inteligente se faz necessária a adaptabilidade de serviços de forma transparente para os clientes, ou seja, caso um serviço não esteja mais sendo provido por determinado dispositivo, o \emph{smart space} deve identificar esta falha e procurar um outro servidor ~\cite{gomes2007, passarinho2008, paranhos2009}.
 
 \section{DSOA}
@@ -30,5 +31,4 @@ O objetivo deste trabalho é definir uma classificação de recursos e a partir 
 O presente trabalho encontra-se organizado da seguinte maneira: o capítulo 2 fundamenta os conceitos que serão utilizados neste trabalho e apresenta uma visão geral do projeto UbiquitOS, a arquitetura DSOA e o conjunto de protocolos \emph{uP}. O capítulo seguinte descreve a importância da classificação de recursos, bem como as diferentes maneiras de se representa-la. Lista também os principais padrões conhecidos e projetos que utilizam uma classificação para auxilio de suas atividades.
 \end{comment}
 
-Este trabalho está organizado da seguinte maneira: O capítulo 2 fundamenta os conceitos que serão utilizados neste trabalho. É iniciado apresentando uma visão geral do projeto UbiquitOS, explicando os principais conceitos da DSOA e mostrando em detalhes os protocolos que constituem o uP. A seção seguinte mostra a importância da classificação de recursos bem como as diferentes maneiras de se classificar e representá-la. Ainda na segunda seção, serão apresentados alguns dos principais padrões conhecidos e projetos de Computação Ubíqua que utilizam uma classificação de recursos ou dispositivos para auxiliar em suas atividades. A seção e o capítulo são finalizados realizando um comparativo entre as diferentes classificações apresentadas. No capítulo 3 será apresentada a
-proposta de classificação deste trabalho e os impactos na arquitetura DSOA/uOS e em seus protocolos.
+Este trabalho está organizado da seguinte maneira: O capítulo 2 fundamenta os conceitos que serão utilizados neste trabalho. É iniciado apresentando uma visão geral do projeto UbiquitOS, explicando os principais conceitos da DSOA e mostrando em detalhes os protocolos que constituem o uP. A seção seguinte mostra a importância da classificação de recursos bem como as diferentes maneiras de se classificar e representá-la. Ainda na segunda seção, serão apresentados alguns dos principais padrões conhecidos e projetos de Computação Ubíqua que utilizam uma classificação de recursos ou dispositivos para auxiliar em suas atividades. A seção e o capítulo são finalizados realizando um comparativo entre as diferentes classificações mostradas. No capítulo 3 será apresentada a classificação de recursos proposta por este trabalho. Na primeira seção serão mostrados os tipos básicos definidos pela classificação, o identificador e seus serviços associados. A seção seguinte apresenta o conceito da equivalência de recursos e como é estabelecida uma relação de equivalência entre recursos. O capítulo é concluído detalhando os impactos dessa classificação na arquitetura DSOA/\emph{uOS}. O capítulo 4 é iniciado detalhando como foi realizada a implementação da classificação de recursos no \emph{middleware} \emph{uOS} e termina mostrando o estudo de caso realizado para demonstrar um bom uso da classificação de recursos. No capítulo 5 é apresentada a conclusão deste trabalho e trabalhos que poderão ser realizados a partir da contribuição deste.
