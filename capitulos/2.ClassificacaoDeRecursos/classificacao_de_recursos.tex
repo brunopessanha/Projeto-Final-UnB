@@ -102,7 +102,7 @@ A classificação de recursos é uma questão bem estabelecida na academia e no 
 \section{Trabalhos Correlatos}
 \label{sec:correlatos}
 
-A classificação de recursos está presente em diversos trabalhos de ubicomp, nos quais fica muito clara a sua relação com o foco de cada projeto. A seguir apresentamos como alguns projetos tratam essa classificação dentro de seus escopos.
+A classificação de recursos está presente em diversos trabalhos de ubicomp, nos quais fica muito clara a sua relação com o foco de cada projeto. A seguir é apresentado como alguns projetos tratam essa classificação dentro de seus escopos.
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/gaia}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/amigo}
@@ -111,11 +111,10 @@ A classificação de recursos está presente em diversos trabalhos de ubicomp, n
 
 \section{Comparativo}
 \label{sec:comparativo}
-%Apresentar um Comparativo entre as estratégias e conclusões que embasem a definição da proposição de vcs no capítulo seguinte.
 
-Nesta seção faremos um comparativo dos padrões mostrados de forma a embasar a classificação de recursos que será proposta no próximo capítulo. Observando os padrões descritos podes-se analisar três características principais: suas formas de classificação, a representação utilizada e os tipos básicos definidos. 
+Nesta seção é apresentado um comparativo dos padrões descritos no início deste capítulo de forma a embasar a classificação de recursos que será proposta a seguir. Observando os padrões descritos pode-se analisar três características principais: forma de classificação, representação utilizada e tipos básicos definidos. 
 
-A partir da tabela~\ref{tab:comparativo}, pode-se observar que os padrões para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não utilizou-se uma forma dinâmica para representar essa classificação. A maioria dos padrões faz uso de uma classificação relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja um padrão independente de plataforma, tem a desvantagem de possuir uma relevante redundância de dados na sua formatação. Apesar da classificação de alguns padrões possuir a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação. Caso do UPnP. O USB possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
+A partir da Tabela~\ref{tab:comparativo}, pode-se observar que os padrões para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não utilizam uma forma dinâmica para representar essa classificação. A maioria dos padrões faz uso de uma classificação relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja um padrão independente de plataforma, tem a desvantagem de possuir uma considerável redundância de dados na sua formatação. Apesar da classificação de alguns padrões possuir a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação, como acontece no UPnP. O USB possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
 
 \begin{table}
 	\caption{Comparativo dos padrões.}
@@ -173,4 +172,4 @@ A partir da tabela~\ref{tab:comparativo}, pode-se observar que os padrões para 
 	\label{tab:comparativoClasses}
 \end{table}
 
-A tabela~\ref{tab:comparativoClasses} mostra os principais dispositivos que possuem alguma classe associada nos padrões estudados. Os padrões apresentados foram criados para serem utilizados em ambiente doméstico(casas, salas de estar etc) e corporativo(salas de reunião, universidades etc) e, por esse motivo, possuem semelhanças nos tipos base definidos. O padrão DDL não foi considerado no comparativo de classes devido sua classificação possuir apenas três categorias: sensores, atuadores e dispositivos complexos. Portanto, todos os dispositivos considerados neste comparativo poderiam se encaixar na última categoria. O padrão IEEE 1451 também não foi utilizado no comparativo, pois foi criado para facilitar a comunicação de transdutores, e suas classes não abrangem os dispositivos da tabela. 
+A Tabela~\ref{tab:comparativoClasses} mostra os principais dispositivos que possuem alguma classe associada nos padrões estudados. Estes padrões foram criados para serem utilizados em ambientes domésticos (casas, salas de estar etc) e corporativo (salas de reunião, universidades etc) e, por esse motivo, possuem semelhanças nos tipos base definidos. O padrão DDL não foi considerado no comparativo de classes devido sua classificação possuir apenas três categorias: sensores, atuadores e dispositivos complexos. Portanto, todos os dispositivos considerados neste comparativo poderiam se encaixar na última categoria. O padrão IEEE 1451 também não foi utilizado no comparativo, pois foi criado para facilitar a comunicação de transdutores, e suas classes não abrangem os dispositivos da tabela. 
