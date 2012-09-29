@@ -1,10 +1,10 @@
 \subsection{IEEE 1451}
-O IEEE 1451 se divide em uma família de padrões que foram criados com os objetivos de permitir a capacidade de comunicação entre transdutores(sensores e atuadores) de forma \emph{plug-and-play} por meio de redes com ou sem fio, facilitar a criação de transdutores com inteligência embarcada, simplificar a configuração e manutenção de sistemas, prover comunicação entre transdutores legados, e por fim, habilitar a implementação de transdutores inteligentes e com uso mínimo de memória~\cite{ieee1451journal}.
+O IEEE 1451 se divide em uma família de padrões que foram criados com os objetivos de permitir a capacidade de comunicação entre transdutores (sensores e atuadores) de forma \emph{plug-and-play} por meio de redes com ou sem fio, facilitar a criação de transdutores com inteligência embarcada, simplificar a configuração e manutenção de sistemas, prover comunicação entre transdutores legados, e por fim, habilitar a implementação de transdutores inteligentes e com uso mínimo de memória~\cite{ieee1451journal}.
 
 Um dos padrões da família, o IEEE 1451.1, define um modelo de informação para o que é chamado de\emph{Network Capable Application Processors} (NCAP). Sendo estes compostos  por um modelo de objetos comum e interfaces de componentes da rede de transdutores. Dessa forma, foi desenvolvido um \emph{framework} orientado a objetos que pode ser estendido para facilitar o desenvolvimento de aplicações. Este modelo foi definido da seguinte forma: Um modelo de dados que especifica a forma e o tipo de comunicação, tanto local quanto remota, por meio das interfaces de objetos 1451.1, um modelo de objetos que especifica tipos de componentes de software usados para definir e implementar sistemas e, por fim, modelos de comunicação que definem a sintaxe e semântica das interfaces de software entre redes de comunicação e objetos de aplicação~\cite{ieeeOO1451}~\cite{ieee1451monitoring}.
 
 
-O padrão ~\cite{ieee1451standard} especifica cada classe no modelo definindo as interfaces da classe(por meio de assinaturas e operações) e o comportamento da classe (via texto ou máquinas de estado). Abaixo temos a hierarquia de classes definida pelo padrão:
+O padrão~\cite{ieee1451standard} especifica cada classe no modelo definindo as interfaces da classe (por meio de assinaturas e operações) e o comportamento da classe (via texto ou máquinas de estado). A Listagem~\ref{dispositivos1451} apresenta a hierarquia de classes definida pelo padrão:
 
 \lstset{caption={Classes de Dispositivos do Padrão IEEE 1451},label=dispositivos1451}
 \begin{lstlisting}[frame=single]
@@ -120,6 +120,6 @@ Os três tipos principais de objetos IEEE 1451.1 são:
 		\end{itemize}
 \end{itemize}
 
-Há ainda as classes não-IEEE 1451.1, que não estão representadas na hierarquia acima e possuem restrições de aplicabilidade na arquitetura IEEE 1451. Este padrão possui a limitação de ter sido criado para sensores e atuadores, e, portanto, embora possua um relacionamento entre as classes, elas não podem ser extendidas. Como forma de representação, esse padrão utiliza a \emph{Interface Description Language} (IDL).
+Há ainda as classes não que fazem parte do padrão IEEE 1451.1, que não estão representadas na hierarquia acima e possuem restrições de aplicabilidade na arquitetura IEEE 1451. Este padrão possui a limitação de ter sido criado para sensores e atuadores, e, portanto, embora possua um relacionamento entre as classes, elas não podem ser estendidas. Como forma de representação, esse padrão utiliza a \emph{Interface Description Language} (IDL).
 
 

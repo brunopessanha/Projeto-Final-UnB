@@ -5,9 +5,9 @@
 	\input{capitulos/2.FundamentacaoTeorica/ubiquitos/ubiquitos}
 \end{comment}
 
-Ambientes de computação ubíqua são compostos por elementos que proveem capacidades, como tirar uma foto, medir a temperatura, imprimir documentos, etc. Tais capacidades são atreladas à elementos como câmera fotográfica, sensores e impressoras, os quais agregam uma ou várias capacidades. Dito isso, chamar-se-á de serviço qualquer capacidade presente no ambiente e de recurso qualquer elemento que agrupe capacidades.
+Ambientes de computação ubíqua são compostos por elementos que provêem capacidades, como tirar uma foto, medir a temperatura, imprimir documentos, etc. Tais capacidades são atreladas à dispositivos como câmera fotográfica, sensores e impressoras, os quais agregam uma ou várias capacidades. Dito isso, chamar-se-á de \emph{serviço} qualquer capacidade presente no ambiente e de \emph{recurso} qualquer elemento que agrupe capacidades~\cite{gomes2007}.
 
-Um importante desafio para tais ambientes é o desenvolvimento de técnicas de descoberta de recursos que permitam que aplicativos clientes localizem serviços presentes nos mais variados dispositivos. Tais técnicas devem atingir três objetivos principais~\cite{balazinska2002ins/twine}:
+Um desafio fundamental para tais ambientes é o desenvolvimento de técnicas de descoberta de recursos que permitam que aplicativos clientes localizem serviços presentes nos mais variados dispositivos. Tais técnicas devem atingir três objetivos principais~\cite{balazinska2002ins/twine}:
 
 \begin{enumerate}
 	\item Lidar com descrições de recursos sofisticados e padrões de consulta;
@@ -15,18 +15,18 @@ Um importante desafio para tais ambientes é o desenvolvimento de técnicas de d
 	\item Ser escalável para um grande número de recursos.
 \end{enumerate}
 
-Neste sentido, destaca-se a importância de uma classificação de recursos que possibilite uma melhor gerência dos diversos recursos presentes no \emph{smart space}. Muitos trabalhos focam nos serviços e não nos recursos e, por esse motivo, o tema ``Classificação de Recursos'' também é chamado de ``Classificação de Serviços'', ``Tipagem de Serviços'' ou ``Ontologia de Serviços''. Tal classificação livrará o usuário de tarefas e configurações tediosas e redundantes, criando um entendimento comum do que estes recursos representam, evitando quaisquer custos administrativos, de forma a facilitar a interação entre diferentes aparelhos e contribuindo para a adaptabilidade de serviços. As aplicacões podem, portanto, saber quais recursos podem ou devem usar.
+Neste sentido, destaca-se a importância de uma classificação de recursos que possibilite uma melhor gestão dos diversos recursos presentes no \emph{smart space}. Muitos trabalhos focam nos serviços e não nos recursos e, por esse motivo, o tema ``Classificação de Recursos'' também é comumente chamado de ``Classificação de Serviços'', ``Tipagem de Serviços'' ou ``Ontologia de Serviços''. Tal classificação livrará o usuário de tarefas e configurações tediosas e redundantes, criando um entendimento comum do que estes recursos representam, evitando quaisquer custos administrativos, de forma a facilitar a interação entre diferentes aparelhos e contribuir para a adaptabilidade de serviços. As aplicacões podem, portanto, saber quais recursos podem ou devem utilizar dependendo do contexto atual.
 
-A fim de ilustrar a vantagem de se empregar a classificação de recursos em técnicas de descoberta de recursos, considere o seguinte exemplo:
+A fim de ilustrar a vantagem de se empregar a classificação de recursos em técnicas de descoberta de recursos, pode-se considerar o seguinte exemplo:
 
 \begin{quote}
-	Um usuário presente em um \emph{smart space} que não possui uma classificação de recursos necessita de uma tela para projetar a apresentação do seu trabalho de graduação que está armazenada em seu celular. Existem três recursos de tela disponíveis: uma TV LED de 40'', uma TV LCD de 27'' e uma TV de tubo de 14''. Tal usuário poderia facilmente escolher qual dos três recursos melhor lhe serviria: buscaria, por meio de seu celular, cada um dos recursos disponíveis, e, em seguida, optaria por um. Contudo, a fim de manter a proatividade e invisibilidade inerente a sistemas ubíquos, o ambiente deveria ser capaz de reconhecer quais recursos são adequados ou não para projetar a apresentação. Assim, o que fazer para automaticamente selecionar-se a melhor opção? Outro problema ocorreria com a saída do ambiente de um dos recursos que estivessem sendo utilizados pelo usuário. O que fazer para supri-lo? A única alternativa seria entregar outro recurso idêntico ao anterior, de forma a garantir a existência dos serviços necessários para a sua correta execução. Com a implementação da classificação de recursos, todos estes problemas seriam facilmente sanados, com tudo ocorrendo de forma transparente ao usuário. Ao se necessitar de uma tela, realizaria-se uma única busca por um recurso de ``Tela'', obtendo como resultado todas as telas disponíveis. Se um recurso tornar-se indisponível, não só recursos idênticos poderiam substituir o anterior, mas também todos aqueles que possuíssem os serviços necessários para a correta execução da tarefa em andamento, mesmo que não fossem idênticos. A imagem~\ref{fig:arvoreDeEquivalencia} apresenta um exemplo da estrutura dessa classificação, em que \emph{WideScreen} e \emph{LetterBoxScreen} são uma especialização de \emph{Screen}.
+	Um usuário presente em um \emph{smart space} que não possui uma classificação de recursos necessita de uma tela para projetar a apresentação do seu trabalho de graduação que está armazenada em seu celular. Existem três recursos de tela disponíveis: uma TV LED de 40'', uma TV LCD de 27'' e uma TV 3D de 14''. Tal usuário poderia facilmente escolher qual dos três recursos melhor lhe serviria: buscaria, por meio de seu celular, cada um dos recursos disponíveis, e, em seguida, optaria por um. Contudo, a fim de manter a proatividade e invisibilidade inerente a sistemas ubíquos, o ambiente deveria ser capaz de reconhecer quais recursos são adequados ou não para projetar a apresentação. Assim, o que fazer para automaticamente selecionar a melhor opção? Outro problema ocorreria com a saída do ambiente de um dos recursos que estivessem sendo utilizados pelo usuário. O que fazer para supri-lo? A única alternativa seria entregar outro recurso idêntico ao anterior, de forma a garantir a existência dos serviços necessários para a sua correta execução. Com um mecanismo que classificasse tais recursos, todos estes problemas seriam facilmente sanados, com tudo ocorrendo de forma transparente ao usuário. Ao necessitar de uma tela, realizaria-se uma única busca por um recurso de ``Tela'', obtendo como resultado todas as telas disponíveis. Se um recurso tornar-se indisponível, não só recursos idênticos poderiam substituir o anterior, mas também todos aqueles que possuíssem os serviços necessários para a correta execução da tarefa em andamento, mesmo que não fossem idênticos. A Figura~\ref{fig:arvoreDeEquivalencia} apresenta um exemplo da estrutura dessa classificação, em que \emph{WideScreen} e \emph{LetterBoxScreen} são uma especialização de \emph{Screen}.
 \end{quote}
 
 \begin{figure}[ht]
 	\center
 	\includegraphics[scale=0.9]{imagens/screenTree}
-	\caption{Classificação de recursos.}
+	\caption{Exemplo de uma classificação de recursos.}
 	\label{fig:arvoreDeEquivalencia}
 \end{figure}
 
@@ -52,22 +52,22 @@ Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplic
 Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquanto D4, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 e D3 poderiam sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1, D2 e D3 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
 \end{comment}
 
-A seguir, será apresentado como as classificações são comumente expostas (seção ~\ref{sec:formasDeClass}), os principais padrões existentes na academia e no mercado (seção ~\ref{sec:padroes}) e como alguns trabalhos de ubicomp tratam esta questão (seção ~\ref{sec:correlatos}). Por fim, na seção ~\ref{sec:comparativo}, será mostrado um comparativo sobre as principais características apresentadas pelos padrões e trabalhos expostos.
+A seguir, será apresentado como as classificações são comumente representadas (Seção ~\ref{sec:formasDeClass}), os principais padrões existentes na academia e no mercado (Seção ~\ref{sec:padroes}) e como alguns trabalhos de ubicomp tratam esta questão (Seção ~\ref{sec:correlatos}). Por fim, na Seção ~\ref{sec:comparativo}, será mostrado um comparativo sobre as principais características apresentadas pelos padrões e trabalhos expostos.
 
 \section{Formas de classificação}
 \label{sec:formasDeClass}
 
-Com base nos estudos realizados, dividiu-se as formas de se classificar os recursos em dois grupos distintos, de acordo com a flexibilidade das relações entre os recursos:
+Com base nos estudos realizados, dividiu-se as formas de classificar os recursos em dois grupos distintos, de acordo com a flexibilidade das relações entre os recursos:
 
 \begin{enumerate}
-	\item Fixa: consistem em classificações nas quais os recursos são definidos de forma rígida. São categorias pre-determinadas em que especializações e relacionamentos entre eles não são permitidos.
+	\item Fixa: consiste em classificações nas quais os recursos são definidos de forma rígida. São categorias pré-determinadas em que especializações e relacionamentos entre eles não são permitidos.
 
-	\item Relacionada: consistem em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações.
+	\item Relacionada: consiste em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações.
 \end{enumerate}
 
 \subsection{Representação}
 
-Para que os recursos possam ser acessados sem ambiguidade semântica, deve-se escolher uma maneira de se representar a classificação estabelecida de forma a possibilitar o tráfego dessas informações entre os mais variados dispositivos e plataformas.
+Para que os recursos possam ser acessados sem ambiguidade semântica, deve-se escolher uma maneira de se representar a classificação estabelecida de forma a possibilitar o tráfego dessas informações entre os mais variados dispositivos e plataformas:
 
 \begin{itemize}
 	\item Arquivo descritor~\cite{usb3spec}: arquivo estruturado, geralmente binário, onde cada \emph{byte} ou \emph{bit} representa uma informação que pode representar a tipagem ou o valor do dado ou, ainda, um estado, dependendo da sua definição;
@@ -90,7 +90,7 @@ Para que os recursos possam ser acessados sem ambiguidade semântica, deve-se es
 \section{Padrões}
 \label{sec:padroes}
 
-A classificação de recursos é uma questão bem estabelecida na academia e no mercado, tendo motivado diversos trabalhos e o estabelecimento de alguns padrões. A seguir, seguem alguns padrões de maior destaque em algumas áreas de atuação, como dispositivos (USB, IEEE 1451, DDL), mídia (UPnP, DLNA) e rede (\emph{bluetooth}).
+A classificação de recursos é uma questão bem estabelecida na academia e no mercado, tendo motivado diversos trabalhos e o estabelecimento de alguns padrões. A seguir, seguem alguns padrões de maior destaque em algumas áreas de atuação, como dispositivos (USB, IEEE 1451, DDL), mídia (UPnP, DLNA) e rede (\emph{Bluetooth}).
 
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/upnp}
 \input{capitulos/2.ClassificacaoDeRecursos/classificacao/ieee1451}

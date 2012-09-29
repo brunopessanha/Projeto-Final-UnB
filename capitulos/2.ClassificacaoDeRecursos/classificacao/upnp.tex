@@ -1,11 +1,11 @@
 \subsection{UPnP}
 O \emph{Universal Plug and Play Protocol} (UPnP) é um protocolo para conectividade entre aplicações inteligentes utilizado em computadores e dispositivos, \emph{wireless} em geral. Foi definido com o objetivo de facilitar a conectividade entre dispositivos em diferentes ambientes, como casas, pequenas empresas ou espaços públicos~\cite{upnpArch}. Não necessita de configurações e fornece uma rede invisível com descoberta automática de dispositivos de diferentes fabricantes e diversas categorias.
 
-Seu nome ``Universal'' advém da não utilização de \emph{drivers} para cada dispositivo. Para tal, utiliza protocolos bem conhecidos como IP, TCP, UDP e HTTP, além do formato XML, utilizado no armazenamento de informações como fabricante, lista de dispositivos embarcados, descrição dos serviços com lista de comandos e ações com parâmetros e argumentos, URL's de controle, eventos e apresentação.
+Seu nome ``Universal'' advém da não utilização de \emph{drivers} para cada dispositivo. Para tal, utiliza protocolos bem conhecidos como IP, TCP, UDP e HTTP, além do formato XML, utilizado no armazenamento de informações tais como fabricante, lista de dispositivos embarcados, descrição dos serviços com lista de comandos e ações com parâmetros e argumentos, URL's de controle, eventos e apresentação.
 
 Quando um novo aparelho adentra na rede, ele recebe um IP via DHCP ou gera um IP para si (no caso de redes não-gerenciadas), publica seus serviços, disponibiliza uma URL e conhece os serviços de outros dispositivos. A \emph{UPnP Device Architecture}(UDA) divide os dispositivos em duas categorias principais: controlados, também chamados de ``dispositivos'' e pontos de controle~\cite{upnpArch}, estabelecendo uma arquitetura cliente-servidor onde pontos de controle acessam os serviços disponibilizados pelos dispositivos. Após a entrada desse novo aparelho na rede, os pontos de controle ainda não têm muita informação sobre o dispositivo, então os pontos de controle interessados solicitam a descrição do dispositivo por meio da URL disponibilizada anteriormente.
 
-O UPnP estabelece uma classificação composta por um conjunto de tipos pré-determinados. Quando um fabricante deseja produzir um novo dispositivo, este deve se adequar a estes tipos ou estabelecer um novo tipo próprio. Uma característica interessante dessas classificações é que elas podem ser implementadas por dispositivos com pouca capacidade de computação, embora também possam ser utilizadas por dispositivos mais robustos como computadores, ou seja, são independentes de plataforma. Os tipos presentes no UPnP são:
+O UPnP estabelece uma classificação utilizando um conjunto de tipos pré-determinados. Quando um fabricante deseja produzir um novo dispositivo, este deve se adequar a estes tipos ou estabelecer um novo tipo próprio. Uma característica interessante dessas classificações é que elas podem ser implementadas por dispositivos com pouca capacidade de computação, embora também possam ser utilizadas por dispositivos mais robustos como computadores, ou seja, são independentes de plataforma. Os tipos presentes no UPnP são:
 
 \begin{itemize}
 \item Áudio/Vídeo:
@@ -39,7 +39,7 @@ O UPnP estabelece uma classificação composta por um conjunto de tipos pré-det
 			Esse dispositivo conta com auxílio de sensores de temperatura e possui a capacidade de saber ou controlar a temperatura do ambiente por meio de ventiladores e ar-condicionados.
 		\item Controles de Luz:
 			
-			São divididos em Luz binária, que representa uma lâmpada ou qualquer dispositivo emissor de luz que possa somente estar apagado ou aceso, e em Luz cuja intensidade pode ser alterada, 
+			São divididos em \emph{Luz binária}, que representa uma lâmpada ou qualquer dispositivo emissor de luz que possa somente estar apagado ou aceso, e em \emph{Luz} cuja intensidade pode ser alterada, 
 	\end{itemize}
 
 \item Rede:
@@ -48,7 +48,7 @@ O UPnP estabelece uma classificação composta por um conjunto de tipos pré-det
 	\begin{itemize}
 		\item \emph{Gateway} de Internet:
 			
-			Essa classificação define um dispositivo de interconexão entre uma rede residencial local (LAN) e a \emph{Wide Area Network} (WAN), provendo conectividade com a internet.
+			Essa classificação define um dispositivo de interconexão entre uma \emph{Local Area Network} (LAN) e a \emph{Wide Area Network} (WAN), provendo conectividade com a internet.
 			\begin{itemize}
 				\item Dispositivo de Conexão WAN: É um dispositivo virtual definido tendo o \emph{Gateway} de Internet como raiz. Funciona como um contêiner para um \emph{link} ou serviços de conexão em uma interface WAN. 
 				\item Dispositivo WAN: É um dispositivo virtual definido tendo o \emph{gateway} de internet como raiz. Cada dispositivo WAN é uma instância virtual de uma interface WAN no \emph{gateway} de internet. Múltiplas interfaces físicas WAN para clientes UPnP, existirão distintas instâncias deste dispositivo.
@@ -65,7 +65,7 @@ O UPnP estabelece uma classificação composta por um conjunto de tipos pré-det
 
 \item Acesso Remoto:
 
-	Essa categoria comporta dispositivos que possam servir tanto comoé dividida entre dois dispositivos:
+	Essa categoria comporta dispositivos que gerenciam o acesso remoto, ela é dividida entre:
 	\begin{itemize}
 		\item Agente de Descoberta de Acesso Remoto:
 
@@ -104,4 +104,4 @@ O UPnP estabelece uma classificação composta por um conjunto de tipos pré-det
 	A definição de dispositivos básicos provêem um mecanismo para produtos que não se enquadram em uma classificação adequada do UPnP, possam utilizá-lo. Por esse motivo, essa especificação não possui nenhum serviço definido, mas pode ser utilizada como dispositivo raiz para outras categorias já definidas.
 \end{itemize}
 
-A partir de uma classificação padrão, os fabricantes podem, por exemplo, estender e especializar determinada definição adicionando novos serviços, o que sugere a formação de uma hierarquia de dispositivos por meio de arquivos XML. O UPnP, portanto, utiliza uma classificação dispositivos relacionada, o que facilita a criação de novos tipos de dispositivos a partir da classficação base agregando novos serviços. Essa classificação extendida, entretanto, deve passar por um processo de certificação. Um ponto forte nas classificações é o fato de já incluírem a especificação dos serviços que os dispositivos proveem.
+A partir de uma classificação padrão, os fabricantes podem, por exemplo, estender e especializar determinada definição adicionando novos serviços, o que sugere a formação de uma hierarquia de dispositivos por meio de arquivos XML. O UPnP, portanto, utiliza uma classificação dispositivos relacionada, o que facilita a criação de novos tipos de dispositivos a partir da classficação base agregando novos serviços. Essa classificação extendida, entretanto, deve passar por um processo de certificação. Um ponto forte nas classificações é o fato de já incluirem a especificação dos serviços que os dispositivos provêem.
