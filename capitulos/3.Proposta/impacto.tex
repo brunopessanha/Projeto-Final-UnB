@@ -1,9 +1,11 @@
 \section{Impacto}
 \label{sec:impactoUOS}
 
-A proposta deste trabalho definida na seção anterior implicou em algumas mudanças no \emph{middleware uOS}. Esta seção primeiro descreverá brevemente como o \emph{uP} foi definido a partir dos conceitos da DSOA e, por fim, mostrará os impactos do uso da classificação para a determinação da equivalência de recursos.
+A proposta deste trabalho definida na seção anterior implicou em algumas mudanças no \emph{middleware uOS}, visto que este possui a DSOA como arquitetura. Esta seção primeiro descreverá brevemente como o \emph{uP}, conjuntos de protocolos do \emph{uOS}, foi definido a partir dos conceitos da DSOA e, por fim, mostrará os impactos do uso da classificação para a determinação da equivalência de recursos.
 
-O \emph{uP (Ubiquitous Protocols)} é um conjunto de protocolos criado com objetivo de estabelecer um meio de interação entre os serviços dentro desta arquitetura. Tais protocolos definem o canal de comunicação e a forma de interação entre as entidades do ambiente. As mensagens são transmitidas no formato JSON (\emph{JavaScript Object Notation})~\cite{json}.
+\subsection{\emph{uP - Ubiquitous Protocols}}
+
+O \emph{uP} é um conjunto de protocolos utilizado pelo \emph{middleware uOS} que possui o objetivo de estabelecer um meio de interação entre os serviços dentro da arquitetura DSOA. Tais protocolos definem o canal de comunicação e a forma de interação entre as entidades do ambiente. As mensagens são transmitidas no formato JSON (\emph{JavaScript Object Notation})~\cite{json}.
 
 Cada um dos conceitos apresentados na DSOA possui uma representação no \emph{uP} com seus respectivos atributos:
 
@@ -21,7 +23,7 @@ Cada um dos conceitos apresentados na DSOA possui uma representação no \emph{u
 		Representa a interface do Recurso.
 \end{itemize}
 
-Além disso, com o objetivo de disponibilizar as características de visibilidade, interação e efeito, foram criados mecanismos de acesso aos recursos. O \emph{uP} é dividido em protocolos básicos, que são utilizados para invocar serviços e protocolos complementares que completam suas funcionalidades.
+Além disso, com o objetivo de disponibilizar as características de visibilidade, interação e efeito, o \emph{uP} possui mecanismos de acesso aos recursos. Estes mecanismos são divididos em protocolos básicos, que são utilizados para invocar serviços e protocolos complementares, que complementam suas funcionalidades.
 
 \begin{itemize}
 	\item Protocolos Básicos: 
@@ -32,9 +34,13 @@ Além disso, com o objetivo de disponibilizar as características de visibilidad
 		Além da interação entre os serviços provida pelos protocolos básicos, o \emph{uP} tem mecanismos que permitem que as aplicações obtenham informações sobre quais são os serviços disponíveis no ambiente e informações a respeito deles. Os protocolos são divididos em um grupo de protocolos com informações sobre o dispositivo e um grupo de protocolos com informações sobre o ambiente. 
 \end{itemize}
 
-O conceito de recurso introduzido anteriormente na subseção~\ref{subsec:introUos} do capítulo~\ref{cap:classificacao} foi afetado devido a proposta de classificação de recursos apresentada. Um dispositivo presente no \emph{smart space}, segundo a DSOA, procurava seus serviços no ambiente por meio do identificador do recurso que provia esses serviços. Com a introdução do conceito de equivalência de recursos, atualmente o dispositivo procura por um tipo desse recurso. O identificador, em vez de representar um nome do recurso, agora, portanto, identifica que tipo de recurso ele representa: imagem, áudio, apontador, etc. Na visão da DSOA, a interface do recurso foi acrescida da lista de recursos equivalentes. Dessa forma, o recurso tornou-se responsável por informar os recursos aos quais ele é diretamente equivalente. Por exemplo, se $R1 \implies R2$, $R1 \implies R3$ e $R3 \implies R4$, então o recurso $R1$ informará que ele é equivalente a $R2$ e $R3$ apenas.
+\subsection{Impacto no \emph{uP}}
 
-Como o \emph{uP} foi criado a partir dos conceitos da DSOA, o impacto sofrido na DSOA foi diretamente refletido sobre ele. Para que a equivalência de serviços fosse garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deve informar os recursos aos quais este é equivalente. Além disso, o identificador do recurso representa a classe deste. Dessa forma, a interface do recurso foi acrescida de um campo para informar estes \emph{drivers}. O \emph{UpDriver} ficou, portanto, com os seguintes campos:
+O conceito de recurso introduzido anteriormente na Subseção~\ref{subsec:introUos} foi afetado devido a proposta de classificação de recursos apresentada. Como o \emph{uP} foi criado a partir dos conceitos da DSOA, o impacto sofrido na DSOA foi diretamente refletido sobre ele.
+
+Um dispositivo presente no \emph{smart space}, segundo a DSOA, procurava seus serviços no ambiente por meio do identificador do recurso que provia esses serviços. Com a introdução do conceito de equivalência de recursos, o dispositivo deverá procurar por um tipo desse recurso. O identificador, em vez de representar um nome do recurso, agora, portanto, identifica que tipo de recurso ele representa: imagem, áudio, apontador, etc. Na visão da DSOA, a interface do recurso foi acrescida da lista de recursos equivalentes. Dessa forma, o recurso tornou-se responsável por informar os recursos aos quais ele é diretamente equivalente. Por exemplo, se $R1 \implies R2$, $R1 \implies R3$ e $R3 \implies R4$, então o recurso $R1$ informará que ele é equivalente a $R2$ e $R3$ apenas.
+
+Para que a equivalência de serviços seja garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deve informar os recursos aos quais este é equivalente. Além disso, o identificador do recurso representa a classe deste. Dessa forma, a interface do recurso foi acrescida de um campo para informar estes \emph{drivers}. O \emph{UpDriver} ficou, portanto, com os seguintes campos:
 
 \begin{itemize}
 	\item \emph{``name''}:
