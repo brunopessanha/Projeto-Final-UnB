@@ -4,16 +4,20 @@
 A padronização de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica destes em determinado momento e contexto. Esta não se limita apenas a uma tarefa de nomear recursos, pois uma aplicação cliente precisa saber como interagir. Para isto é necessário conhecer as interfaces de acesso. Uma classificação deve responder as seguintes questões ~\cite{pervasiveComputing} para garantir a semântica entre as partes envolvidas:
 
 \begin{itemize}
-	\item O que os clientes esperam de uma instância de um recurso do tipo X?
+	\item O que os clientes esperam de uma instância de um determinado recurso?
 
-	\item Quais serviços são apropriados para os recursos do tipo X?
+	\item Quais serviços são apropriados para os recursos desse tipo?
 
-	\item Quais protocolos uma instância do tipo X utiliza?
+	\item Quais protocolos uma instância desse tipo utiliza?
 \end{itemize}
 
-A partir dessas respostas, novos \emph{drivers} poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes implementações do mesmo \emph{driver}; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de novos \emph{drivers} para futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem tipos de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível. Além das perguntas acima, um importante fator levado em consideração foi o fato da DSOA ter sido desenvolvida com o objetivo de atender diversas plataformas abstraindo detalhes como capacidade computacional e linguagem de programação~\cite{buzetoDSOA2010}.
+A partir dessas respostas, novos mecanismos poderão ser construídos seguindo-se a definição inicial do recurso com seus serviços apropriados, possibilitando diferentes formas de interação; além disso, os protocolos são essenciais para definir a forma e o meio de comunicação entre dispositivos. Dessa maneira, a classificação de recursos facilitará o desenvolvimento de futuras aplicações, pois possibilitará a definição de interfaces pré-estabelecidas que representem tipos de recursos. Outra vantagem decorrente é a possibilidade de seleção de recursos equivalentes, caso o provedor originalmente selecionado esteja indisponível.
 
-Conforme visto na seção~\ref{sec:comparativo}, extraiu-se as características mais vantajosas dos padrões existentes como o relacionamento entre classes de recursos, as heranças simples e múltiplas e a representação que utilize um padrão leve. A partir delas, construiu-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). O JSON foi escolhido ante o XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes e possivelmente reduzidas. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de mecanismos externos para tratamento de mensagens, pois o tratamento do formato JSON não exige muita capacidade de computação. Esta nova classificação é estabelecida por:
+No âmbito da DSOA, e como dito anteriormente na seção~\ref{subsec:introUos}, o mecanismo escolhido para mapear os recursos existentes em cada dispositivo é o \emph{driver}.
+
+ Além das perguntas acima, um importante fator levado em consideração foi o fato da DSOA ter sido desenvolvida com o objetivo de atender diversas plataformas abstraindo detalhes como capacidade computacional e linguagem de programação~\cite{buzetoDSOA2010}.
+
+Conforme visto na Seção~\ref{sec:comparativo}, extraiu-se as características mais vantajosas dos padrões existentes como o relacionamento entre classes de recursos, as heranças simples e múltiplas e a representação que utilize um padrão leve. A partir delas, propõe-se uma classificação que seja relacionada, extensível, que permita a um recurso pertencer à multiplas classes simultaneamente e cuja representação seja via JSON (\emph{JavaScript Object Notation}). O JSON é utilizado ante o XML, pois possui menor tamanho de mensagens e esse fator pode ser decisivo em um ambiente com diversos dipositivos com capacidades computacionais diferentes e possivelmente reduzidas. Dessa forma a limitação dos dispositivos é minimizada e exclui a necessidade de mecanismos externos para tratamento de mensagens, pois o tratamento do formato JSON não exige muita capacidade de computação. Esta nova classificação é estabelecida por:
 
 \begin{itemize}
 	\item Forma de classificação
@@ -22,130 +26,111 @@ Conforme visto na seção~\ref{sec:comparativo}, extraiu-se as características 
 
 	\item Representação
 
-	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente na rede possa se comunicar facilmente com os demais. Atualmente, o \emph{uOS} já utiliza JSON em suas trocas de mensagens devido a sua portabilidade e leveza.
+	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente no ambiente possa se comunicar facilmente com os demais. Atualmente, o \emph{middleware uOS} já utiliza JSON em suas trocas de mensagens devido a sua portabilidade e leveza.
 \end{itemize}
 
-Além da definição da forma de classificação e da representação utilizada, a classificação de recursos construída para a DSOA também possui um conjunto de tipos básicos e extensíveis, apresentado na seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabaram por impactar no protocolo \emph{uP} e no \emph{middleware uOS}, pois estes são baseados em tal arquitetura. Sendo assim, na seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
+Além da definição da forma de classificação e da representação utilizada, a classificação de recursos construída para a DSOA também possui um conjunto de tipos básicos e extensíveis, apresentado na Seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na Seção~\ref{sec:equivalenciaRecursos}. Como era de se esperar, as alterações na DSOA acabaram por impactar no protocolo \emph{uP} e no \emph{middleware uOS}, pois estes são baseados em tal arquitetura. Sendo assim, na Seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
 
 \section{Tipos Básicos}
 \label{sec:tiposBasicos}
 
-A definição de um conjunto de tipos básicos auxilia na criação de novos dispositivos. Com base nesta classificação, é possível adequar-se aos padrões pré-estabelecidos na criação de novos drivers, além de assegurar que as aplicações tenham um dicionário comum de elementos raiz a serem utilizados. Com base nos tipos exibidos na tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos básicos da DSOA:
+A definição de um conjunto de tipos básicos auxilia na criação de novos tipos. Com base nesta classificação, é possível adequar-se aos padrões pré-estabelecidos na criação de novos drivers, além de assegurar que as aplicações tenham um dicionário comum de elementos raiz a serem utilizados. Com base nos tipos exibidos na Tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos básicos da DSOA:
 
 \begin{itemize}
 	\item Cliente de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio. Exemplo: caixas de som, fones de ouvido;
+		Abrange quaisquer tipos de dispositivos que contenham a capacidade de reproduzir áudio. Exemplo: caixas de som e fones de ouvido.
 
-		\emph{\bf{Identificador do Recurso:}} \emph{AudioOutput}.
+		\emph{Identificador do Recurso:} \emph{AudioOutput}.
 
-		\emph{\bf{Serviços:}}
+		\emph{Serviço:}
 		\begin{itemize}
-			\item \emph{play(stream);}
-
-				Serviço assíncrono que recebe e toca um \emph{stream} de áudio.
+			\item \emph{play(stream)}: serviço assíncrono que recebe e toca um \emph{stream} de áudio.
 		\end{itemize}
 
 	\item Servidor de Áudio
 		
-		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio. Exemplo: microfones, tocadores de mp3;
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de áudio. Exemplo: microfones e tocadores de mp3.
 
-		\emph{\bf{Identificador do Recurso:}} \emph{AudioInput}.
+		\emph{Identificador do Recurso:} \emph{AudioInput}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviço:}
 		\begin{itemize}
-			\item \emph{getAudio(stream);}
-
-				Serviço assíncrono que obtém e envia um \emph{stream} de áudio.
+			\item \emph{getAudio(stream)}: Serviço assíncrono que obtém e envia um \emph{stream} de áudio.
 		\end{itemize}
 
 	\item Video Player
 		
-		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de renderização de vídeo. Exemplo: TVs, monitores, telas de celular;
+		Abrange quaisquer tipos de dispositivos que possuam a capacidade de prover um recurso de renderização de vídeo. Exemplo: TVs, monitores e telas de celular.
 
-		\emph{\bf{Identificador do Recurso:}} \emph{VideoOutput}.
+		\emph{Identificador do Recurso:} \emph{VideoOutput}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviço:} 
 		\begin{itemize}
-			\item \emph{play(stream);}
-
-				Serviço assíncrono que recebe e renderiza um \emph{stream} de vídeo.
+			\item \emph{play(stream)}: Serviço assíncrono que recebe e renderiza um \emph{stream} de vídeo.
 		\end{itemize}
 
 	\item Servidor de Vídeo
 		
-		Abrange quaisquer tipos de dispositivos que possam operar como servidor de vídeo. Exemplo: tocadores de DVD, set-top boxes;
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de vídeo. Exemplo: tocadores de DVD e \emph{set-top boxes}.
 
-		\emph{\bf{Identificador do Recurso:}} \emph{VideoInput}.
+		\emph{Identificador do Recurso:} \emph{VideoInput}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviço:}
 		\begin{itemize}
-			\item \emph{getVideo(stream);}
-
-				Serviço assíncrono que envia um \emph{stream} de vídeo.
+			\item \emph{getVideo(stream)}: Serviço assíncrono que envia um \emph{stream} de vídeo.
 		\end{itemize}
 
 	\item Display de Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem estática. Exemplo: impressoras, TVs, monitores;
+		Abrange quaisquer tipos de dispositivos que possam prover um recurso de renderização de imagem estática. Exemplo: impressoras, TVs e monitores;
 
-		\emph{\bf{Identificador do Recurso:}} \emph{ImageDisplay}.
+		\emph{Identificador do Recurso:} \emph{ImageDisplay}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviço:}
 		\begin{itemize}
-			\item \emph{display(image);}
-
-				Serviço síncrono que recebe e renderiza uma imagem estática.
+			\item \emph{display(image)}: Serviço síncrono que recebe e renderiza uma imagem estática.
 		\end{itemize}
 
 	\item Servidor Imagem
 		
-		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem estática. Exemplo: câmeras digitais, \emph{scanners};
+		Abrange quaisquer tipos de dispositivos que possam operar como servidor de imagem estática. Exemplo: câmeras digitais e \emph{scanners}.
 
-		\emph{\bf{Identificador do Recurso:}} \emph{Image}.
+		\emph{Identificador do Recurso:} \emph{Image}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviço:} 
 		\begin{itemize}
-			\item \emph{getImage(image);}
-
-				Serviço síncrono que obtém e envia uma imagem estática.
+			\item \emph{getImage(image)}: Serviço síncrono que obtém e envia uma imagem estática.
 		\end{itemize}
 	\item Teclado
 		
 		Abrange quaisquer tipos de dispositivos que possam prover um recurso de teclado. Exemplo: teclados e dispositivos de reconhecimento gestual;
 
-		\emph{\bf{Identificador do Recurso:}} \emph{Keyboard}.
+		\emph{Identificador do Recurso:} \emph{Keyboard}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviços:}
 		\begin{itemize}
-			\item \emph{keyPressed(key);}
+			\item \emph{keyPressed(key)}: Serviço síncrono que envia o código da tecla que foi pressionada no teclado.
 
-				Serviço síncrono que envia o código da tecla que foi pressionada no teclado.
-
-			\item \emph{keyReleased(key);}
-
-				Serviço síncrono que envia o código da tecla que foi liberada após ser pressionado no teclado.
+			\item \emph{keyReleased(key)}: Serviço síncrono que envia o código da tecla que foi liberada após ser pressionado no teclado.
 		\end{itemize}
 
 	\item Apontador
 		
-		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque, \emph{joysticks};
+		Abrange quaisquer tipos de dispositivos que possuam o recurso de apontadores. Exemplo: \emph{mouses}, telas sensíveis ao toque e \emph{joysticks};
 
-		\emph{\bf{Identificador do Recurso:}} \emph{Pointer}.
+		\emph{Identificador do Recurso:} \emph{Pointer}.
 
-		\emph{\bf{Serviços:}} 
+		\emph{Serviço:}
 		\begin{itemize}
-			\item \emph{move(dx, dy);}
-
-				Serviço assíncrono que envia dados de deslocamento do ponteiro do mouse nos dois eixos do plano cartesiano.
+			\item \emph{move(dx, dy)}: Serviço assíncrono que envia dados de deslocamento do ponteiro do mouse nos dois eixos do plano cartesiano.
 		\end{itemize}
 
 \end{itemize}
 
-Esses serviços são essenciais aos tipos básicos. Embora sejam poucos, são os serviços mais básicos que se espera de cada um dos recursos.
-Esse fato permite que \emph{drivers} mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de Display de Imagem, uma televisão, por exemplo, pode ter, é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, dependendo da necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
+Esses são os serviços essenciais aos tipos básicos e contribuem para que \emph{drivers} mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de display de imagem pode ter é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, de acordo com a necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
 
-Tal definição foi importante, pois foi o que permitiu um agrupamento dos recursos em torno de suas funcionalidades, a saber, os seus serviços. Seu valor ficará mais claro com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
+Tal definição é importante, pois permite um agrupamento dos recursos em torno de suas funcionalidades, a saber, os seus serviços. Sua relevância ficará mais clara com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
 \input{capitulos/3.Proposta/equivalencia}
 \input{capitulos/3.Proposta/impacto}
