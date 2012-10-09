@@ -60,9 +60,9 @@ A seguir, será apresentado como as classificações são comumente representada
 Com base nos estudos realizados, dividiu-se as formas de classificar os recursos em dois grupos distintos, de acordo com a flexibilidade das relações entre os recursos:
 
 \begin{enumerate}
-	\item Fixa: consiste em classificações nas quais os recursos são definidos de forma rígida. São categorias pré-determinadas em que especializações e relacionamentos entre eles não são permitidos.
+	\item Fixa: consiste em classificações nas quais os recursos são definidos de forma rígida. São categorias pré-determinadas em que especializações e relacionamentos entre eles não são permitidos, como no padrão \emph{Bluetooth} que será mostrado na Subseção~\ref{subsec:bluetooth}.
 
-	\item Relacionada: consiste em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações.
+	\item Relacionada: consiste em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações, como o padrão UPnP, que será mostrado na Subseção~\ref{subsec:upnp}.
 \end{enumerate}
 
 \subsection{Representação}
@@ -107,7 +107,7 @@ Nesta seção é apresentado um comparativo dos padrões descritos no início de
 A partir da Tabela~\ref{tab:comparativo}, pode-se observar que os padrões para a classificação de recursos mostrados neste trabalho são todos estruturados, ou seja, não utilizam uma forma dinâmica para representar essa classificação. A maioria dos padrões faz uso de uma classificação relacionada, pois possui a vantagem de aproveitar propriedades já definidas. Além disso, é comum a representação da classificação em arquivos XML, que embora seja um padrão independente de plataforma, tem a desvantagem de possuir uma considerável redundância de dados na sua formatação. Apesar da classificação de alguns padrões possuir a capacidade de ser extensível, é necessário que a nova classe criada pelos fabricantes de um dispositivo passe por uma homologação, como acontece no UPnP. O USB possui subclasses derivadas na sua especificação, entretanto não permite novas definições fora do padrão. Em geral, são pouco flexíveis. 
 
 \begin{table}
-	\caption{Comparativo dos padrões.}
+	\caption{Comparativo dos padrões apresentados}
 	\begin{center}
 	\resizebox{16cm}{!} {
 		\begin{tabular}{ccccccc}
@@ -125,7 +125,7 @@ A partir da Tabela~\ref{tab:comparativo}, pode-se observar que os padrões para 
 \end{table}
 
 \begin{table}
-	\caption{Classes presentes nos padrões.}
+	\caption{Classes presentes nos padrões apresentados}
 	\begin{center}
 		\begin{tabular}{|ccccc|}
 		\hline
@@ -163,7 +163,7 @@ A partir da Tabela~\ref{tab:comparativo}, pode-se observar que os padrões para 
 \end{table}
 
 A Tabela~\ref{tab:comparativoClasses} mostra os principais dispositivos que possuem alguma classe associada nos padrões estudados. Estes padrões foram criados para serem utilizados em ambientes domésticos (casas, salas de estar etc) e corporativo (salas de reunião, universidades etc) e, por esse motivo, possuem semelhanças nos tipos base definidos. O padrão DDL não foi considerado no comparativo de classes devido sua classificação possuir apenas três categorias: sensores, atuadores e dispositivos complexos. Portanto, todos os dispositivos considerados neste comparativo poderiam se encaixar na última categoria. O padrão IEEE 1451 também não foi utilizado no comparativo, pois foi criado para facilitar a comunicação de transdutores, e suas classes não abrangem os dispositivos da tabela. 
-\section{Trabalhos Correlatos}
+\section{Classsificação de recursos na \emph{Ubicomp}}
 \label{sec:correlatos}
 
 A classificação de recursos está presente em diversos trabalhos de ubicomp, nos quais fica muito clara a sua relação com o foco de cada projeto. A seguir é apresentado como alguns projetos tratam essa classificação dentro de seus escopos.
