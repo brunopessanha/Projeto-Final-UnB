@@ -52,7 +52,7 @@ Dito isto, cabe ao \emph{uOS} determinar qual recurso será selecionado à aplic
 Repare que D2, D3 e D4 também possuem o serviço de \emph{snapshot}, mas enquanto D4, por se tratar de um recurso de natureza completamente distinta, não poderia ser utilizado de forma alguma pela aplicação solicitante, D2 e D3 poderiam sem perda de funcionalidade. Contudo, de acordo com a definição acima, isso não é possível, visto que D1, D2 e D3 são recursos diferentes e, portanto, não são equivalentes. Como dito inicialmente, essa deficiência é causada justamente pelo fato de cada \emph{driver} ser visto de forma isolada e não-relacionada pelo \emph{middleware}. Este trabalho tem como um dos objetivos solucionar este problema.
 \end{comment}
 
-A seguir, será apresentado como as classificações são comumente representadas (Seção ~\ref{sec:formasDeClass}), os principais padrões existentes na academia e no mercado (Seção ~\ref{sec:padroes}) e como alguns trabalhos de ubicomp tratam esta questão (Seção ~\ref{sec:correlatos}). Por fim, na Seção ~\ref{sec:comparativo}, será mostrado um comparativo sobre as principais características apresentadas pelos padrões e trabalhos expostos.
+A seguir, será apresentado como as classificações são comumente representadas (Seção ~\ref{sec:formasDeClass}), os principais padrões existentes na academia e no mercado (Seção ~\ref{sec:padroes}) e na Seção ~\ref{sec:comparativo}, será mostrado um comparativo sobre as principais características apresentadas pelos padrões e trabalhos expostos. Por fim, será mostrado como alguns trabalhos de ubicomp tratam esta questão (Seção ~\ref{sec:correlatos})
 
 \section{Formas de classificação}
 \label{sec:formasDeClass}
@@ -60,7 +60,7 @@ A seguir, será apresentado como as classificações são comumente representada
 Com base nos estudos realizados, dividiu-se as formas de classificar os recursos em dois grupos distintos, de acordo com a flexibilidade das relações entre os recursos:
 
 \begin{enumerate}
-	\item Fixa: consiste em classificações nas quais os recursos são definidos de forma rígida. São categorias pré-determinadas em que especializações e relacionamentos entre eles não são permitidos, como no padrão \emph{Bluetooth} que será mostrado na Subseção~\ref{subsec:bluetooth}.
+	\item Fixa: consiste em classificações nas quais os recursos são definidos de forma rígida. São categorias pré-determinadas em que especializações e relacionamentos entre eles não são permitidos, como no padrão \emph{Bluetooth}, que será mostrado na Subseção~\ref{subsec:bluetooth}.
 
 	\item Relacionada: consiste em classificações nas quais os recursos são definidos de forma flexível, permitindo a criação de relacionamentos personalizados entre eles. Permite incluir tipos básicos que podem ser especializados ou até mesmo a criação de novas classificações, como o padrão UPnP, que será mostrado na Subseção~\ref{subsec:upnp}.
 \end{enumerate}
