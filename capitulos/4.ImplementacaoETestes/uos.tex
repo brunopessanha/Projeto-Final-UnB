@@ -28,6 +28,4 @@ Além de manter essa estrutura, a camada de adaptabilidade é responsável por p
 	\label{fig:ontologiaUOS}
 \end{figure}
 
-Figura~\ref{fig:diagramaDeBlocos}
-
 O processo de \emph{handshake}, no qual ocorre a descoberta de novos recursos do ambiente, foi alterado visando tratar os casos em que equivalências desconhecidas são encontradas. Visando um melhor desempenho, foi adicionada uma nova fase ao processo para se tratar estes casos. Quando um novo \emph{driver} a ser registrado é equivalente a pelo menos um desconhecido, ele não será registrado em sua árvore de equivalência enquanto o \emph{driver} desconhecido não for apresentado, ou seja, enquanto as interfaces dos seus recursos não se tornarem conhecidas. Desta forma, cada recurso desconhecido deve ser registrado para somente então registrar o novo recurso na árvore de equivalência.
