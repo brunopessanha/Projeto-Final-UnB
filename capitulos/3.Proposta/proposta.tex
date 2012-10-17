@@ -27,12 +27,12 @@ Conforme visto na Seção~\ref{sec:comparativo}, destacam-se as características
 	Em um ambiente cujos dispositivos podem se movimentar livremente e seus recursos devem ser compartilhados de forma transparente ao usuário, torna-se necessário que cada dispositivo presente no ambiente possa se comunicar facilmente com os demais. Atualmente, o \emph{middleware uOS} já utiliza JSON em suas trocas de mensagens devido a sua portabilidade e leveza.
 \end{itemize}
 
-Além da definição da forma de classificação e da representação utilizada, a classificação de recursos proposta para a DSOA também possui um conjunto de tipos básicos e extensíveis, apresentado na Seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na Seção~\ref{sec:equivalenciaRecursos}. As alterações propostas para a DSOA resultam em impactos nas definições do protocolo \emph{uP} e na implementação \emph{middleware uOS}, pois estes são baseados em tal arquitetura. Sendo assim, na Seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
+Além da definição da forma de classificação e da representação utilizada, a classificação de recursos proposta para a DSOA também possui um conjunto de tipos primitivos e extensíveis, apresentado na Seção~\ref{sec:tiposBasicos}, e uma relação de equivalência entre eles, detalhada na Seção~\ref{sec:equivalenciaRecursos}. As alterações propostas para a DSOA resultam em impactos nas definições do protocolo \emph{uP} e na implementação \emph{middleware uOS}, pois estes são baseados em tal arquitetura. Sendo assim, na Seção~\ref{sec:impactoUOS} será apresentado o impacto em cada um destes elementos.
 
-\section{Tipos Básicos}
+\section{Tipos Primitivos}
 \label{sec:tiposBasicos}
 
-A definição de um conjunto de tipos básicos auxilia na criação de novos tipos. Com base nesta classificação, é possível adequar-se aos padrões pré-estabelecidos na criação de novos recursos, além de assegurar que as aplicações tenham um dicionário comum de elementos raiz a serem utilizados. Com base nos tipos exibidos na Tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos básicos da DSOA:
+A definição de um conjunto de tipos primitivos auxilia na criação de novos tipos. Com base nesta classificação, é possível adequar-se aos padrões pré-estabelecidos na criação de novos recursos, além de assegurar que as aplicações tenham um dicionário comum de elementos raiz a serem utilizados. Estes tipos são recursos com os serviços mais simples que se pode esperar de cada um deles. Com base nos tipos exibidos na Tabela~\ref{tab:comparativoClasses} definiu-se os seguintes tipos primitivos da DSOA:
 
 \begin{itemize}
 	\item Cliente de Áudio
@@ -126,7 +126,7 @@ A definição de um conjunto de tipos básicos auxilia na criação de novos tip
 
 \end{itemize}
 
-Esses são os serviços essenciais aos tipos básicos e contribuem para que recursos mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de display de imagem pode ter é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, de acordo com a necessidade. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
+Esses são os serviços essenciais aos tipos primitivos e contribuem para que recursos mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de display de imagem pode ter é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, de acordo com a necessidade. A classificação permite ainda que novos tipos que não tenham relação com estes já definidos sejam criados, como por exemplo ``Sensores'', compondo novos tipos primitivos. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
 
 Tal definição é importante, pois permite um agrupamento dos recursos em torno de suas funcionalidades, a saber, os seus serviços. Sua relevância ficará mais clara com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
