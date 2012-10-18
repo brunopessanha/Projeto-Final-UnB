@@ -1,7 +1,7 @@
 \chapter{Classificação de Recursos na DSOA}
 \label{cap:proposta}
 
-A padronização de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica destes em determinado momento e contexto. Esta não se limita apenas a uma tarefa de nomear recursos, pois uma aplicação cliente precisa saber como interagir. Para isto é necessário conhecer as interfaces de acesso. Uma classificação deve responder as seguintes questões ~\cite{pervasiveComputing} para garantir a semântica entre as partes envolvidas:
+A padronização das classes de recursos é de fundamental importância para \emph{frameworks} que se utilizam da descoberta dinâmica destes em determinado momento e contexto. Esta não se limita apenas a uma tarefa de nomear recursos, pois uma aplicação cliente precisa saber como interagir. Para isto é necessário conhecer as interfaces de acesso. Uma classificação deve responder as seguintes questões ~\cite{pervasiveComputing} para garantir a semântica entre as partes envolvidas:
 
 \begin{itemize}
 	\item O que os clientes esperam de uma instância de um determinado recurso?
@@ -126,7 +126,7 @@ A definição de um conjunto de tipos primitivos auxilia na criação de novos t
 
 \end{itemize}
 
-Esses são os serviços essenciais aos tipos primitivos e contribuem para que recursos mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de display de imagem pode ter é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, de acordo com a necessidade. A classificação permite ainda que novos tipos que não tenham relação com estes já definidos sejam criados, como por exemplo ``Sensores'', compondo novos tipos primitivos. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
+Os tipos primitivos, juntamente com seus serviços essenciais, contribuem para que recursos mais especializados possam ser definidos a partir deles. Por exemplo, o serviço mais simples que um recurso de display de imagem pode ter é o de mostrar uma imagem. Além disso, as aplicações podem requisitar serviços mais ou menos especializados, de acordo com a necessidade. A classificação permite ainda que novos tipos que não tenham relação com estes já definidos sejam criados, como por exemplo ``Sensores'', compondo novos tipos primitivos. Dessa forma, quanto mais granular for a definição de novos recursos, mais fácil será sua reutilização por outros recursos especializados. 
 
 Tal definição é importante, pois permite um agrupamento dos recursos em torno de suas funcionalidades, a saber, os seus serviços. Sua relevância ficará mais clara com a leitura das próximas seções, nas quais os conceitos de ``Equivalência de recursos'' e ``Árvore de Equivalência'' serão apresentados.
 
