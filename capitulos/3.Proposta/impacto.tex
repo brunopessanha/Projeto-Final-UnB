@@ -1,7 +1,7 @@
 \section{Impacto}
 \label{sec:impactoUOS}
 
-A proposta deste trabalho definida na seção anterior implicou em algumas mudanças no \emph{middleware uOS}, visto que este possui a DSOA como arquitetura. Esta seção primeiro descreverá brevemente como o \emph{uP}, conjuntos de protocolos do \emph{uOS}, foi definido a partir dos conceitos da DSOA e, por fim, mostrará os impactos do uso da classificação para a determinação da equivalência de recursos.
+A proposta deste trabalho definida na seção anterior implicou em algumas mudanças no \emph{middleware uOS}, visto que este possui a DSOA como arquitetura. Esta seção primeiro descreverá brevemente como o \emph{uP}, conjuntos de protocolos do \emph{uOS}, foi definido a partir dos conceitos da DSOA e, por fim, mostrará os impactos do uso da classificação para a determinação da similaridade de recursos.
 
 \subsection{\emph{uP - Ubiquitous Protocols}}
 
@@ -38,9 +38,9 @@ Além disso, com o objetivo de disponibilizar as características de visibilidad
 
 O conceito de recurso introduzido anteriormente na Subseção~\ref{subsec:introUos} foi afetado devido à proposta de classificação de recursos apresentada. Como o \emph{uP} foi criado a partir dos conceitos da DSOA, o impacto sofrido na DSOA foi diretamente refletido sobre ele.
 
-Um dispositivo presente no \emph{smart space}, segundo a DSOA, procurava seus serviços no ambiente por meio do identificador do recurso que provia esses serviços. Com a introdução do conceito de equivalência de recursos, o dispositivo deverá procurar por um tipo desse recurso. O identificador, em vez de representar um nome do recurso, agora, portanto, identifica que tipo de recurso ele representa: imagem, áudio, apontador, etc. Na visão da DSOA, a interface do recurso foi acrescida da lista de recursos equivalentes. Dessa forma, o recurso tornou-se responsável por informar os recursos aos quais ele é diretamente equivalente. Por exemplo, se $R1 \implies R2$, $R1 \implies R3$ e $R3 \implies R4$, então o recurso $R1$ informará que ele é equivalente a $R2$ e $R3$ apenas.
+Um dispositivo presente no \emph{smart space}, segundo a DSOA, procurava seus serviços no ambiente por meio do identificador do recurso que provia esses serviços. Com a introdução do conceito de similaridade de recursos, o dispositivo deverá procurar por um tipo desse recurso. O identificador, em vez de representar um nome do recurso, agora, portanto, identifica que tipo de recurso ele representa: imagem, áudio, apontador, etc. Na visão da DSOA, a interface do recurso foi acrescida da lista de recursos similares. Dessa forma, o recurso tornou-se responsável por informar os recursos aos quais ele é diretamente similar. Por exemplo, se $R1 \implies R2$, $R1 \implies R3$ e $R3 \implies R4$, então o recurso $R1$ informará que ele é similar a $R2$ e $R3$ apenas.
 
-Para que a equivalência de serviços seja garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deve informar os recursos aos quais este é equivalente. Além disso, o identificador do recurso representa a classe deste. Dessa forma, a interface do recurso foi acrescida de um campo para informar estes \emph{drivers}. O \emph{UpDriver} ficou, portanto, com os seguintes campos:
+Para que a similaridade de serviços seja garantida, os recursos do dispositivo, cada um representado por um \emph{UpDriver}, deve informar os recursos aos quais este é similar. Além disso, o identificador do recurso representa a classe deste. Dessa forma, a interface do recurso foi acrescida de um campo para informar estes \emph{drivers}. O \emph{UpDriver} ficou, portanto, com os seguintes campos:
 
 \begin{itemize}
 	\item \emph{``name''}:
@@ -48,7 +48,7 @@ Para que a equivalência de serviços seja garantida, os recursos do dispositivo
 		Representa a classe do recurso.
 	\item \emph{``equivalentDrivers''}:
 	
-		Classes a que este recurso é equivalente.
+		Classes a que este recurso é similar.
 	\item \emph{``services''}:
 
 		Lista dos serviços síncronos do recurso.
@@ -57,7 +57,7 @@ Para que a equivalência de serviços seja garantida, os recursos do dispositivo
 		Lista dos serviços assíncronos do recurso;
 \end{itemize}
 
-O campo \emph{``equivalentDrivers''} carregará a informação sobre a equivalência de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos equivalentes. O dispositivo, então, é responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) equivalência(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar e registrar este novo driver na árvore de recursos. Para isso, foi criado um novo serviço no protocolo \emph{Device Driver}, um dos protocolos complementares do \emph{uP}, que ficou com os seguintes serviços:
+O campo \emph{``equivalentDrivers''} carregará a informação sobre a similaridade de um recurso. Entretanto, em um ambiente dinâmico, existe a possibilidade do \emph{uOS} não conhecer um destes recursos similares. O dispositivo, então, é responsável por prover um serviço que informe ao \emph{uOS} a interface deste(s) recurso(s) desconhecido(s) e sua(s) similaridade(s) até a raiz conhecida pelo \emph{uOS}, para que o \emph{middleware} possa encontrar e registrar este novo driver na árvore de recursos. Para isso, foi criado um novo serviço no protocolo \emph{Device Driver}, um dos protocolos complementares do \emph{uP}, que ficou com os seguintes serviços:
 
 \begin{itemize}
 	\item \emph{ListDrivers}: 
@@ -82,7 +82,7 @@ O campo \emph{``equivalentDrivers''} carregará a informação sobre a equivalê
 		Estabelece um contexto de segurança entre dois dispositivos por meio de um prévio compartilhamento de chaves.
 	\item \emph{TellEquivalentDrivers}:
 
-		Responsável por informar a interface do(s) recurso(s) equivalente(s) desconhecido(s). É composto pelos seguintes campos:
+		Responsável por informar a interface do(s) recurso(s) similar(s) desconhecido(s). É composto pelos seguintes campos:
 		\begin{itemize}
 			\item \emph{``driversName''}:
 
@@ -99,6 +99,6 @@ O campo \emph{``equivalentDrivers''} carregará a informação sobre a equivalê
 Serão afetados, ainda, dois protocolos básicos, o \emph{Service Call} e o \emph{Notify}, e o serviço \emph{ListDrivers} dos protocolos \emph{Device Driver} e \emph{Register Driver}. Todos esses serviços contém o parâmetro \emph{driver} que passará a representar uma classe dentre as classes de recursos e não mais o nome do recurso simplesmente.
 \end{comment}
 
-Além dos protocolos que fazem parte do \emph{middleware}, o núcleo do \emph{uOS} é responsável por garantir as regras que definirão se dois recursos são equivalentes e, por conseguinte, pelas validações das interfaces dos serviços. Quando um dispostivo entra no ambiente inteligente controlado pelo \emph{uOS}, o \emph{middleware} tenta trocar informações com o dispositivo por meio do serviço ``\emph{handshake}'' do protocolo \emph{DeviceDriver}. Após o ``\emph{handshake}'', o \emph{uOS} busca informações sobre os recursos que aquele dispositivo carrega por meio do serviço ``\emph{listDrivers}''. Antes da introdução da equivalência de recursos, o registro de novos dispositivos parava neste segundo passo. A partir de então, o \emph{uOS} deve, além de registrar informações sobre o recurso, válidar se esse recurso é de fato equivalente à outros recursos utilizando a árvore de equivalência. Os recursos definidos neste trabalho representam diferentes raízes na árvore de equivalência. Uma vez que um novo \emph{driver} é implementado e um dispositivo dotado deste recurso adentra ao ambiente inteligente controlado pelo \emph{uOS}, este novo \emph{driver} passa a integrar um novo ramo na árvore de equivalência, caso a definição de seus serviços esteja de acordo com as regras de equivalência e consistência de interfaces.
+Além dos protocolos que fazem parte do \emph{middleware}, o núcleo do \emph{uOS} é responsável por garantir as regras que definirão se dois recursos são similares e, por conseguinte, pelas validações das interfaces dos serviços. Quando um dispostivo entra no ambiente inteligente controlado pelo \emph{uOS}, o \emph{middleware} tenta trocar informações com o dispositivo por meio do serviço ``\emph{handshake}'' do protocolo \emph{DeviceDriver}. Após o ``\emph{handshake}'', o \emph{uOS} busca informações sobre os recursos que aquele dispositivo carrega por meio do serviço ``\emph{listDrivers}''. Antes da introdução da similaridade de recursos, o registro de novos dispositivos parava neste segundo passo. A partir de então, o \emph{uOS} deve, além de registrar informações sobre o recurso, válidar se esse recurso é de fato similar à outros recursos utilizando a árvore de recursos. Os recursos definidos neste trabalho representam diferentes raízes na árvore de recursos. Uma vez que um novo \emph{driver} é implementado e um dispositivo dotado deste recurso adentra ao ambiente inteligente controlado pelo \emph{uOS}, este novo \emph{driver} passa a integrar um novo ramo na árvore de recursos, caso a definição de seus serviços esteja de acordo com as regras de similaridade e consistência de interfaces.
 
-Quando um dispositivo deseja obter informações sobre os \emph{drivers} de outro, ele se utiliza do serviço ``\emph{listDrivers}'', especificando, por exemplo, quais \emph{drivers} está procurando. Com a introdução da equivalência de recursos, todos as instâncias do \emph{driver} procurado, bem como todas as instâncias dos \emph{drivers} equivalentes a este serão retornadas como válidas. Ou seja, mesmo que o \emph{driver} requisitado esteja indisponível, seus equivalentes serão capazes de prover os serviços desejados.
+Quando um dispositivo deseja obter informações sobre os \emph{drivers} de outro, ele se utiliza do serviço ``\emph{listDrivers}'', especificando, por exemplo, quais \emph{drivers} está procurando. Com a introdução da similaridade de recursos, todos as instâncias do \emph{driver} procurado, bem como todas as instâncias dos \emph{drivers} similares a este serão retornadas como válidas. Ou seja, mesmo que o \emph{driver} requisitado esteja indisponível, seus similares serão capazes de prover os serviços desejados.

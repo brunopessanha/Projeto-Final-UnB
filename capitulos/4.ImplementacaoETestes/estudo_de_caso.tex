@@ -11,7 +11,7 @@ Desenvolvida com a capacidade de sondar o \emph{smart space} em busca de recurso
 \subsection{Aplicações}
 \label{subsec:aplicacoes}
 
-Foram desenvolvidos dois \emph{drivers} voltados à plataforma Android. Estes se utilizam da tela sensível ao toque para prover um recurso de \emph{mouse}. Além de ambos serem equivalentes ao tipo \emph{Pointer}, um dos \emph{drivers} provê a interface \emph{Clickable}, o que o caracteriza como um \emph{mouse} e o outro implementa também a interface \emph{Scrollable}, tornando-o um \emph{mouse} com \emph{scroll}. Portanto, obteve-se dois recursos de \emph{mouse}, de forma que um possui apenas o serviço de \emph{click}, além da movimentação do ponteiro do \emph{mouse} e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}.
+Foram desenvolvidos dois \emph{drivers} voltados à plataforma Android. Estes se utilizam da tela sensível ao toque para prover um recurso de \emph{mouse}. Além de ambos serem do tipo \emph{Pointer}, um dos \emph{drivers} provê a interface \emph{Clickable}, o que o caracteriza como um \emph{mouse} e o outro implementa também a interface \emph{Scrollable}, tornando-o um \emph{mouse} com \emph{scroll}. Portanto, obteve-se dois recursos de \emph{mouse}, de forma que um possui apenas o serviço de \emph{click}, além da movimentação do ponteiro do \emph{mouse} e o outro possui ambos os serviços e inclui ainda o serviço de \emph{scroll}.
 
 Ambas a aplicações são integradas com a \emph{Hydra}, cuja comunicação com os dispositivos é intermediada pelo \emph{middleware uOS}, que abstrai a complexidade do processo. Por isso a utilização de \emph{drivers} que mapeiam os recursos existentes no ambiente de tal forma a manter a compatibilidade com a DSOA. Seguem abaixo as interfaces dos \emph{drivers} utilizados. \\
 
@@ -29,7 +29,7 @@ Ambas a aplicações são integradas com a \emph{Hydra}, cuja comunicação com 
 
 			\item ``\emph{unregisterListener}'' - Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual não deseja mais ser notificado.
 			\end{comment}
-			\item ``\emph{move}'' - Serviço assíncrono herdado do recurso equivalente \emph{Pointer}. Possui dois parâmetros definidos da seguinte forma:
+			\item ``\emph{move}'' - Serviço assíncrono herdado do recurso similar \emph{Pointer}. Possui dois parâmetros definidos da seguinte forma:
 
 				\begin{itemize}
 					\item ``\emph{axisX}'' - parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo X a posição do ponteiro do \emph{mouse} foi alterada.
@@ -66,7 +66,7 @@ Ambas a aplicações são integradas com a \emph{Hydra}, cuja comunicação com 
 
 			\item ``\emph{unregisterListener}'' - Serviço síncrono que recebe como parâmetro a ``eventKey'' do serviço assíncrono ao qual não deseja mais ser notificado.
 			\end{comment}
-			\item ``\emph{move}'' - Serviço assíncrono herdado do recurso equivalente \emph{Pointer} Possui dois parâmetros definidos da seguinte forma:
+			\item ``\emph{move}'' - Serviço assíncrono herdado do recurso similar \emph{Pointer} Possui dois parâmetros definidos da seguinte forma:
 
 				\begin{itemize}
 					\item ``\emph{axisX}'' - parâmetro inteiro obrigatório que informa em quantos \emph{pixels} no eixo X a posição do ponteiro do \emph{mouse} foi alterada.
